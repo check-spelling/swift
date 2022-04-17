@@ -1424,9 +1424,9 @@ void SwiftLangSupport::findLocalRenameRanges(
     ArrayRef<const char *> Args, SourceKitCancellationToken CancellationToken,
     CategorizedRenameRangesReceiver Receiver) {
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, Filename, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<ArrayRef<CategorizedRenameRanges>>::fromError(Error));
     return;
@@ -1462,7 +1462,7 @@ void SwiftLangSupport::findLocalRenameRanges(
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
-  getASTManager()->processASTAsync(Invok, ASTConsumer, &OncePerASTToken,
+  getASTManager()->processASTAsync(Invoke, ASTConsumer, &OncePerASTToken,
                                    CancellationToken,
                                    llvm::vfs::getRealFileSystem());
 }

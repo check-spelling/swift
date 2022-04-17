@@ -257,7 +257,7 @@ public:
   /// token, that is enqueued waiting to be executed on the same AST, will be
   /// cancelled.
   void
-  processASTAsync(SwiftInvocationRef Invok, SwiftASTConsumerRef ASTConsumer,
+  processASTAsync(SwiftInvocationRef Invoke, SwiftASTConsumerRef ASTConsumer,
                   const void *OncePerASTToken,
                   SourceKitCancellationToken CancellationToken,
                   llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem);
@@ -280,7 +280,7 @@ public:
       llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem,
       std::string &Error);
 
-  bool initCompilerInvocation(swift::CompilerInvocation &CompInvok,
+  bool initCompilerInvocation(swift::CompilerInvocation &CompInvoke,
                               ArrayRef<const char *> OrigArgs,
                               swift::FrontendOptions::ActionType Action,
                               StringRef PrimaryFile, std::string &Error);
@@ -296,7 +296,7 @@ public:
                                       std::string &Error,
                                       bool AllowInputs = true);
 
-  void removeCachedAST(SwiftInvocationRef Invok);
+  void removeCachedAST(SwiftInvocationRef Invoke);
 
   struct Implementation;
   Implementation &Impl;

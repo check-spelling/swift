@@ -249,7 +249,7 @@ public:
   void set(StringRef Name, SwiftInterfaceGenContextRef IFaceGen);
   bool remove(StringRef Name);
   SwiftInterfaceGenContextRef find(StringRef ModuleName,
-                                   const swift::CompilerInvocation &Invok);
+                                   const swift::CompilerInvocation &Invoke);
 };
 
 struct SwiftCompletionCache

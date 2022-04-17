@@ -51,24 +51,24 @@ namespace {
 struct InvocationOptions {
   const std::vector<std::string> Args;
   const std::string PrimaryFile;
-  const CompilerInvocation Invok;
+  const CompilerInvocation Invoke;
 
   InvocationOptions(ArrayRef<const char *> CArgs, StringRef PrimaryFile,
-                    CompilerInvocation Invok)
+                    CompilerInvocation Invoke)
     : Args(_convertArgs(CArgs)),
       PrimaryFile(PrimaryFile),
-      Invok(std::move(Invok)) {
+      Invoke(std::move(Invoke)) {
     // Assert invocation with a primary file. We want to avoid full typechecking
     // for all files.
     assert(!this->PrimaryFile.empty());
-    assert(this->Invok.getFrontendOptions()
+    assert(this->Invoke.getFrontendOptions()
                .InputsAndOutputs.hasUniquePrimaryInput() &&
            "Must have exactly one primary input for code completion, etc.");
   }
 
-  void applyTo(CompilerInvocation &CompInvok) const;
+  void applyTo(CompilerInvocation &CompInvoke) const;
   void
-  applyToSubstitutingInputs(CompilerInvocation &CompInvok,
+  applyToSubstitutingInputs(CompilerInvocation &CompInvoke,
                             FrontendInputsAndOutputs &&InputsAndOutputs) const;
   void profile(llvm::FoldingSetNodeID &ID) const;
   void raw(std::vector<std::string> &Args, std::string &PrimaryFile) const;
@@ -107,8 +107,8 @@ SwiftInvocation::~SwiftInvocation() {
   delete &Impl;
 }
 
-void SwiftInvocation::applyTo(swift::CompilerInvocation &CompInvok) const {
-  return Impl.Opts.applyTo(CompInvok);
+void SwiftInvocation::applyTo(swift::CompilerInvocation &CompInvoke) const {
+  return Impl.Opts.applyTo(CompInvoke);
 }
 
 void SwiftInvocation::raw(std::vector<std::string> &Args,
@@ -116,14 +116,14 @@ void SwiftInvocation::raw(std::vector<std::string> &Args,
   return Impl.Opts.raw(Args, PrimaryFile);
 }
 
-void InvocationOptions::applyTo(CompilerInvocation &CompInvok) const {
-  CompInvok = this->Invok;
+void InvocationOptions::applyTo(CompilerInvocation &CompInvoke) const {
+  CompInvoke = this->Invoke;
 }
 void InvocationOptions::applyToSubstitutingInputs(
-    CompilerInvocation &CompInvok,
+    CompilerInvocation &CompInvoke,
     FrontendInputsAndOutputs &&inputsAndOutputs) const {
-  CompInvok = this->Invok;
-  CompInvok.getFrontendOptions().InputsAndOutputs = inputsAndOutputs;
+  CompInvoke = this->Invoke;
+  CompInvoke.getFrontendOptions().InputsAndOutputs = inputsAndOutputs;
 }
 
 void InvocationOptions::raw(std::vector<std::string> &Args,
@@ -301,7 +301,7 @@ class ASTBuildOperation
   };
 
   /// Parameters necessary to build the AST.
-  const SwiftInvocationRef InvokRef;
+  const SwiftInvocationRef InvokeRef;
   const IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem;
 
   /// The contents of all explicit input files of the compiler innovation, which
@@ -380,9 +380,9 @@ class ASTBuildOperation
 
 public:
   ASTBuildOperation(IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem,
-                    SwiftInvocationRef InvokRef, SwiftASTManagerRef ASTManager,
+                    SwiftInvocationRef InvokeRef, SwiftASTManagerRef ASTManager,
                     std::function<void(void)> DidFinishCallback)
-      : InvokRef(InvokRef), FileSystem(FileSystem), ASTManager(ASTManager),
+      : InvokeRef(InvokeRef), FileSystem(FileSystem), ASTManager(ASTManager),
         DidFinishCallback(DidFinishCallback) {
     // const_cast is fine here. We just want to guard against modifying these
     // fields later on. It's fine to set them in the constructor.
@@ -457,7 +457,7 @@ using ASTBuildOperationRef = std::shared_ptr<ASTBuildOperation>;
 /// snapshot, should it accept it by returning \c true in \c
 /// canUseASTWithSnapshots.
 class ASTProducer : public std::enable_shared_from_this<ASTProducer> {
-  SwiftInvocationRef InvokRef;
+  SwiftInvocationRef InvokeRef;
 
   /// The build operations that have been scheduled by this producer. Some of
   /// these operations might already have finished, effectively caching an old
@@ -501,8 +501,8 @@ class ASTProducer : public std::enable_shared_from_this<ASTProducer> {
       SwiftASTManagerRef Mgr);
 
 public:
-  explicit ASTProducer(SwiftInvocationRef InvokRef)
-      : InvokRef(std::move(InvokRef)) {}
+  explicit ASTProducer(SwiftInvocationRef InvokeRef)
+      : InvokeRef(std::move(InvokeRef)) {}
 
   /// Schedules the given \p Consumer to the latest suitable build operation.
   /// Independently of what happens, the consumer will receive either a \c
@@ -615,7 +615,7 @@ struct SwiftASTManager::Implementation {
     });
   }
 
-  ASTProducerRef getASTProducer(SwiftInvocationRef InvokRef);
+  ASTProducerRef getASTProducer(SwiftInvocationRef InvokeRef);
 
   FileContent
   getFileContent(StringRef FilePath, bool IsPrimary,
@@ -682,11 +682,11 @@ bool SwiftASTManager::initCompilerInvocation(
 }
 
 bool SwiftASTManager::initCompilerInvocation(
-    CompilerInvocation &CompInvok, ArrayRef<const char *> OrigArgs,
+    CompilerInvocation &CompInvoke, ArrayRef<const char *> OrigArgs,
     swift::FrontendOptions::ActionType Action, StringRef PrimaryFile,
     std::string &Error) {
   DiagnosticEngine Diagnostics(Impl.SourceMgr);
-  return initCompilerInvocation(CompInvok, OrigArgs, Action, Diagnostics,
+  return initCompilerInvocation(CompInvoke, OrigArgs, Action, Diagnostics,
                                 PrimaryFile, Error);
 }
 
@@ -730,8 +730,8 @@ SwiftInvocationRef SwiftASTManager::getTypecheckInvocation(
   EditorDiagConsumer CollectDiagConsumer;
   Diags.addConsumer(CollectDiagConsumer);
 
-  CompilerInvocation CompInvok;
-  if (initCompilerInvocation(CompInvok, OrigArgs,
+  CompilerInvocation CompInvoke;
+  if (initCompilerInvocation(CompInvoke, OrigArgs,
                              FrontendOptions::ActionType::Typecheck, Diags,
                              PrimaryFile, FileSystem, Error)) {
     // We create a traced operation here to represent the failure to parse
@@ -750,17 +750,17 @@ SwiftInvocationRef SwiftASTManager::getTypecheckInvocation(
     return nullptr;
   }
 
-  InvocationOptions Opts(OrigArgs, PrimaryFile, CompInvok);
+  InvocationOptions Opts(OrigArgs, PrimaryFile, CompInvoke);
   return new SwiftInvocation(
       *new SwiftInvocation::Implementation(std::move(Opts)));
 }
 
 void SwiftASTManager::processASTAsync(
-    SwiftInvocationRef InvokRef, SwiftASTConsumerRef ASTConsumer,
+    SwiftInvocationRef InvokeRef, SwiftASTConsumerRef ASTConsumer,
     const void *OncePerASTToken, SourceKitCancellationToken CancellationToken,
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem) {
   assert(fileSystem);
-  ASTProducerRef Producer = Impl.getASTProducer(InvokRef);
+  ASTProducerRef Producer = Impl.getASTProducer(InvokeRef);
 
   Impl.cleanDeletedConsumers();
   {
@@ -788,18 +788,18 @@ void SwiftASTManager::processASTAsync(
   });
 }
 
-void SwiftASTManager::removeCachedAST(SwiftInvocationRef Invok) {
-  Impl.ASTCache.remove(Invok->Impl.Key);
+void SwiftASTManager::removeCachedAST(SwiftInvocationRef Invoke) {
+  Impl.ASTCache.remove(Invoke->Impl.Key);
 }
 
 ASTProducerRef
-SwiftASTManager::Implementation::getASTProducer(SwiftInvocationRef InvokRef) {
+SwiftASTManager::Implementation::getASTProducer(SwiftInvocationRef InvokeRef) {
   llvm::sys::ScopedLock L(CacheMtx);
-  llvm::Optional<ASTProducerRef> OptProducer = ASTCache.get(InvokRef->Impl.Key);
+  llvm::Optional<ASTProducerRef> OptProducer = ASTCache.get(InvokeRef->Impl.Key);
   if (OptProducer.hasValue())
     return OptProducer.getValue();
-  ASTProducerRef Producer = std::make_shared<ASTProducer>(InvokRef);
-  ASTCache.set(InvokRef->Impl.Key, Producer);
+  ASTProducerRef Producer = std::make_shared<ASTProducer>(InvokeRef);
+  ASTCache.set(InvokeRef->Impl.Key, Producer);
   return Producer;
 }
 
@@ -869,17 +869,17 @@ SwiftASTManager::Implementation::getMemoryBuffer(
 
 std::vector<FileContent>
 ASTBuildOperation::fileContentsForFilesInCompilerInvocation() {
-  const InvocationOptions &Opts = InvokRef->Impl.Opts;
+  const InvocationOptions &Opts = InvokeRef->Impl.Opts;
   std::string Error; // is ignored
 
   std::vector<FileContent> FileContents;
   FileContents.reserve(
-      Opts.Invok.getFrontendOptions().InputsAndOutputs.inputCount());
+      Opts.Invoke.getFrontendOptions().InputsAndOutputs.inputCount());
 
   // IMPORTANT: The computation of stamps must match the one in
   // matchesSourceState.
   for (const auto &input :
-       Opts.Invok.getFrontendOptions().InputsAndOutputs.getAllInputs()) {
+       Opts.Invoke.getFrontendOptions().InputsAndOutputs.getAllInputs()) {
     const std::string &Filename = input.getFileName();
     bool IsPrimary = input.isPrimary();
     auto Content =
@@ -893,15 +893,15 @@ ASTBuildOperation::fileContentsForFilesInCompilerInvocation() {
     FileContents.push_back(std::move(Content));
   }
   assert(FileContents.size() ==
-         Opts.Invok.getFrontendOptions().InputsAndOutputs.inputCount());
+         Opts.Invoke.getFrontendOptions().InputsAndOutputs.inputCount());
   return FileContents;
 }
 
 bool ASTBuildOperation::matchesSourceState(
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> OtherFileSystem) {
-  const InvocationOptions &Opts = InvokRef->Impl.Opts;
+  const InvocationOptions &Opts = InvokeRef->Impl.Opts;
 
-  auto Inputs = Opts.Invok.getFrontendOptions().InputsAndOutputs.getAllInputs();
+  auto Inputs = Opts.Invoke.getFrontendOptions().InputsAndOutputs.getAllInputs();
   for (size_t I = 0; I < Inputs.size(); I++) {
     if (getFileContents()[I].Stamp !=
         ASTManager->Impl.getBufferStamp(Inputs[I].getFileName(),
@@ -1025,11 +1025,11 @@ void ASTBuildOperation::informConsumer(SwiftASTConsumerRef Consumer) {
 ASTUnitRef ASTBuildOperation::buildASTUnit(std::string &Error) {
   ++ASTManager->Impl.Stats->numASTBuilds;
 
-  const InvocationOptions &Opts = InvokRef->Impl.Opts;
+  const InvocationOptions &Opts = InvokeRef->Impl.Opts;
 
   LOG_FUNC_SECTION(InfoHighPrio) {
     Log->getOS() << "AST build: ";
-    Log->getOS() << Opts.Invok.getModuleName() << '/' << Opts.PrimaryFile;
+    Log->getOS() << Opts.Invoke.getModuleName() << '/' << Opts.PrimaryFile;
   }
 
   ASTUnitRef ASTRef = new ASTUnit(++ASTUnitGeneration, ASTManager->Impl.Stats);
@@ -1044,8 +1044,8 @@ ASTUnitRef ASTBuildOperation::buildASTUnit(std::string &Error) {
   trace::TracedOperation TracedOp(trace::OperationKind::PerformSema);
   trace::SwiftInvocation TraceInfo;
   if (TracedOp.enabled()) {
-    trace::initTraceInfo(TraceInfo, InvokRef->Impl.Opts.PrimaryFile,
-                         InvokRef->Impl.Opts.Args);
+    trace::initTraceInfo(TraceInfo, InvokeRef->Impl.Opts.PrimaryFile,
+                         InvokeRef->Impl.Opts.Args);
     TracedOp.setDiagnosticProvider(
         [&Consumer](SmallVectorImpl<DiagnosticEntryInfo> &diags) {
           Consumer.getAllDiagnostics(diags);
@@ -1053,7 +1053,7 @@ ASTUnitRef ASTBuildOperation::buildASTUnit(std::string &Error) {
   }
 
   CompilerInvocation Invocation;
-  InvokRef->Impl.Opts.applyToSubstitutingInputs(
+  InvokeRef->Impl.Opts.applyToSubstitutingInputs(
       Invocation, convertFileContentsToInputs(getFileContents()));
 
   Invocation.getLangOptions().CollectParsedToken = true;
@@ -1243,8 +1243,8 @@ void ASTProducer::enqueueConsumer(
     // The passed in filesystem does not have overlays resolved. Make sure to
     // do so before performing any file operations.
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> FS = FileSystem;
-    const InvocationOptions &InvocOpts = This->InvokRef->Impl.Opts;
-    const CompilerInvocation &ActualInvoc = InvocOpts.Invok;
+    const InvocationOptions &InvocOpts = This->InvokeRef->Impl.Opts;
+    const CompilerInvocation &ActualInvoc = InvocOpts.Invoke;
     auto ExpectedOverlay =
         ActualInvoc.getSearchPathOptions().makeOverlayFileSystem(FileSystem);
     if (ExpectedOverlay) {
@@ -1271,12 +1271,12 @@ void ASTProducer::enqueueConsumer(
               [This]() { This->cleanBuildOperations(); });
           // Re-register the object with the cache to update its memory
           // cost.
-          Mgr->Impl.ASTCache.set(This->InvokRef->Impl.Key, This);
+          Mgr->Impl.ASTCache.set(This->InvokeRef->Impl.Key, This);
         }
       };
 
       ASTBuildOperationRef NewBuildOp = std::make_shared<ASTBuildOperation>(
-          FS, This->InvokRef, Mgr, DidFinishCallback);
+          FS, This->InvokeRef, Mgr, DidFinishCallback);
       This->BuildOperations.push_back(NewBuildOp);
       bool WasAdded = NewBuildOp->addConsumer(Consumer);
       assert(WasAdded && "Consumer wasn't added to a new build operation "

@@ -490,32 +490,32 @@ ModuleDecl *SwiftInterfaceGenContext::getModuleDecl() const {
 }
 
 bool SwiftInterfaceGenContext::matches(StringRef ModuleName,
-                                       const swift::CompilerInvocation &Invok) {
+                                       const swift::CompilerInvocation &Invoke) {
   if (!Impl.IsModule)
     return false;
   if (ModuleName != Impl.ModuleOrHeaderName)
     return false;
 
-  if (Invok.getTargetTriple() != Impl.Invocation.getTargetTriple())
+  if (Invoke.getTargetTriple() != Impl.Invocation.getTargetTriple())
     return false;
 
   if (ModuleName == STDLIB_NAME)
     return true;
 
-  if (Invok.getSDKPath() != Impl.Invocation.getSDKPath())
+  if (Invoke.getSDKPath() != Impl.Invocation.getSDKPath())
     return false;
 
   if (Impl.Mod->isSystemModule())
     return true;
 
-  const SearchPathOptions &SPOpts = Invok.getSearchPathOptions();
+  const SearchPathOptions &SPOpts = Invoke.getSearchPathOptions();
   const SearchPathOptions &ImplSPOpts = Impl.Invocation.getSearchPathOptions();
   if (SPOpts.getImportSearchPaths() != ImplSPOpts.getImportSearchPaths())
     return false;
   if (SPOpts.getFrameworkSearchPaths() != ImplSPOpts.getFrameworkSearchPaths())
     return false;
 
-  if (Invok.getClangImporterOptions().ExtraArgs !=
+  if (Invoke.getClangImporterOptions().ExtraArgs !=
       Impl.Invocation.getClangImporterOptions().ExtraArgs)
     return false;
 
@@ -588,8 +588,8 @@ SwiftInterfaceGenContext::findUSRRange(StringRef USR) const {
 }
 
 void SwiftInterfaceGenContext::applyTo(
-    swift::CompilerInvocation &CompInvok) const {
-  CompInvok = Impl.Invocation;
+    swift::CompilerInvocation &CompInvoke) const {
+  CompInvoke = Impl.Invocation;
 }
 
 SwiftInterfaceGenContextRef SwiftInterfaceGenMap::get(StringRef Name) const {
@@ -613,10 +613,10 @@ bool SwiftInterfaceGenMap::remove(StringRef Name) {
 
 SwiftInterfaceGenContextRef
 SwiftInterfaceGenMap::find(StringRef ModuleName,
-                           const CompilerInvocation &Invok) {
+                           const CompilerInvocation &Invoke) {
   llvm::sys::ScopedLock L(Mtx);
   for (auto &Entry : IFaceGens) {
-    if (Entry.getValue()->matches(ModuleName, Invok))
+    if (Entry.getValue()->matches(ModuleName, Invoke))
       return Entry.getValue();
   }
   return nullptr;
@@ -725,11 +725,11 @@ public:
   }
 
   void handlePrimaryAST(ASTUnitRef AstUnit) override {
-    CompilerInvocation CompInvok;
-    ASTInvok->applyTo(CompInvok);
+    CompilerInvocation CompInvoke;
+    ASTInvok->applyTo(CompInvoke);
     std::string Error;
     auto IFaceGenRef = SwiftInterfaceGenContext::createForSwiftSource(Name,
-      SourceFileName, AstUnit, CompInvok, Error);
+      SourceFileName, AstUnit, CompInvoke, Error);
     if (!Error.empty())
       Consumer->handleRequestError(Error.data());
     Contexts.set(Name, IFaceGenRef);
