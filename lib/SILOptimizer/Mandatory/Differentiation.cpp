@@ -424,7 +424,7 @@ static SILValue reapplyFunctionConversion(
       newArgs.back() = dfi;
     }
     // Compute substitution map for reapplying `partial_apply`.
-    // - If reapplied functoin is not polymorphic, use empty substitution map
+    // - If reapplied function is not polymorphic, use empty substitution map
     //   regardless of the original `partial_apply`'s substitution map.
     //   - This case is triggered for reapplying `partial_apply` where `newFunc`
     //     is a `differentiability_witness_function` where the witness generic
