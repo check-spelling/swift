@@ -325,7 +325,7 @@ let workloadBase = """
   unu,du,tri,kvar,kvin,ses,sep
   "quoted","f""ield","with a comma ',' in it","and some \n for good measure", five, six, seven
   𐌏𐌉𐌍𐌏,𐌃𐌏,𐌕𐌓𐌉,𐌐𐌄𐌕𐌏𐌓,𐌐𐌄𐌌𐌐𐌄,𐌔𐌖𐌄𐌊𐌏𐌔,𐌔𐌄𐌗𐌕𐌀𐌌
-  zero,un,duo.tres.quantro,cinque,sex
+  zero,un,duo.tres.quatro,cinque,sex
   nolla,yksi,kaksi,kolme,neljä,viisi,kuusi
   really long field, because otherwise, small string opt,imizations may trivial,ize the copies that, were trying to also, measure here!!!!
   нула,једин,два,три,четыри,петь,шесть
