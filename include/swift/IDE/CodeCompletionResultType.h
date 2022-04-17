@@ -196,7 +196,7 @@ class USRBasedType {
   USRBasedType(StringRef USR, ArrayRef<const USRBasedType *> Supertypes)
       : USR(USR), Supertypes(Supertypes) {}
 
-  /// Implementation of \c typeRelation. \p VisistedTypes keeps track which
+  /// Implementation of \c typeRelation. \p VisitedTypes keeps track which
   /// types have already been visited.
   CodeCompletionResultTypeRelation
   typeRelationImpl(const USRBasedType *ResultType, const USRBasedType *VoidType,
