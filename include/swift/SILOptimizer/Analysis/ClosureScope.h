@@ -43,7 +43,7 @@
 /// cyclic because there's no way to name a non-escaping closure. So, in the
 /// long term the acyclic assumption made by this analysis is protected by
 /// non-reentrant semantics, and in the short-term it's safe because of the
-/// lanuguage's practical limitations.
+/// language's practical limitations.
 ///
 //===----------------------------------------------------------------------===//
 
