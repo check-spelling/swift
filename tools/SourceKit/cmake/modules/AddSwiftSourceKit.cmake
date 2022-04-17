@@ -18,7 +18,7 @@ function(add_sourcekit_default_compiler_flags target)
     -fblocks)
 endfunction()
 
-function(add_sourcekitd_swifrt_linking target path HAS_SWIFT_MODULES)
+function(add_sourcekitd_swift_rt_linking target path HAS_SWIFT_MODULES)
   set(RPATH_LIST)
   if(${SWIFT_HOST_VARIANT_SDK} IN_LIST SWIFT_DARWIN_PLATFORMS)
 
@@ -223,7 +223,7 @@ macro(add_sourcekit_library name)
 
   if(SOURCEKITLIB_SHARED)
     set(RPATH_LIST)
-    add_sourcekitd_swifrt_linking(${name} ${SOURCEKIT_LIBRARY_OUTPUT_INTDIR} ${SOURCEKITLIB_HAS_SWIFT_MODULES})
+    add_sourcekitd_swift_rt_linking(${name} ${SOURCEKIT_LIBRARY_OUTPUT_INTDIR} ${SOURCEKITLIB_HAS_SWIFT_MODULES})
 
     if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
       set_target_properties(${name} PROPERTIES INSTALL_NAME_DIR "@rpath")
@@ -379,7 +379,7 @@ macro(add_sourcekit_framework name)
         BINARY_DIR ${SOURCEKIT_RUNTIME_OUTPUT_INTDIR}
         LIBRARY_DIR ${SOURCEKIT_LIBRARY_OUTPUT_INTDIR})
     set(RPATH_LIST)
-    add_sourcekitd_swifrt_linking(${name} "${SOURCEKIT_LIBRARY_OUTPUT_INTDIR}" ${SOURCEKITFW_HAS_SWIFT_MODULES})
+    add_sourcekitd_swift_rt_linking(${name} "${SOURCEKIT_LIBRARY_OUTPUT_INTDIR}" ${SOURCEKITFW_HAS_SWIFT_MODULES})
     set_target_properties(${name} PROPERTIES
                           BUILD_WITH_INSTALL_RPATH TRUE
                           FOLDER "SourceKit frameworks"
@@ -410,7 +410,7 @@ macro(add_sourcekit_framework name)
         BINARY_DIR ${framework_location}
         LIBRARY_DIR ${framework_location})
     set(RPATH_LIST)
-    add_sourcekitd_swifrt_linking(${name} "${framework_location}" SOURCEKITFW_HAS_SWIFT_MODULES RPATH_LIST)
+    add_sourcekitd_swift_rt_linking(${name} "${framework_location}" SOURCEKITFW_HAS_SWIFT_MODULES RPATH_LIST)
     set_target_properties(${name} PROPERTIES
                           BUILD_WITH_INSTALL_RPATH TRUE
                           FOLDER "SourceKit frameworks"
@@ -495,7 +495,7 @@ macro(add_sourcekit_xpc_service name framework_target)
   add_dependencies(${framework_target} ${name})
 
   set(RPATH_LIST)
-  add_sourcekitd_swifrt_linking(${name} ${xpc_bin_dir} ${SOURCEKITXPC_HAS_SWIFT_MODULES})
+  add_sourcekitd_swift_rt_linking(${name} ${xpc_bin_dir} ${SOURCEKITXPC_HAS_SWIFT_MODULES})
 
   file(RELATIVE_PATH relative_lib_path "${xpc_bin_dir}" "${lib_dir}")
   list(APPEND RPATH_LIST "@loader_path/${relative_lib_path}")
