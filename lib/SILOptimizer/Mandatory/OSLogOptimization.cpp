@@ -962,7 +962,7 @@ static void substituteConstants(FoldState &foldState) {
           getUniqueBorrowScopeIntroducingValue(constantSILValue);
       if (!borrowIntroducer) {
         // This case happens only if constantSILValue is derived from a
-        // guaranteed basic block parameter. This is unlikley because the values
+        // guaranteed basic block parameter. This is unlikely because the values
         // that have to be folded should just be a struct-extract of an owned
         // instance of OSLogMessage.
         continue;
