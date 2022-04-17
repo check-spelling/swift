@@ -310,7 +310,7 @@ sil @$s32sil_combine_concrete_existential1PPA2A1QRzrlE18witnessCompositionyyF : 
 //   pp.witnessComposition()
 // }
 //
-// SILCombine substitutes the applies opened existention parameter with a concrete type <C : P & Q>
+// SILCombine substitutes the applies opened extension parameter with a concrete type <C : P & Q>
 // CHECK-LABEL: sil @$s32sil_combine_concrete_existential32testExtensionProtocolComposition1cyAA4C_PQC_tF : $@convention(thin) (@guaranteed C_PQ) -> () {
 // CHECK-NOT: init_existential_ref
 // CHECK-NOT: open_existential_ref
