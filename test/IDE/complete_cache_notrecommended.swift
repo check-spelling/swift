@@ -21,7 +21,7 @@ import MyModule
 func testSync() -> Int{
     #^GLOBAL_IN_SYNC^#
 // FIXME: 'globalAsyncFunc()' *should* be "NotRecommended" because  it's 'async'
-// The curently behavior is due to completion cache. We should remember
+// The currently behavior is due to completion cache. We should remember
 // 'async'-ness in the cache. (rdar://78317170)
 
 // GLOBAL_IN_SYNC: Begin completions
