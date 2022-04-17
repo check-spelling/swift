@@ -128,7 +128,7 @@ class DominatedAccessAnalysis {
 public:
   // The result records information for all dynamic accesses in this
   // function. If an UnpairedAccess exists, then the result will be
-  // consevatively empty.
+  // conservatively empty.
   struct Result {
     llvm::SmallDenseMap<BeginAccessInst *, DomAccessStorage, 32> accessMap;
   };
