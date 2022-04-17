@@ -4208,7 +4208,7 @@ namespace {
   //        Without this template typealias, the following errors are produced
   //        when compiling on Linux and Windows, respectively:
   //
-  //        template argument for template template parameter must be a class
+  //        template argument for template parameter must be a class
   //        template or type alias template
   //
   //        invalid template argument for template parameter
@@ -4908,7 +4908,7 @@ namespace {
   //        Without this template typealias, the following errors are produced
   //        when compiling on Linux and Windows, respectively:
   //
-  //        template argument for template template parameter must be a class
+  //        template argument for template parameter must be a class
   //        template or type alias template
   //
   //        invalid template argument for template parameter
@@ -5114,7 +5114,7 @@ namespace {
   //        Without this template typealias, the following errors are produced
   //        when compiling on Linux and Windows, respectively:
   //
-  //        template argument for template template parameter must be a class
+  //        template argument for template parameter must be a class
   //        template or type alias template
   //
   //        invalid template argument for template parameter
