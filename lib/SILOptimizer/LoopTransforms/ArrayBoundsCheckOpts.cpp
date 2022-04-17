@@ -1203,7 +1203,7 @@ bool ABCOpt::processLoop(SILLoop *Loop) {
   }
 
   // Hoist the overflow check of induction variables out of the loop. This also
-  // needs to happen for memory safety. Also remove superflous range checks.
+  // needs to happen for memory safety. Also remove superfluous range checks.
   if (IVarsFound) {
     SILValue TrueVal;
     SILValue FalseVal;
