@@ -31,7 +31,7 @@ namespace {
 ///
 /// This has two benefits:
 ///
-/// * Combine a destroy_addr with a precedeing copy. For example, replace
+/// * Combine a destroy_addr with a preceding copy. For example, replace
 ///   /code
 ///     %v = load [copy] %a
 ///     ...
