@@ -602,7 +602,7 @@ struct TestMutipleCatches {
   var computed: Int {
     _read {
       // This is a very interesting test, where the error is on the try.
-      // It could have been been better if it is on the switch case in the
+      // It could have been better if it is on the switch case in the
       // error case.
       do {
         try aThrowingFunction() // expected-note {{missing yield when error is thrown}}
