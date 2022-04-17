@@ -1983,7 +1983,7 @@ ConstExprFunctionState::evaluateInstructionAndGetNext(
       // not a CheckedCastBranchAddr inst. Therefore, it has to be a struct
       // type or String or Metatype. Since the types of aggregates are not
       // tracked, we recover it from the declared type of the source operand
-      // and generic parameter subsitutions in the interpreter state.
+      // and generic parameter substitutions in the interpreter state.
       sourceType = substituteGenericParamsAndSimplify(
                                       checkedCastInst->getSourceFormalType());
     }
