@@ -299,7 +299,7 @@ class MoveFunctionCanonicalization : public SILFunctionTransform {
         // See if we see a mark_unresolved_move_addr inst from a simple
         // temporary and move it onto the temporary's source. This ensures that
         // the mark_unresolved_move_addr is always on the operand regardless if
-        // in the caller we materalized the address into a temporary.
+        // in the caller we materialized the address into a temporary.
         if (auto *markMoveAddr = dyn_cast<MarkUnresolvedMoveAddrInst>(inst)) {
           madeChange |= tryConvertSimpleMoveFromAllocStackTemporary(
               markMoveAddr, aa, deleter);
