@@ -52,7 +52,7 @@ STATISTIC(NumDeadInst, "Number of dead insts eliminated");
 
 static llvm::cl::opt<bool> EnableSinkingOwnedForwardingInstToUses(
     "silcombine-owned-code-sinking",
-    llvm::cl::desc("Enable sinking of owened forwarding insts"),
+    llvm::cl::desc("Enable sinking of owned forwarding insts"),
     llvm::cl::init(true), llvm::cl::Hidden);
 
 // Allow disabling general optimization for targetted unit tests.
