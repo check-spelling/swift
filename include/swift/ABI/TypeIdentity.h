@@ -86,7 +86,7 @@ public:
   /// C++ `class`es), and the ObjC protocol namespace (ObjC `@protocol`s).
   /// The languages all forbid multiple types from being declared in a given
   /// scope and namespace --- at least, they do within a translation unit,
-  /// and for the most part we have to assume in Swift that that applies
+  /// and for the most part we have to assume in Swift that applies
   /// across translation units as well.
   //
   /// Swift's default symbol-namespace rules for C/C++/ObjC are as follows:
