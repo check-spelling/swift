@@ -581,7 +581,7 @@ class BrowserViewController: UIViewController {
     }
 
     fileprivate func showQueuedAlertIfAvailable() {
-        if let queuedAlertInfo = tabManager.selectedTab?.dequeueJavascriptAlertPrompt() {
+        if let queuedAlertInfo = tabManager.selectedTab?.dequeueJavaScriptAlertPrompt() {
             let alertController = queuedAlertInfo.alertController()
             alertController.delegate = self
             present(alertController, animated: true, completion: nil)
@@ -2275,7 +2275,7 @@ extension BrowserViewController {
         }
         webView.evaluateJavaScript("__firefox__.searchQueryForField()") { (result, _) in
             guard let searchQuery = result as? String, let favicon = self.tabManager.selectedTab!.displayFavicon else {
-                //Javascript responded with an incorrectly formatted message. Show an error.
+                //JavaScript responded with an incorrectly formatted message. Show an error.
                 let alert = ThirdPartySearchAlerts.failedToAddThirdPartySearch()
                 self.present(alert, animated: true, completion: nil)
                 return
