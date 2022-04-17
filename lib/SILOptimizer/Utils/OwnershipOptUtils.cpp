@@ -473,7 +473,7 @@ bool swift::areUsesWithinLexicalValueLifetime(SILValue value,
 ///     %otherCopy = copy_value %borrowedValue
 ///     %newPhi = phi(%ownedValue, %otherCopy)
 ///
-/// The immediate effect is to produce an unnecesssary copy, but it avoids
+/// The immediate effect is to produce an unnecessary copy, but it avoids
 /// extending %ownedValue's liveness to new paths and hopefully simplifies
 /// downstream optimization and debugging. Unnecessary copies could be
 /// avoided with simple dominance check if it becomes desirable to do so.
