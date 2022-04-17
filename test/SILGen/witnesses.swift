@@ -36,24 +36,24 @@ func archetype_static_method<T: StaticMethod>(x: T) {
   T.staticMethod()
 }
 
-protocol Existentiable {
+protocol Instantiable {
   func foo() -> Loadable
   func generic<T>() -> T
 }
 
-func protocol_method(x: Existentiable) -> Loadable {
+func protocol_method(x: Instantiable) -> Loadable {
   return x.foo()
 }
-// CHECK-LABEL: sil hidden [ossa] @$s9witnesses15protocol_method1xAA8LoadableVAA13Existentiable_p_tF : $@convention(thin) (@in_guaranteed Existentiable) -> Loadable {
-// CHECK:         [[METHOD:%.*]] = witness_method $[[OPENED:@opened(.*) Existentiable]], #Existentiable.foo :
+// CHECK-LABEL: sil hidden [ossa] @$s9witnesses15protocol_method1xAA8LoadableVAA13Instantiable_p_tF : $@convention(thin) (@in_guaranteed Instantiable) -> Loadable {
+// CHECK:         [[METHOD:%.*]] = witness_method $[[OPENED:@opened(.*) Instantiable]], #Instantiable.foo :
 // CHECK:         apply [[METHOD]]<[[OPENED]]>({{%.*}})
 // CHECK:       }
 
-func protocol_generic_method(x: Existentiable) -> Loadable {
+func protocol_generic_method(x: Instantiable) -> Loadable {
   return x.generic()
 }
-// CHECK-LABEL: sil hidden [ossa] @$s9witnesses23protocol_generic_method1xAA8LoadableVAA13Existentiable_p_tF : $@convention(thin) (@in_guaranteed Existentiable) -> Loadable {
-// CHECK:         [[METHOD:%.*]] = witness_method $[[OPENED:@opened(.*) Existentiable]], #Existentiable.generic :
+// CHECK-LABEL: sil hidden [ossa] @$s9witnesses23protocol_generic_method1xAA8LoadableVAA13Instantiable_p_tF : $@convention(thin) (@in_guaranteed Instantiable) -> Loadable {
+// CHECK:         [[METHOD:%.*]] = witness_method $[[OPENED:@opened(.*) Instantiable]], #Instantiable.generic :
 // CHECK:         apply [[METHOD]]<[[OPENED]], Loadable>({{%.*}}, {{%.*}})
 // CHECK:       }
 
