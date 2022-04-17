@@ -471,7 +471,7 @@ TEST_F(CursorInfoTest, CursorInfoCancelsPreviousRequest) {
 
   bool expired = FirstCursorInfoSema.wait(30 * 1000);
   if (expired)
-    llvm::report_fatal_error("Did not receive a resonse for the first request");
+    llvm::report_fatal_error("Did not receive a response for the first request");
 }
 
 TEST_F(CursorInfoTest, CursorInfoCancellation) {
@@ -508,5 +508,5 @@ TEST_F(CursorInfoTest, CursorInfoCancellation) {
 
   bool expired = CursorInfoSema.wait(30 * 1000);
   if (expired)
-    llvm::report_fatal_error("Did not receive a resonse for the first request");
+    llvm::report_fatal_error("Did not receive a response for the first request");
 }
