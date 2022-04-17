@@ -1072,8 +1072,8 @@ bb0:
   return %9 : $String
 } // CHECK: Returns string: "a%%"
 
-// CHECK-LABEL: @interpretEscapeMutiplePercent
-sil @interpretEscapeMutiplePercent : $@convention(thin) () -> @owned String {
+// CHECK-LABEL: @interpretEscapeMultiplePercent
+sil @interpretEscapeMultiplePercent : $@convention(thin) () -> @owned String {
 bb0:
   %1 = string_literal utf8 "%%%a% %%b%"
   %2 = integer_literal $Builtin.Word, 10
