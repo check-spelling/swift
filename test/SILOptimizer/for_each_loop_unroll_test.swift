@@ -57,7 +57,7 @@ func unrollLetArrayLiteralWithNonTrivialElements() {
   // CHECK: try_apply {{.*}}([[STACK]])
 }
 
-// This test mimics the array liteal and forEach created by the OSLogOptimization pass.
+// This test mimics the array literal and forEach created by the OSLogOptimization pass.
 // CHECK-LABEL: sil hidden @$s25for_each_loop_unroll_test0D27LetArrayLiteralWithClosures1i1jys5Int32V_AFtF
 func unrollLetArrayLiteralWithClosures(i: Int32, j: Int32) {
   let a = [{ i } , { j }]
