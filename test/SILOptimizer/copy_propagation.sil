@@ -119,7 +119,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone reuses the existint lifetime-ending destroy.
+// -Onone reuses the existing lifetime-ending destroy.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingCall : {{.*}} {
 // CHECK: bb0:
