@@ -455,7 +455,7 @@ class ASTProducer : public std::enable_shared_from_this<ASTProducer> {
   /// these operations might already have finished, effectively caching an old
   /// AST, one might currently be building an AST and some might be waiting to
   /// execute. Operations are guaranteed to be in FIFO order, that is the first
-  /// one in the vector is the oldes build operation.
+  /// one in the vector is the oldest build operation.
   SmallVector<ASTBuildOperationRef, 4> BuildOperations = {};
   WorkQueue BuildOperationsQueue = WorkQueue(
       WorkQueue::Dequeuing::Serial, "ASTProducer.BuildOperationsQueue");
