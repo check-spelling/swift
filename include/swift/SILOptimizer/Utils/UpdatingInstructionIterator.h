@@ -86,7 +86,7 @@ public:
   }
 
   Self &operator=(const Self &rhs) {
-    this->regsitry = rhs.registry;
+    this->registry = rhs.registry;
     this->base = rhs.base;
     this->advanced = rhs.advanced;
     registry->registerIterator(this);
