@@ -1543,7 +1543,7 @@ lowest:
 
 ::
 
-  "exponentiative:" <<, >>
+  "exponentiation:" <<, >>
   "multiplicative:" *, /, %, &
   "additive:" +, -, |, ^
   "comparative:" ==, !=, <, <=, >=, >

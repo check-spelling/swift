@@ -404,7 +404,7 @@ prefix operator ..<
 
 // Standard infix operators.
 
-// "Exponentiative"
+// "Exponentiation"
 
 infix operator  <<: BitwiseShiftPrecedence
 infix operator &<<: BitwiseShiftPrecedence

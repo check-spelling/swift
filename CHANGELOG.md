@@ -7868,7 +7868,7 @@ Swift 1.0
 
   We ended up with 6 levels, from tightest binding to loosest:
     ```
-    exponentiative: <<, >>
+    exponentiation: <<, >>
     multiplicative: *, /, %, &
     additive: +, -, |, ^
     comparative: ==, !=, <, <=, >=, >
