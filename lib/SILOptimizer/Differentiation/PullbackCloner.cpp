@@ -357,7 +357,7 @@ private:
       builder.emitZeroIntoBuffer(loc, destAddress, IsInitialization);
       break;
     /// If adjoint value is a symbolic aggregate (tuple or struct), recursively
-    /// materialize materialize the symbolic tuple or struct, filling the
+    /// materialize the symbolic tuple or struct, filling the
     /// buffer.
     case AdjointValueKind::Aggregate: {
       if (auto *tupTy = val.getSwiftType()->getAs<TupleType>()) {
