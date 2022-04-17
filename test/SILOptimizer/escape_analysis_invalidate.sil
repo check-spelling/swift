@@ -61,7 +61,7 @@ bb0(%0 : $*SomeProtocol, %1 : $SomeClass):
   
   %propAdr1 = ref_element_addr %1 : $SomeClass, #SomeClass.someProperty
   // TempRValue tries to kick in on this copy, but there is an
-  // interfering write that can't be handled by AliasAnlysis without
+  // interfering write that can't be handled by AliasAnalysis without
   // consulting EscapingAnalysis. MemoryBehavior drops down to
   // EscapeAnalysis for only a few special instructions, like
   // init_existential_addr.

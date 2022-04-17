@@ -630,7 +630,7 @@ void AccessConflictAndMergeAnalysis::propagateAccessSetsBottomUp(
             accessResult.mergeFrom(calleeAccess.getResult());
             continue;
           }
-          // FIXME: Treat may-release conservatively in the anlysis itself by
+          // FIXME: Treat may-release conservatively in the analysis itself by
           // adding a mayRelease flag, in addition to the unidentified flag.
           accessResult.analyzeInstruction(&instr);
         }
