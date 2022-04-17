@@ -9,7 +9,7 @@
 // %.sil then both be piped to CHECK-ONONE and used as the input for an
 // optimized round-trip. It's important to ensure that importing
 // -Onone code into a -O pipeline does not impair optimization. This
-// doesn't work yet because mandatory copy-propatation handles all
+// doesn't work yet because mandatory copy-propagation handles all
 // defs (not just copied ones). This could be fixed with an internal
 // option. We would also need a way to strip the [poison] from
 // destroys that aren't regenerated, otherwise the check lines
