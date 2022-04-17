@@ -539,7 +539,7 @@ bool SILGlobalOpt::tryRemoveGlobalAlloc(SILGlobalVariable *global,
 }
 
 /// If there are no loads or accesses of a given global, then remove its
-/// associated global addr and all asssociated instructions.
+/// associated global addr and all associated instructions.
 bool SILGlobalOpt::tryRemoveGlobalAddr(SILGlobalVariable *global) {
   if (!isSafeToRemove(global))
     return false;
