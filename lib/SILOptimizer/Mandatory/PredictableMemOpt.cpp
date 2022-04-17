@@ -1168,7 +1168,7 @@ void AvailableValueAggregator::addHandOffCopyDestroysForPhis(
       termInst->setOperand(phiIndex, phiCopy);
 
       // Now that we know our base, phi, phiCopy for this specific incoming
-      // value, append it to the phiNodeClenaupState so we can insert
+      // value, append it to the phiNodeCleanupState so we can insert
       // destroy_values late after we visit all insertedPhiNodes.
       cleanupInserter.trackNewCleanup(value, phiCopy);
     }
