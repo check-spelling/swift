@@ -1454,7 +1454,7 @@ void SILGenModule::emitConstructor(ConstructorDecl *decl) {
 
   if (declCtx->getSelfClassDecl()) {
     // Designated initializers for classes, as well as @objc convenience
-    // initializers, have have separate entry points for allocation and
+    // initializers, have separate entry points for allocation and
     // initialization.
     if (decl->isDesignatedInit() || decl->isObjC()) {
       emitOrDelayFunction(*this, constant);
