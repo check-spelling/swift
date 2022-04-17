@@ -418,7 +418,7 @@ static Optional<SymbolicValue> collectConstants(FoldState &foldState) {
 
   // The loop will break when it sees a return instruction or an instruction in
   // endInstructions or when the next instruction to evaluate cannot be
-  // determined (which may happend due to non-constant branches).
+  // determined (which may happened due to non-constant branches).
   while (true) {
     SILInstruction *currInst = &(*currI);
     if (endInstructions.count(currInst))
