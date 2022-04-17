@@ -150,7 +150,7 @@ void SILGenFunction::mergeCleanupBlocks() {
     auto beforeSucc = std::next(SILFunction::reverse_iterator(succBB));
 
     // Remember the position before the current predecessor to avoid skipping
-    // blocks or revisiting blocks unnecessarilly.
+    // blocks or revisiting blocks unnecessarily.
     auto beforePred = std::next(SILFunction::reverse_iterator(predBB));
     // Since succBB will be erased, move before it.
     if (beforePred == SILFunction::reverse_iterator(succBB))
