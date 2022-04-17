@@ -229,7 +229,7 @@ bool CrossModuleOptimization::canSerializeFunction(
 
 /// Returns true if \p inst can be serialized.
 ///
-/// If \p inst is a function_ref, recursivly visits the referenced function.
+/// If \p inst is a function_ref, recursively visits the referenced function.
 bool CrossModuleOptimization::canSerializeInstruction(SILInstruction *inst,
                       FunctionFlags &canSerializeFlags, int maxDepth) {
 
@@ -254,7 +254,7 @@ bool CrossModuleOptimization::canSerializeInstruction(SILInstruction *inst,
     if (conservative && !hasPublicVisibility(callee->getLinkage()))
       return false;
 
-    // Recursivly walk down the call graph.
+    // Recursively walk down the call graph.
     if (canSerializeFunction(callee, canSerializeFlags, maxDepth - 1))
       return true;
 
@@ -448,7 +448,7 @@ void CrossModuleOptimization::serializeFunction(SILFunction *function,
 
 /// Prepare \p inst for serialization.
 ///
-/// If \p inst is a function_ref, recursivly visits the referenced function.
+/// If \p inst is a function_ref, recursively visits the referenced function.
 void CrossModuleOptimization::serializeInstruction(SILInstruction *inst,
                                        const FunctionFlags &canSerializeFlags) {
   // Put callees onto the worklist if they should be serialized as well.

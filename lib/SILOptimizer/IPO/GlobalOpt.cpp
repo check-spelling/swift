@@ -339,7 +339,7 @@ bool SILGlobalOpt::isAssignedOnlyOnceInInitializer(SILGlobalVariable *SILG,
 
 /// Replace loads from \a addr by the \p initVal of a global.
 ///
-/// Recuresively walk over all uses of \p addr and look through address
+/// Recursively walk over all uses of \p addr and look through address
 /// projections. The \p initVal is an instruction in the static initializer of
 /// a SILGlobalVariable. It is cloned into the current function with \p cloner.
 static void replaceLoadsFromGlobal(SILValue addr,
