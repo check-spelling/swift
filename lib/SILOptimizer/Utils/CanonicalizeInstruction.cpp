@@ -33,7 +33,7 @@
 
 using namespace swift;
 
-// Tracing within the implementation can also be activiated by the pass.
+// Tracing within the implementation can also be activated by the pass.
 #define DEBUG_TYPE pass.debugType
 
 llvm::cl::opt<bool> EnableLoadSplittingDebugInfo(
