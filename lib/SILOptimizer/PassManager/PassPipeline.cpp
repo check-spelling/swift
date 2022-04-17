@@ -190,7 +190,7 @@ static void addMandatoryDiagnosticOptPipeline(SILPassPipelinePlan &P) {
   P.addPredictableDeadAllocationElimination();
 
   // Now that we have finished performing diagnostics that rely on lexical
-  // scopes, if lexical lifetimes are not enabled, eliminate lexical lfietimes.
+  // scopes, if lexical lifetimes are not enabled, eliminate lexical lifetimes.
   if (Options.LexicalLifetimes != LexicalLifetimesOption::On) {
     P.addLexicalLifetimeEliminator();
   }

@@ -333,7 +333,7 @@ bool CopyOfBorrowedProjectionChecker::check(SILValue markedValue) {
         SmallVector<Operand *, 8> foundUses;
         ptrOp.findTransitiveUses(&foundUses);
         for (auto *op : foundUses) {
-          liveness.updateForUse(op->getUser(), /*lfietimeEnding*/ false);
+          liveness.updateForUse(op->getUser(), /*lifetimeEnding*/ false);
         }
         break;
       }
