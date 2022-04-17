@@ -308,7 +308,7 @@ class ASTBuildOperation
   /// can be determined at construction time of the \c ASTBuildOperation.
   const std::vector<FileContent> FileContents;
 
-  /// \c DependencyStamps contains the stamps of all module depenecies needed
+  /// \c DependencyStamps contains the stamps of all module dependencies needed
   /// for the AST build. These stamps are only known after the AST is built.
   /// Before the AST has been built, we thus assume that all dependency stamps
   /// match. This seems to be a reasonable assumption since the dependencies
@@ -427,7 +427,7 @@ public:
 
   /// Determines whether the AST built from this build operation can be used for
   /// the given source state. Note that before the AST is built, this does not
-  /// consider depenencies needed for the AST build that are not explicitly
+  /// consider dependencies needed for the AST build that are not explicitly
   /// listed in the input files. As such, this might be \c true before the AST
   /// build and \c false after the AST has been built. See documentation on \c
   /// DependencyStamps for more info.

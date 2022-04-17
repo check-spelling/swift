@@ -1340,7 +1340,7 @@ static SILInstruction *beginOfInterpolation(ApplyInst *oslogInit) {
       candidateStartInstructions.insert(storeInst);
     }
     // Skip other uses of alloc_stack including function calls on the
-    // alloc_stack and data dependenceis through them. This is done because
+    // alloc_stack and data dependencies through them. This is done because
     // all functions using the alloc_stack are expected to be constant evaluated
     // and therefore should only be passed constants or auto closures. These
     // constants must be constructed immediately before the call and would only
@@ -1379,7 +1379,7 @@ static SILInstruction *beginOfInterpolation(ApplyInst *oslogInit) {
     }
     if (!firstBB) {
       // This case will be reached only if the log call appears in unreachable
-      // code and, for some reason, its data depedencies extend beyond a basic
+      // code and, for some reason, its data dependencies extend beyond a basic
       // block. This case should generally not happen unless the library
       // implementation of the os log APIs change. It is better to warn in this
       // case, rather than skipping the call silently.
