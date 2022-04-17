@@ -188,7 +188,7 @@ public:
     return reason;
   }
 
-  SILFunction *getCalleeWithoutImplmentation() {
+  SILFunction *getCalleeWithoutImplementation() {
     assert(kind == UnknownKind::CalleeImplementationUnknown);
     return payload.function;
   }

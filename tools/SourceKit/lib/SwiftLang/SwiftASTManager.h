@@ -41,7 +41,7 @@
 // operation already be finished, the consumer is directly called with the
 // result. Otherwise, a new ASTBuildOperation is created, the consumer is added
 // to it and the ASTBuildOperation is scheduled on
-// SwiftASTManager::Implemenation::ASTBuildQueue. This ensures that only one
+// SwiftASTManager::Implementation::ASTBuildQueue. This ensures that only one
 // AST is built at a time.
 // The SwiftASTManager keeps a weak reference to the consumer, so that the
 // consumer can be cancelled if new requests come in (see implementation of

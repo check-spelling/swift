@@ -1033,7 +1033,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
     return;
   }
   case UnknownReason::CalleeImplementationUnknown: {
-    SILFunction *callee = unknownReason.getCalleeWithoutImplmentation();
+    SILFunction *callee = unknownReason.getCalleeWithoutImplementation();
     std::string demangledCalleeName =
         demangleSymbolNameForDiagnostics(callee->getName());
     diagnose(ctx, diagLoc, diag::constexpr_found_callee_with_no_body,
