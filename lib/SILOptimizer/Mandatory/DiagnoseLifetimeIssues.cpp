@@ -74,7 +74,7 @@ class DiagnoseLifetimeIssues {
   /// We could also cache this information in an Analysis, so that it persists
   /// over runs of this pass for different functions. But computing the state
   /// is very cheap and we avoid worst case scenarios with maxCallDepth. So it's
-  /// propably not worth doing it.
+  /// probably not worth doing it.
   llvm::DenseMap<SILFunctionArgument *, State> argumentStates;
 
   State visitUses(SILValue def, bool updateLivenessAndWeakStores, int callDepth);
