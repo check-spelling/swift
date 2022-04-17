@@ -971,7 +971,7 @@ static SILBasicBlock::iterator getBorrowPoint(SILValue newValue,
 /// newValue. This may allow newValue's original borrow scope to be removed,
 /// which then allows the copy to be removed. The result would be a single
 /// borrow scope over all newValue's and guaranteedValue's uses, which is
-/// usually preferrable to a new copy and separate borrow scope. When doing
+/// usually preferable to a new copy and separate borrow scope. When doing
 /// this, we can use newValue as the borrow point instead of getBorrowPoint.
 SILValue
 OwnershipLifetimeExtender::borrowOverValue(SILValue newValue,
