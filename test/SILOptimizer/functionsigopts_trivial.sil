@@ -153,7 +153,7 @@ only(%wrapper : $Wrapper):
 // VERIFY: EXPLODE: (Wrapper) => (#Wrapper.klass)
 // The function take_wrapper_shared has a single argument of type Wrapper from
 // which it uses only the klass field.  The int field goes unused.  Argument
-// explosion should result in a specialization in this case because because 
+// explosion should result in a specialization in this case because 
 // there are dead leaves of the relevant sort, the relevant sort here being
 // potentially trivial because specializing the function will not result in a
 // thunk.
