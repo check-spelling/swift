@@ -1847,10 +1847,10 @@ static bool readBreakageAllowlist(SDKContext &Ctx, llvm::StringSet<> &lines,
   if (BreakageAllowlistPath.empty())
     return 0;
   CompilerInstance instance;
-  CompilerInvocation invok;
-  invok.setModuleName("ForClangImporter");
+  CompilerInvocation invoke;
+  invoke.setModuleName("ForClangImporter");
   std::string InstanceSetupError;
-  if (instance.setup(invok, InstanceSetupError)) {
+  if (instance.setup(invoke, InstanceSetupError)) {
     return 1;
   }
   auto importer = ClangImporter::create(instance.getASTContext());
