@@ -13,12 +13,12 @@ struct IntWrapper {
 };
 
 template<class T>
-struct CannotBeInstantianted {
+struct CannotBeInstantiated {
   T value;
 
-  CannotBeInstantianted(char, T value) { value.doesNotExist(); }
-  CannotBeInstantianted(char, char) { memberWrongType(); }
-  CannotBeInstantianted(T value) : value(value) {}
+  CannotBeInstantiated(char, T value) { value.doesNotExist(); }
+  CannotBeInstantiated(char, char) { memberWrongType(); }
+  CannotBeInstantiated(T value) : value(value) {}
 
   void callsMethodWithError() { memberWrongType(); }
 

@@ -8,16 +8,16 @@ func swiftTemplateArgNotSupported() {
 }
 
 // CHECK: error: no member named 'doesNotExist' in 'IntWrapper'
-// CHECK: note: in instantiation of member function 'CannotBeInstantianted<IntWrapper>::CannotBeInstantianted' requested here
+// CHECK: note: in instantiation of member function 'CannotBeInstantiated<IntWrapper>::CannotBeInstantiated' requested here
 
 // CHECK: error: no member named 'doesNotExist' in 'IntWrapper'
-// CHECK: note: in instantiation of member function 'CannotBeInstantianted<IntWrapper>::memberWrongType' requested here
+// CHECK: note: in instantiation of member function 'CannotBeInstantiated<IntWrapper>::memberWrongType' requested here
 
 // CHECK: error: no member named 'doesNotExist' in 'IntWrapper'
-// CHECK: note: in instantiation of member function 'CannotBeInstantianted<IntWrapper>::argWrongType' requested here
+// CHECK: note: in instantiation of member function 'CannotBeInstantiated<IntWrapper>::argWrongType' requested here
 public func clangErrorReportedOnInstantiation() {
-  _ = CannotBeInstantianted<IntWrapper>(CChar(0), IntWrapper())
-  var z = CannotBeInstantianted<IntWrapper>(IntWrapper())
+  _ = CannotBeInstantiated<IntWrapper>(CChar(0), IntWrapper())
+  var z = CannotBeInstantiated<IntWrapper>(IntWrapper())
   z.memberWrongType()
   z.argWrongType(IntWrapper())
 }
