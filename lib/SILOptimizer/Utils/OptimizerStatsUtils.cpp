@@ -215,7 +215,7 @@ llvm::cl::opt<double> UsedMemoryDeltaThreshold(
 
 llvm::cl::opt<double> UsedMemoryMinDeltaThreshold(
   "sil-stats-used-memory-min-threshold", llvm::cl::init(1),
-    llvm::cl::desc("Min hreshold for reporting changed memory usage numbers"));
+    llvm::cl::desc("Min threshold for reporting changed memory usage numbers"));
 
 /// A threshold in percents for the basic blocks counter inside a SILFunction.
 /// Has effect only if it is used together with -sil-stats-functions.
