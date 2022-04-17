@@ -1289,7 +1289,7 @@ SILCombiner::propagateConcreteTypeOfInitExistential(FullApplySite Apply,
   // init_existential or looking up sole conforming type.
   //
   // buildConcreteOpenedExistentialInfo takes a SILBuilderContext because it may
-  // insert an uncheched cast to the concrete type, and it tracks the definition
+  // insert an unchecked cast to the concrete type, and it tracks the definition
   // of any opened archetype needed to use the concrete type.
   SILBuilderContext BuilderCtx(Builder.getModule(), Builder.getTrackingList());
   llvm::SmallDenseMap<unsigned, ConcreteOpenedExistentialInfo> COEIs;
