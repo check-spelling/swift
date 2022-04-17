@@ -389,7 +389,7 @@ void DominatedAccessRemoval::visitBeginAccess(BeginAccessInst *BAI) {
 }
 
 // Track this identifiable dynamic access in storageToDomMap, and optimize it if
-// possible. Return true if the optimization suceeds.
+// possible. Return true if the optimization succeeds.
 bool DominatedAccessRemoval::checkDominatedAccess(
     BeginAccessInst *BAI, DomAccessStorage currDomStorage) {
   // Attempt to add this access to storageToDomMap using its base storage
