@@ -178,7 +178,7 @@ func getIndex(_ s: String) -> Int {
   case "integrate": return 153
   case "well": return 154
   case "within": return 155
-  case "developerss": return 156
+  case "developers": return 156
   case "toolset,": return 157
   case "build": return 158
   case "quickly,": return 159
