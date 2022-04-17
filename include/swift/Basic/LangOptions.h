@@ -473,7 +473,7 @@ namespace swift {
     bool HermeticSealAtLink = false;
 
     /// Allow deserializing implementation only dependencies. This should only
-    /// be set true by lldb and other tooling, so that deserilization
+    /// be set true by lldb and other tooling, so that serialization
     /// recovery issues won't bring down the debugger.
     /// TODO: remove this when @_implementationOnly modules are robust enough.
     bool AllowDeserializingImplementationOnly = false;
