@@ -157,7 +157,7 @@ using UpdatingReverseInstructionIterator =
 /// deleted. Iterators can be tracked across multiple levels of the call
 /// stack. This registry object must outlive any iterators that it vends.
 ///
-/// While the registry is active, all instruction modificaiton must go through
+/// While the registry is active, all instruction modification must go through
 /// its callbacks.
 class UpdatingInstructionIteratorRegistry {
 
