@@ -441,7 +441,7 @@ static Optional<SymbolicValue> collectConstants(FoldState &foldState) {
     }
 
     if (!nextI) {
-      // We cannnot find the next instruction to continue evaluation, and we
+      // We cannot find the next instruction to continue evaluation, and we
       // haven't seen any reportable errors during evaluation. Therefore,
       // consider this the end point of evaluation.
       return None; // No error.
