@@ -54,7 +54,7 @@
 ///
 /// When none of the local accesses on local storage (box/stack) have nested
 /// conflicts, then all the local accesses may be disabled by setting their
-/// enforcement to `static`. This is somwhat rare because static diagnostics
+/// enforcement to `static`. This is somewhat rare because static diagnostics
 /// already promote the obvious cases to static checks. However, there are two
 /// reasons that dynamic local markers may be disabled: (1) inlining may cause
 /// closure access to become local access (2) local storage may truly escape,
