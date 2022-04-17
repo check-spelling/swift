@@ -13,7 +13,7 @@
 /// InstModCallbacks: callbacks for instruction modification.
 ///
 /// Callbacks are generally problematic because a pass cannot anticipate the
-/// state that SIL will be in when lower-level utilties invoke the
+/// state that SIL will be in when lower-level utilities invoke the
 /// callback. This creates implicit coupling across the layers of SIL utilities.
 ///
 /// Alternatives:
