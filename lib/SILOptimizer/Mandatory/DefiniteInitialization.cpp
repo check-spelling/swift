@@ -3058,7 +3058,7 @@ handleConditionalDestroys(SILValue ControlVariableAddr) {
       assert(!Availability.isAllYes() &&
              "Should not end up here if fully initialized");
 
-      // For root class initializers, we check if all proeprties were
+      // For root class initializers, we check if all properties were
       // dynamically initialized, and if so, treat this as a release of
       // an initialized 'self', instead of tearing down the fields
       // one by one and deallocating memory.
