@@ -1015,7 +1015,7 @@ static bool checkOSLogMessageIsConstant(SingleValueInstruction *osLogMessage,
     return true;
   }
 
-  // Check if every proprety of the OSLogInterpolation instance has a constant
+  // Check if every property of the OSLogInterpolation instance has a constant
   // value.
   SILType osLogMessageType = osLogMessage->getType();
   StructDecl *structDecl = osLogMessageType.getStructOrBoundGenericStruct();
