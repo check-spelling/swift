@@ -129,7 +129,7 @@ public:
     UnknownWitnessMethodConformance,
 
     /// Attempted to determine the SIL function of a witness method  and failed.
-    NoWitnesTableEntry,
+    NoWitnessTableEntry,
 
     /// The value of a top-level variable cannot be determined to be a constant.
     /// This is only relevant in the backward evaluation mode, which is used by

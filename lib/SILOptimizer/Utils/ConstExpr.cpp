@@ -438,7 +438,7 @@ SymbolicValue ConstExprFunctionState::computeConstantValue(SILValue value) {
 
     LLVM_DEBUG(llvm::dbgs()
                << "ConstExpr Unresolved witness: " << *value << "\n");
-    return getUnknown(evaluator, value, UnknownReason::NoWitnesTableEntry);
+    return getUnknown(evaluator, value, UnknownReason::NoWitnessTableEntry);
   }
 
   if (auto *builtin = dyn_cast<BuiltinInst>(value))
