@@ -65,7 +65,7 @@ class DominanceAnalysis;
 class PostDominanceAnalysis;
 class DominanceInfo;
 class PostDominanceInfo;
-class SILFunciton;
+class SILFunction;
 
 class DifferentiableActivityCollection;
 class DifferentiableActivityAnalysis

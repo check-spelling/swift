@@ -224,7 +224,7 @@ only(%wrapper : $Wrapper):
   %func = function_ref @take_wrapper_hidden : $@convention(thin) (Wrapper) -> ()
   %result = apply %func(%wrapper) : $@convention(thin) (Wrapper) -> ()
   return %result : $()
-} // end sil funcntion 'take_wrapper_hidden_caller'
+} // end sil function 'take_wrapper_hidden_caller'
 
 
 
@@ -552,7 +552,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_unused_hidden : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_unused_hidden_caller'
+} // end sil function 'take_pair_unused_hidden_caller'
 
 
 
@@ -588,7 +588,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_unused_private : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_unused_private_caller'
+} // end sil function 'take_pair_unused_private_caller'
 
 
 
@@ -715,7 +715,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass1_hidden : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass1_hidden_caller'
+} // end sil function 'take_pair_for_klass1_hidden_caller'
 
 
 
@@ -756,7 +756,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass1_private : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass1_private_caller'
+} // end sil function 'take_pair_for_klass1_private_caller'
 
 
 
@@ -883,7 +883,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass2_hidden : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass2_hidden_caller'
+} // end sil function 'take_pair_for_klass2_hidden_caller'
 
 
 
@@ -924,7 +924,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass2_private : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass2_private_caller'
+} // end sil function 'take_pair_for_klass2_private_caller'
 
 
 
@@ -1051,7 +1051,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass1_and_klass2_hidden : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass1_and_klass2_hidden_caller'
+} // end sil function 'take_pair_for_klass1_and_klass2_hidden_caller'
 
 
 
@@ -1090,7 +1090,7 @@ only(%pair : $Pair):
   %func = function_ref @take_pair_for_klass1_and_klass2_private : $@convention(thin) (Pair) -> ()
   %result = apply %func(%pair) : $@convention(thin) (Pair) -> ()
   return %result : $()
-} // end sil funcntion 'take_pair_for_klass1_and_klass2_private_caller'
+} // end sil function 'take_pair_for_klass1_and_klass2_private_caller'
 
 
 
