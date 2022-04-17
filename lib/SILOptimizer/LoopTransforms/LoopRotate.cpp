@@ -101,7 +101,7 @@ canDuplicateOrMoveToPreheader(SILLoop *loop, SILBasicBlock *preheader,
       return false;
     } else if (!inst->mayHaveSideEffects() && !inst->mayReadFromMemory()
                && !isa<TermInst>(inst) && !isa<AllocationInst>(inst)
-               && /* not marked mayhavesideffects */
+               && /* not marked mayhavesideeffects */
                hasLoopInvariantOperands(inst, loop, invariants)) {
       moves.push_back(inst);
       invariants.insert(inst);
