@@ -282,7 +282,7 @@ endsAccessOverlappingPrunedBoundary(SILInstruction *inst) {
 //
 // Note that lifetime extension is iterative because adding a new liveness use
 // may create new overlapping access scopes. This can happen because there is no
-// guarantee of strict stack discpline across unrelated access. For example:
+// guarantee of strict stack discipline across unrelated access. For example:
 //
 //     %def
 //     begin_access A

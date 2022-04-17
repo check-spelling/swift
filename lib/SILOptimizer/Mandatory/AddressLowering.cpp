@@ -2029,7 +2029,7 @@ SILValue ApplyRewriter::materializeIndirectResultAddress(SILValue oldResult,
   auto *allocInst = argBuilder.createAllocStack(callLoc, argTy);
 
   // Instead of using resultBuilder, insert dealloc immediately after the call
-  // for stack discpline across loadable indirect results.
+  // for stack discipline across loadable indirect results.
   apply.insertAfterFullEvaluation([&](SILBuilder &callBuilder) {
     callBuilder.createDeallocStack(callLoc, allocInst);
   });
