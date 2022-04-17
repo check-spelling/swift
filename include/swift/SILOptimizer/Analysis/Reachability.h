@@ -13,7 +13,7 @@
 /// Reachability data flow analysis using a path-discovery worklist. For
 /// efficient data flow propagation based on a single SSA value and its uses.
 ///
-/// TODO: Add an optimistic data flow for more aggresive optimization:
+/// TODO: Add an optimistic data flow for more aggressive optimization:
 /// - Add another set for blocks reachable by barriers
 /// - Change the meet operation to a union
 /// - Propagate past barriers up to the SSA def
