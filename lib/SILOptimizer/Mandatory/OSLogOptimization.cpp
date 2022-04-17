@@ -1405,7 +1405,7 @@ static SILInstruction *beginOfInterpolation(ApplyInst *oslogInit) {
 /// Replace every _globalStringTablePointer builtin in the transitive users of
 /// oslogMessage with an empty string literal. This would suppress the errors
 /// emitted by a later pass on _globalStringTablePointerBuiltins. This utility
-/// shoud be called only when this pass emits diagnostics.
+/// should be called only when this pass emits diagnostics.
 static void
 suppressGlobalStringTablePointerError(SingleValueInstruction *oslogMessage) {
   SmallVector<SILInstruction *, 8> users;
