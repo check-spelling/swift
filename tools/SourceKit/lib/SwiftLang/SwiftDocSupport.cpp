@@ -1086,7 +1086,7 @@ static bool reportModuleDocInfo(CompilerInvocation Invocation,
   ASTContext &Ctx = CI.getASTContext();
   registerIDERequestFunctions(Ctx.evaluator);
 
-  // Load implict imports so that Clang importer can use it.
+  // Load implicit imports so that Clang importer can use it.
   for (auto unloadedImport :
        CI.getMainModule()->getImplicitImportInfo().AdditionalUnloadedImports) {
     (void)Ctx.getModule(unloadedImport.module.getModulePath());

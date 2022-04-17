@@ -1334,12 +1334,12 @@ void CompletionLookup::addMethodCall(const FuncDecl *FD,
     trivialTrailingClosure = hasTrivialTrailingClosure(FD, AFT);
 
   Optional<ContextualNotRecommendedReason> NotRecommended;
-  bool implictlyAsync = false;
-  analyzeActorIsolation(FD, AFT, implictlyAsync, NotRecommended);
+  bool implicitlyAsync = false;
+  analyzeActorIsolation(FD, AFT, implicitlyAsync, NotRecommended);
 
   if (!isForCaching() && !NotRecommended &&
       !IsImplicitlyCurriedInstanceMethod &&
-      ((AFT && AFT->isAsync()) || implictlyAsync) &&
+      ((AFT && AFT->isAsync()) || implicitlyAsync) &&
       !CanCurrDeclContextHandleAsync) {
     NotRecommended = ContextualNotRecommendedReason::InvalidAsyncContext;
   }
@@ -1379,14 +1379,14 @@ void CompletionLookup::addMethodCall(const FuncDecl *FD,
       Builder.addRightParen();
     } else if (trivialTrailingClosure) {
       Builder.addBraceStmtWithCursor(" { code }");
-      addEffectsSpecifiers(Builder, AFT, FD, implictlyAsync);
+      addEffectsSpecifiers(Builder, AFT, FD, implicitlyAsync);
     } else {
       Builder.addLeftParen();
       addCallArgumentPatterns(Builder, AFT, FD->getParameters(),
                               FD->getGenericSignatureOfContext(),
                               includeDefaultArgs);
       Builder.addRightParen();
-      addEffectsSpecifiers(Builder, AFT, FD, implictlyAsync);
+      addEffectsSpecifiers(Builder, AFT, FD, implicitlyAsync);
     }
 
     // Build type annotation.
@@ -1589,10 +1589,10 @@ void CompletionLookup::addSubscriptCall(const SubscriptDecl *SD,
     return;
 
   Optional<ContextualNotRecommendedReason> NotRecommended;
-  bool implictlyAsync = false;
-  analyzeActorIsolation(SD, subscriptType, implictlyAsync, NotRecommended);
+  bool implicitlyAsync = false;
+  analyzeActorIsolation(SD, subscriptType, implicitlyAsync, NotRecommended);
 
-  if (!isForCaching() && !NotRecommended && implictlyAsync &&
+  if (!isForCaching() && !NotRecommended && implicitlyAsync &&
       !CanCurrDeclContextHandleAsync) {
     NotRecommended = ContextualNotRecommendedReason::InvalidAsyncContext;
   }
@@ -1627,7 +1627,7 @@ void CompletionLookup::addSubscriptCall(const SubscriptDecl *SD,
     resultTy = OptionalType::get(resultTy);
   }
 
-  if (implictlyAsync)
+  if (implicitlyAsync)
     Builder.addAnnotatedAsync();
 
   addTypeAnnotation(Builder, resultTy, SD->getGenericSignatureOfContext());
