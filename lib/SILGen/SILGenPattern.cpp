@@ -2793,7 +2793,7 @@ void SILGenFunction::emitSwitchStmt(SwitchStmt *S) {
   bool hasFallthrough = false;
   for (auto caseBlock : S->getCases()) {
     // If the previous block falls through into this block or we have multiple
-    // case label itmes, create a shared case block to generate the shared
+    // case label items, create a shared case block to generate the shared
     // block.
     if (hasFallthrough || caseBlock->getCaseLabelItems().size() > 1) {
       emission.initSharedCaseBlockDest(caseBlock, hasFallthrough);
@@ -3120,7 +3120,7 @@ void SILGenFunction::emitCatchDispatch(DoCatchStmt *S, ManagedValue exn,
   SmallVector<ClauseRow, 8> clauseRows;
   clauseRows.reserve(S->getCatches().size());
   for (auto caseBlock : S->getCatches()) {
-    // If we have multiple case label itmes, create a shared case block to
+    // If we have multiple case label items, create a shared case block to
     // generate the shared block.
     if (caseBlock->getCaseLabelItems().size() > 1) {
       emission.initSharedCaseBlockDest(caseBlock, /*hasFallthrough*/ false);
