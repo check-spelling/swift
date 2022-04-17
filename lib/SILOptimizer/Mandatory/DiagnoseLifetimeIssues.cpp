@@ -149,7 +149,7 @@ static bool isStoreObjcWeak(SILInstruction *inst, Operand *op) {
   return objcDecl->getSetterKind() == clang::ObjCPropertyDecl::Weak;
 }
 
-/// Transitively iterates over all uses of \p def and and - if \p
+/// Transitively iterates over all uses of \p def and - if \p
 /// updateLivenessAndWeakStores is true - adds them to self.liveness.
 /// If any weak stores are seen, add them to self.weakStores (also only if
 /// \p updateLivenessAndWeakStores is true).

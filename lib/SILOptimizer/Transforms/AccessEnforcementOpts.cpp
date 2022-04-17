@@ -743,7 +743,7 @@ void AccessConflictAndMergeAnalysis::visitMayRelease(SILInstruction *instr,
   // If they don't alias - we might get away with not recording a conflict
   LLVM_DEBUG(llvm::dbgs() << "MayRelease Instruction: " << *instr);
 
-  // This is similar to recordUnknownConflict, but only class and and global
+  // This is similar to recordUnknownConflict, but only class and global
   // accesses can be affected by a deinitializer.
   auto isHeapAccess = [](AccessStorage::Kind accessKind) {
     return accessKind == AccessStorage::Class
