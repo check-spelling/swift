@@ -456,7 +456,7 @@ public:
   }
 };
 
-/// A helper class to repesent the module stats as an analysis,
+/// A helper class to represent the module stats as an analysis,
 /// so that it is preserved across multiple passes.
 class OptimizerStatsAnalysis : public SILAnalysis {
   SILModule &M;
