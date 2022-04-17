@@ -4180,7 +4180,7 @@ public:
 
     argNameAndDependencyIDs = argNameAndDependencyIDs.slice(numArgNames);
 
-    // Exctract the accessor IDs.
+    // Extract the accessor IDs.
     for (DeclID accessorID : argNameAndDependencyIDs.slice(0, numAccessors)) {
       accessors.IDs.push_back(accessorID);
     }
