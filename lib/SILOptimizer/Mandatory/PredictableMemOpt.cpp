@@ -1242,7 +1242,7 @@ void AvailableValueAggregator::addMissingDestroysForCopiedValues(
 
   for (auto *inst : insertedInsts) {
     // Otherwise, see if this is a load [copy]. It if it a load [copy], then we
-    // know that the load [copy] must be in the load block meaing we can just
+    // know that the load [copy] must be in the load block meaning we can just
     // put a destroy_value /after/ the load_borrow to ensure that the value
     // lives long enough for us to copy_value it or a derived value for the
     // begin_borrow.
