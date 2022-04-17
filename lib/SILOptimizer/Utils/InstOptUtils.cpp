@@ -1629,7 +1629,7 @@ swift::replaceAllUsesAndErase(SILValue oldValue, SILValue newValue,
 }
 
 /// Given that we are going to replace use's underlying value, if the use is a
-/// lifetime ending use, insert an end scope scope use for the underlying value
+/// lifetime ending use, insert an end scope use for the underlying value
 /// before we RAUW.
 static void cleanupUseOldValueBeforeRAUW(Operand *use, SILBuilder &builder,
                                          SILLocation loc,
