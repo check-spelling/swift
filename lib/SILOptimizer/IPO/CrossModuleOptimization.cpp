@@ -291,7 +291,7 @@ bool CrossModuleOptimization::canSerializeInstruction(SILInstruction *inst,
     return !MI->getMember().isForeign;
   }
   if (auto *REAI = dyn_cast<RefElementAddrInst>(inst)) {
-    // In conservative mode, we don't support class field accesse of non-public
+    // In conservative mode, we don't support class field accesses of non-public
     // properties, because that would require to make the field decl public -
     // which keeps more metadata alive.
     return !conservative ||
