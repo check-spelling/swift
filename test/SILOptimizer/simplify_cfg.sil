@@ -452,7 +452,7 @@ bb5(%6 : $Int64):
   return %6 : $Int64
 }
 
-// Eliminate the trampoline from from a cond_br at bb5->bb3->bb4/
+// Eliminate the trampoline from a cond_br at bb5->bb3->bb4/
 // This becomes a cond_br at bb8->bb5
 // CHECK-LABEL: @elim_trampoline5
 // CHECK: cond_br
