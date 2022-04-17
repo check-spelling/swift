@@ -1971,7 +1971,7 @@ private:
 
   /// Promote a load take cleaning up everything except for RAUWing the
   /// instruction with the aggregated result. The routine returns the new
-  /// aggreaged result to the caller and expects the caller to eventually RAUW
+  /// aggregated result to the caller and expects the caller to eventually RAUW
   /// \p inst with the return value. The reason why we do this is to allow for
   /// the caller to work around invalidation issues by not deleting the load
   /// [take] until after all load [take] have been cleaned up.
