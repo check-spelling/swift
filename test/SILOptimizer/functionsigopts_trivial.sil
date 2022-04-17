@@ -115,7 +115,7 @@ only(%wrapper : $Wrapper):
 // The function take_wrapper has a single argument of type Wrapper from which
 // it uses only the klass field.  The int field goes unused.  Argument explosion
 // should *not* result in a specialization in this case because (1) the
-// function is definend outside this module (so a thunk would be generated if
+// function is defined outside this module (so a thunk would be generated if
 // we specialized) and (2) specializing does not reduce ARC traffic because the
 // stripped field is trivial.
 // 
