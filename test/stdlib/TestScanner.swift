@@ -286,7 +286,7 @@ class TestScanner : TestScannerSuper {
     
     // Partial graphemes:
     withScanner(for: "e\u{0301}\u{031A}\u{032B}") {
-      // We do not assert here that the legacy methods don't work because they behave inconsistently wrt graphemes, and are able to actually discern that a combination code point plus a sequence of combining diacriticals is actually not OK to scan. Check just the newer behavior here.
+      // We do not assert here that the legacy methods don't work because they behave inconsistently wrt graphemes, and are able to actually discern that a combination code point plus a sequence of combining diacritics is actually not OK to scan. Check just the newer behavior here.
       expectEqual($0.scanString("e"), nil, "New method must not split graphemes while scanning")
       expectEqual($0.scanString("e\u{0301}"), nil, "New method must not split graphemes while scanning")
       expectEqual($0.scanString("e\u{0301}\u{031A}"), nil, "New method must not split graphemes while scanning")
@@ -349,7 +349,7 @@ class TestScanner : TestScannerSuper {
     
     // Partial graphemes (diacritics):
     withScanner(for: "wow e\u{0301}\u{031A}\u{032B} NOT FOUND") {
-      // We do not assert here that the legacy methods don't work because they behave inconsistently wrt graphemes, and are able to actually discern that a combination code point plus a sequence of combining diacriticals is actually not OK to scan. Check just the newer behavior here.
+      // We do not assert here that the legacy methods don't work because they behave inconsistently wrt graphemes, and are able to actually discern that a combination code point plus a sequence of combining diacritics is actually not OK to scan. Check just the newer behavior here.
       // The correct failure mode here is that the whole string should be returned on failure to match — the partial grapheme match won't stop scanUpToString(_:), which will keep looking later. This means that on failure to find, the methods will succeed -- this is why we reset .currentIndex after every invocation.
       expectEqual($0.scanUpToString("e"), $0.string, "New method must go past graphemes that match part of the scan-up-to string while scanning")
       $0.currentIndex = $0.string.startIndex
