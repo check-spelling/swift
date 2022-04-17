@@ -1428,7 +1428,7 @@ suppressGlobalStringTablePointerError(SingleValueInstruction *oslogMessage) {
     StringLiteralInst *stringLiteral = builder.createStringLiteral(
         bi->getLoc(), StringRef(""), StringLiteralInst::Encoding::UTF8);
     bi->replaceAllUsesWith(stringLiteral);
-    // The bulitin instruction is likely dead. But since we are iterating over
+    // The builtin instruction is likely dead. But since we are iterating over
     // many instructions, do the cleanup at the end.
     deleter.trackIfDead(bi);
   }
