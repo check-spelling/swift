@@ -199,7 +199,7 @@ public:
   /// An AST was produced that the consumer should handle.
   virtual void handlePrimaryAST(ASTUnitRef AstUnit) = 0;
 
-  /// Creation of the AST failed due to \p Error. The request corresonding to
+  /// Creation of the AST failed due to \p Error. The request corresponding to
   /// this consumer should fail.
   virtual void failed(StringRef Error);
 
