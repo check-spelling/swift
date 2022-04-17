@@ -766,21 +766,21 @@ func interpretArrayAppendNonEmpty() -> [String] {
   return testArrayAppendNonEmpty("mkdir")
 }
 
-struct StructContaningArray {
+struct StructContainingArray {
   var array: [Int]
 }
 
 // CHECK-LABEL: @testArrayFieldAppend
 // CHECK-NOT: error:
 @_semantics("constant_evaluable")
-func testArrayFieldAppend(_ x: Int) -> StructContaningArray {
-  var s = StructContaningArray(array: [])
+func testArrayFieldAppend(_ x: Int) -> StructContainingArray {
+  var s = StructContainingArray(array: [])
   s.array.append(x)
   return s
 }
 
 @_semantics("test_driver")
-func interpretArrayFieldAppend() -> StructContaningArray {
+func interpretArrayFieldAppend() -> StructContainingArray {
   return testArrayFieldAppend(0)
 }
 
