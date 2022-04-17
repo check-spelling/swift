@@ -1084,7 +1084,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
                triggerLocSkipsInternalLocs);
     return;
   }
-  case UnknownReason::NoWitnesTableEntry: {
+  case UnknownReason::NoWitnessTableEntry: {
     SmallString<8> witnessMethodName;
     getWitnessMethodName(dyn_cast<WitnessMethodInst>(unknownNode),
                          witnessMethodName);
