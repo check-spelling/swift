@@ -1157,7 +1157,7 @@ static void forceDeleteAllocStack(SingleValueInstruction *inst,
 }
 
 /// Delete \c inst , if it is dead, along with its dead users and invoke the
-/// callback whever an instruction is deleted.
+/// callback whenever an instruction is deleted.
 static void
 deleteInstructionWithUsersAndFixLifetimes(SILInstruction *inst,
                                           InstructionDeleter &deleter) {
