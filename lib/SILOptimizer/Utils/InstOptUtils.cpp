@@ -1067,7 +1067,7 @@ bool swift::tryDeleteDeadClosure(SingleValueInstruction *closure,
     return true;
   }
 
-  // Collect all destroys of the closure (transitively including destorys of
+  // Collect all destroys of the closure (transitively including destroys of
   // copies) and check if those are the only uses of the closure.
   SmallVector<Operand *, 16> closureDestroys;
   if (!collectDestroys(closure, closureDestroys))
