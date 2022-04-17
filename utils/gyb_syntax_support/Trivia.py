@@ -62,9 +62,9 @@ TRIVIAS = [
 ]
 
 
-def verify_no_duplicate_serialization_codes(trivias):
+def verify_no_duplicate_serialization_codes(trivia):
     used_codes = set()
-    for trivia in trivias:
+    for trivia in trivia:
         if trivia.serialization_code in used_codes:
             error("Serialization code %d used twice for trivia" %
                   trivia.serialization_code)
