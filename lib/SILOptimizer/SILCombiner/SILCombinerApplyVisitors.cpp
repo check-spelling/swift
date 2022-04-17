@@ -1056,7 +1056,7 @@ SILValue SILCombiner::canCastArg(FullApplySite Apply,
   return Builder.createUncheckedAddrCast(
       Apply.getLoc(), Apply.getArgument(ArgIdx), CEI.ConcreteValue->getType());
 }
-/// Rewrite the given method apply instruction in terms of the provided conrete
+/// Rewrite the given method apply instruction in terms of the provided concrete
 /// type information.
 ///
 /// If the rewrite is successful, the original apply will be removed and the new
