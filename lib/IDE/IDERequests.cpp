@@ -1179,7 +1179,7 @@ ProvideDefaultImplForRequest::evaluate(Evaluator &eval, ValueDecl* VD) const {
 //----------------------------------------------------------------------------//
 ArrayRef<ValueDecl *>
 CollectOverriddenDeclsRequest::evaluate(Evaluator &evaluator,
-                                        OverridenDeclsOwner Owner) const {
+                                        OverriddenDeclsOwner Owner) const {
   std::vector<ValueDecl*> results;
   auto *VD = Owner.VD;
   if (auto Overridden = VD->getOverriddenDecl()) {
