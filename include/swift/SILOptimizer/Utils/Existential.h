@@ -93,7 +93,7 @@ struct ConcreteExistentialInfo {
   ConcreteExistentialInfo(SILValue existential, SILInstruction *user,
                           CanType ConcreteType, ProtocolDecl *Protocol);
 
-  /// For scenerios where ConcreteExistentialInfo is created using a known
+  /// For scenarios where ConcreteExistentialInfo is created using a known
   /// ConcreteType and ProtocolDecl, the ConcreteValue can be null.
   bool isValid() const { return ConcreteType && !ExistentialSubs.empty(); }
 
