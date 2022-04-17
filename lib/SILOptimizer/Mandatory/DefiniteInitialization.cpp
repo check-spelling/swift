@@ -810,7 +810,7 @@ void LifetimeChecker::diagnoseBadExplicitStore(SILInstruction *Inst) {
   diagnose(Module, Inst->getLoc(), diag::explicit_store_of_compilerinitialized);
 }
 
-/// Determines whether the given function is a constructor that belogs to a
+/// Determines whether the given function is a constructor that belongs to a
 /// distributed actor declaration.
 /// \returns nullptr if false, and the class decl for the actor otherwise.
 static ClassDecl* getDistributedActorOfCtor(SILFunction &F) {
