@@ -948,7 +948,7 @@ bool SILCombiner::canReplaceArg(FullApplySite Apply,
   return true;
 }
 
-/// Track temporary copies required for argument substitution when rewritting an
+/// Track temporary copies required for argument substitution when rewriting an
 /// apply's argument types from an opened existential types to concrete types.
 ///
 /// This is relevant for non-mutating arguments that are consumed by the call

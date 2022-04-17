@@ -3041,7 +3041,7 @@ protected:
 //===----------------------------------------------------------------------===//
 
 // Rewrite applies with indirect parameters or results of loadable types which
-// were not visited during opaque value rewritting.
+// were not visited during opaque value rewriting.
 static void rewriteIndirectApply(FullApplySite apply,
                                  AddressLoweringState &pass) {
   // If all indirect args were loadable, then they still need to be rewritten.
