@@ -361,7 +361,7 @@ const void *const swift::_swift_concurrency_debug_asyncTaskMetadata =
 static void completeTaskImpl(AsyncTask *task,
                              AsyncContext *context,
                              SwiftError *error) {
-  assert(task && "completing task, but there is no active task registered");
+  assert(task && "completion task, but there is no active task registered");
 
   // Store the error result.
   auto asyncContextPrefix = reinterpret_cast<AsyncContextPrefix *>(
@@ -393,7 +393,7 @@ static void completeTask(SWIFT_ASYNC_CONTEXT AsyncContext *context,
                          SWIFT_CONTEXT SwiftError *error) {
   // Set that there's no longer a running task in the current thread.
   auto task = _swift_task_clearCurrent();
-  assert(task && "completing task, but there is no active task registered");
+  assert(task && "completion task, but there is no active task registered");
 
   completeTaskImpl(task, context, error);
 }
@@ -405,7 +405,7 @@ static void completeTaskAndRelease(SWIFT_ASYNC_CONTEXT AsyncContext *context,
                                    SWIFT_CONTEXT SwiftError *error) {
   // Set that there's no longer a running task in the current thread.
   auto task = _swift_task_clearCurrent();
-  assert(task && "completing task, but there is no active task registered");
+  assert(task && "completion task, but there is no active task registered");
 
   completeTaskImpl(task, context, error);
 

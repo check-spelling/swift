@@ -398,7 +398,7 @@ CompletionLookup::getSemanticContext(const Decl *D, DeclVisibilityKind Reason,
   case DeclVisibilityKind::VisibleAtTopLevel:
     if (CurrDeclContext && D->getModuleContext() == CurrModule) {
       // Treat global variables from the same source file as local when
-      // completing at top-level.
+      // completion at top-level.
       if (isa<VarDecl>(D) && isTopLevelSubcontext(CurrDeclContext) &&
           D->getDeclContext()->getParentSourceFile() ==
               CurrDeclContext->getParentSourceFile()) {
@@ -673,7 +673,7 @@ Type CompletionLookup::getTypeOfMember(const ValueDecl *VD, Type ExprType) {
 
       // For optional protocol requirements and dynamic dispatch,
       // strip off optionality from the base type, but only if
-      // we're not actually completing a member of Optional.
+      // we're not actually completion a member of Optional.
       if (!ContextTy->getOptionalObjectType() &&
           MaybeNominalType->getOptionalObjectType())
         MaybeNominalType = MaybeNominalType->getOptionalObjectType();

@@ -239,7 +239,7 @@ ManagedValue emitPeepholedConversions(SILGenFunction &SGF, SILLocation loc,
                                       ValueProducerRef produceValue);
 
 /// An initialization where we ultimately want to apply a conversion to
-/// the value before completing the initialization.
+/// the value before completion the initialization.
 ///
 /// Value generators may call getAsConversion() to check whether an
 /// Initialization is one of these.  If so, they may call either

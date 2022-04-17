@@ -9451,7 +9451,7 @@ void ClangImporter::Implementation::finishNormalConformance(
   (void)unused;
 
   auto *proto = conformance->getProtocol();
-  PrettyStackTraceConformance trace("completing import of", conformance);
+  PrettyStackTraceConformance trace("completion import of", conformance);
 
   finishTypeWitnesses(conformance);
   conformance->finishSignatureConformances();

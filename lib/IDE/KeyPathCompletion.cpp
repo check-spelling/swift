@@ -31,11 +31,11 @@ void KeyPathTypeCheckCompletionCallback::sawSolutionImpl(
     }
   }
   assert(ComponentIndex < KeyPath->getComponents().size() &&
-         "Didn't find a code compleiton component?");
+         "Didn't find a code completion component?");
 
   Type BaseType;
   if (ComponentIndex == 0) {
-    // We are completing on the root and need to extract the key path's root
+    // We are completion on the root and need to extract the key path's root
     // type.
     if (KeyPath->getRootType()) {
       BaseType = S.getResolvedType(KeyPath->getRootType());
@@ -56,7 +56,7 @@ void KeyPathTypeCheckCompletionCallback::sawSolutionImpl(
       }
     }
   } else {
-    // We are completing after a component. Get the previous component's result
+    // We are completion after a component. Get the previous component's result
     // type.
     BaseType = S.simplifyType(S.getType(KeyPath, ComponentIndex - 1));
   }

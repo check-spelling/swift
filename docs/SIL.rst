@@ -6932,7 +6932,7 @@ unwind
   sil-terminator ::= 'unwind'
 
 Exits the current function and returns control to the calling function,
-completing an unwind from a ``yield``. The current function must be a
+completion an unwind from a ``yield``. The current function must be a
 coroutine.
 
 ``unwind`` is only permitted in blocks reachable from the ``unwind`` edges

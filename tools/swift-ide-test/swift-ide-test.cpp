@@ -381,7 +381,7 @@ DisableAccessControl("disable-access-control",
 static llvm::cl::opt<bool> CodeCompleteInitsInPostfixExpr(
     "code-complete-inits-in-postfix-expr",
     llvm::cl::desc(
-        "Include initializers when completing a postfix expression"),
+        "Include initializers when completion a postfix expression"),
     llvm::cl::cat(Category));
 static llvm::cl::opt<bool> CodeCompleteCallPatternHeuristics(
     "code-complete-call-pattern-heuristics",

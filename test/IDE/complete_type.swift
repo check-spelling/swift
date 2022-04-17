@@ -65,7 +65,7 @@ typealias FooTypealias = Int
 // ERROR_COMMON-NOT: Begin completions
 
 //===---
-//===--- Test that we include 'Self' type while completing inside a protocol.
+//===--- Test that we include 'Self' type while completion inside a protocol.
 //===---
 
 // TYPE_IN_PROTOCOL: Begin completions

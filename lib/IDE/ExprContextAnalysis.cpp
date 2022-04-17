@@ -837,7 +837,7 @@ class ExprContextAnalyzer {
       bool MayBeLabel = !MayBeArgForLabeledParam;
 
       // Alternatively, the code completion position may complete to an argument
-      // label if we are currently completing variadic args.
+      // label if we are currently completion variadic args.
       // E.g.
       // func foo(x: Int..., y: Int...) {}
       // foo(x: 1, #^COMPLETE^#)

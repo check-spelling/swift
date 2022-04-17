@@ -205,7 +205,7 @@ public:
     }
 
     /// Status value decrementing the Ready, Pending and Waiting counters by one.
-    GroupStatus completingPendingReadyWaiting() {
+    GroupStatus completionPendingReadyWaiting() {
       assert(pendingTasks() &&
              "can only complete waiting task when pending tasks available");
       assert(readyTasks() &&
@@ -215,7 +215,7 @@ public:
       return GroupStatus{status - waiting - oneReadyTask - onePendingTask};
     }
 
-    GroupStatus completingPendingReady() {
+    GroupStatus completionPendingReady() {
       assert(pendingTasks() &&
              "can only complete waiting task when pending tasks available");
       assert(readyTasks() &&
@@ -405,14 +405,14 @@ public:
   /// This is used to atomically perform a waiting task completion.
   bool statusCompletePendingReadyWaiting(GroupStatus &old) {
     return status.compare_exchange_strong(
-      old.status, old.completingPendingReadyWaiting().status,
+      old.status, old.completionPendingReadyWaiting().status,
       /*success*/ std::memory_order_relaxed,
       /*failure*/ std::memory_order_relaxed);
   }
 
   bool statusCompletePendingReady(GroupStatus &old) {
     return status.compare_exchange_strong(
-      old.status, old.completingPendingReady().status,
+      old.status, old.completionPendingReady().status,
       /*success*/ std::memory_order_relaxed,
       /*failure*/ std::memory_order_relaxed);
   }
@@ -771,7 +771,7 @@ PollResult TaskGroupImpl::poll(AsyncTask *waitingTask) {
     auto assumedStatus = assumed.status;
     auto newStatus = TaskGroupImpl::GroupStatus{assumedStatus};
     if (status.compare_exchange_strong(
-        assumedStatus, newStatus.completingPendingReadyWaiting().status,
+        assumedStatus, newStatus.completionPendingReadyWaiting().status,
         /*success*/ std::memory_order_relaxed,
         /*failure*/ std::memory_order_acquire)) {
 

@@ -77,7 +77,7 @@ public:
 
   /// \param IncludeSignature Whether to include a suggestion for the entire
   /// function signature instead of suggesting individual labels. Used when
-  /// completing after the opening '(' of a function call \param Loc The
+  /// completion after the opening '(' of a function call \param Loc The
   /// location of the code completion token
   void deliverResults(bool IncludeSignature, SourceLoc Loc, DeclContext *DC,
                       CodeCompletionContext &CompletionCtx,

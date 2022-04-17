@@ -528,7 +528,7 @@ final class _ForkJoinWorkerThread {
 internal protocol _Future {
   associatedtype Result
 
-  /// Establishes a happens-before relation between completing the future and
+  /// Establishes a happens-before relation between completion the future and
   /// the call to wait().
   func wait()
 

@@ -580,7 +580,7 @@ public:
 /// Used on the instruction performing auto-generated cleanup such as
 /// deallocs, destructor calls.
 ///
-/// The cleanups are performed after completing the evaluation of the AST Node
+/// The cleanups are performed after completion the evaluation of the AST Node
 /// wrapped inside the SILLocation. This location wraps the statement
 /// representing the enclosing scope, for example, FuncDecl, ParenExpr. The
 /// scope's end location points to the SourceLoc that shows when the operation

@@ -1957,7 +1957,7 @@ void PreCheckExpression::resolveKeyPathExpr(KeyPathExpr *KPE) {
 
         expr = CCE->getBase();
         if (!expr) {
-          // We are completing on the key path's base. Stop iterating.
+          // We are completion on the key path's base. Stop iterating.
           return;
         }
       } else if (auto SE = dyn_cast<SubscriptExpr>(expr)) {

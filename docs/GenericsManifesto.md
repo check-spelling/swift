@@ -6,7 +6,7 @@ The "Complete Generics" goal for Swift 3 has been fairly ill-defined thus far, w
 
 > *Complete generics*: Generics are used pervasively in a number of Swift libraries, especially the standard library. However, there are a number of generics features the standard library requires to fully realize its vision, including recursive protocol constraints, the ability to make a constrained extension conform to a new protocol (i.e., an array of Equatable elements is Equatable), and so on. Swift 3.0 should provide those generics features needed by the standard library, because they affect the standard library's ABI.
 
-This message expands upon the notion of "completing generics". It is not a plan for Swift 3, nor an official core team communication, but it collects the results of numerous discussions among the core team and Swift developers, both of the compiler and the standard library. I hope to achieve several things:
+This message expands upon the notion of "completion generics". It is not a plan for Swift 3, nor an official core team communication, but it collects the results of numerous discussions among the core team and Swift developers, both of the compiler and the standard library. I hope to achieve several things:
 
 * **Communicate a vision for Swift generics**, building on the [original generics design document](https://github.com/apple/swift/blob/main/docs/Generics.rst), so we have something concrete and comprehensive to discuss.
 

@@ -150,7 +150,7 @@ class CompletionLookup final : public swift::VisibleDeclConsumer {
 
   bool IncludeInstanceMembers = false;
 
-  /// True if we are code completing inside a static method.
+  /// True if we are code completion inside a static method.
   bool InsideStaticMethod = false;
 
   /// Innermost method that the code completion point is in.
@@ -576,7 +576,7 @@ public:
 
   void getPoundAvailablePlatformCompletions();
 
-  /// \p Loc is the location of the code completin token.
+  /// \p Loc is the location of the code completion token.
   /// \p isForDeclResult determines if were are spelling out the result type
   /// of a declaration.
   void getSelfTypeCompletionInDeclContext(SourceLoc Loc, bool isForDeclResult);

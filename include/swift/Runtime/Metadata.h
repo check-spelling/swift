@@ -298,7 +298,7 @@ swift_getGenericMetadata(MetadataRequest request,
 ///     superclass pointer will be null (or SwiftObject under ObjC interop
 ///     if there is no formal superclass).
 ///
-/// The instantiation function is responsible for completing the
+/// The instantiation function is responsible for completion the
 /// initialization, including:
 ///   - setting the superclass pointer;
 ///   - copying class data from the superclass;

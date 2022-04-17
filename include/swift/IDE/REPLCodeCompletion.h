@@ -43,7 +43,7 @@ enum class CompletionState {
   /// available completions.
   CompletedRoot,
   /// Displayed the list of available completions. Subsequent <TAB> events will
-  /// cycle through completing different stems.
+  /// cycle through completion different stems.
   DisplayedCompletionList
 };
 

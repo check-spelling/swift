@@ -447,7 +447,7 @@ def enable_access_control : Flag<["-"], "enable-access-control">,
   HelpText<"Respect access control restrictions">;
 
 def code_complete_inits_in_postfix_expr : Flag<["-"], "code-complete-inits-in-postfix-expr">,
-  HelpText<"Include initializers when completing a postfix expression">;
+  HelpText<"Include initializers when completion a postfix expression">;
 def code_complete_call_pattern_heuristics : Flag<["-"], "code-complete-call-pattern-heuristics">,
   HelpText<"Use heuristics to guess whether we want call pattern completions">;
 

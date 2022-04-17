@@ -136,7 +136,7 @@ protected:
 ///
 /// * foundJointPostDomSetCompletionBlocks: The set of blocks not in \p
 ///   dominatedBlockSet that together with \p dominatedBlockSet
-///   jointly-postdominate \p dominatedBlock. This is "completing" the joint
+///   jointly-postdominate \p dominatedBlock. This is "completion" the joint
 ///   post-dominance set.
 ///
 /// * inputBlocksInJointPostDomSet: Any of our input blocks that were never

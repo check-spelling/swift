@@ -86,8 +86,8 @@ size_t CompletionContextFinder::getKeyPathCompletionComponentIndex() const {
 
 Optional<Fallback> CompletionContextFinder::getFallbackCompletionExpr() const {
   if (!hasCompletionExpr()) {
-    // Creating a fallback expression only makes sense if we are completing in
-    // an expression, not when we're completing in a key path.
+    // Creating a fallback expression only makes sense if we are completion in
+    // an expression, not when we're completion in a key path.
     return None;
   }
 

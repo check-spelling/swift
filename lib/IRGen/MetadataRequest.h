@@ -390,7 +390,7 @@ DynamicMetadataRequest::isSatisfiedBy(MetadataResponse response) const {
   return isSatisfiedBy(response.getStaticLowerBoundOnState());
 }
 
-/// A dependency that is blocking a metadata initialization from completing.
+/// A dependency that is blocking a metadata initialization from completion.
 class MetadataDependency {
   llvm::Value *RequiredMetadata;
   llvm::Value *RequiredState;

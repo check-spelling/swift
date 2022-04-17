@@ -38,7 +38,7 @@ extension WeakReferenceRaceTest {
     _ threadLocalData: inout Void
     ) -> Observation1UInt {
     raceData.closure()
-    // The trial succeeds by completing without crashing
+    // The trial succeeds by completion without crashing
     return Observation1UInt(0)
   }
 

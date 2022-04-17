@@ -857,7 +857,7 @@ class BrowserViewController: UIViewController {
             if !(webView.url?.isLocalUtility ?? false) {
                 urlBar.updateProgressBar(Float(webView.estimatedProgress))
                 // Profiler.end triggers a screenshot, and a delay is needed here to capture the correct screen
-                // (otherwise the screen prior to this step completing is captured).
+                // (otherwise the screen prior to this step completion is captured).
                 if webView.estimatedProgress > 0.9 {
                     Profiler.shared?.end(bookend: .load_url, delay: 0.200)
                 }

@@ -37,7 +37,7 @@ class CompletionContextFinder : public ASTWalker {
   /// Stack of all "interesting" contexts up to code completion expression.
   llvm::SmallVector<Context, 4> Contexts;
 
-  /// If we are completing inside an expression, the \c CodeCompletionExpr that
+  /// If we are completion inside an expression, the \c CodeCompletionExpr that
   /// represents the code completion token.
 
   /// The AST node that represents the code completion token, either as a
@@ -91,14 +91,14 @@ public:
     return CompletionNode.dyn_cast<const KeyPathExpr *>() != nullptr;
   }
 
-  /// If we are completing in a key path, returns the \c KeyPath that contains
+  /// If we are completion in a key path, returns the \c KeyPath that contains
   /// the code completion component.
   const KeyPathExpr *getKeyPathContainingCompletionComponent() const {
     assert(hasCompletionKeyPathComponent());
     return CompletionNode.get<const KeyPathExpr *>();
   }
 
-  /// If we are completing in a key path, returns the index at which the key
+  /// If we are completion in a key path, returns the index at which the key
   /// path has the code completion component.
   size_t getKeyPathCompletionComponentIndex() const;
 

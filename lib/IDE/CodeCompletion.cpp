@@ -559,7 +559,7 @@ void CodeCompletionCallbacksImpl::completeYieldStmt(CodeCompletionExpr *E,
                                                     Optional<unsigned> index) {
   CurDeclContext = P.CurDeclContext;
   CodeCompleteTokenExpr = E;
-  // TODO: use a different completion kind when completing without an index
+  // TODO: use a different completion kind when completion without an index
   // in a multiple-value context.
   Kind = CompletionKind::YieldStmtExpr;
 }
@@ -963,7 +963,7 @@ void CodeCompletionCallbacksImpl::addKeywords(CodeCompletionResultSink &Sink,
     // Note that we don't add keywords here as the completion might be for
     // an argument list pattern. We instead add keywords later in
     // CodeCompletionCallbacksImpl::doneParsing when we know we're not
-    // completing for a argument list pattern.
+    // completion for a argument list pattern.
     break;
 
   case CompletionKind::CaseStmtKeyword:

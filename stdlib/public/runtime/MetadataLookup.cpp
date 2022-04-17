@@ -1750,7 +1750,7 @@ swift_getTypeByMangledNodeImpl(MetadataRequest request, Demangler &demangler,
     auto type = accessorFn(origArgumentVector);
     // We don't call checkMetadataState here since the result may not really
     // *be* type metadata. If the accessor returns a type, it is responsible
-    // for completing the metadata.
+    // for completion the metadata.
     return TypeInfo{MetadataResponse{type, MetadataState::Complete},
                     TypeReferenceOwnership()};
   }

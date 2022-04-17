@@ -224,7 +224,7 @@ getRuntimeVersionThatSupportsDemanglingType(CanType type) {
 //
 // Note that this functionality is limited, because the demangler callback
 // mechanism can only produce complete metadata. It can't be used in situations
-// where completing the metadata during demangling might cause cyclic
+// where completion the metadata during demangling might cause cyclic
 // dependencies.
 static std::pair<llvm::Constant *, unsigned>
 getTypeRefByFunction(IRGenModule &IGM,

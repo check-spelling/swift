@@ -36,7 +36,7 @@ public:
     SWIFT_TASK_DEBUG_LOG("[%p] Constructing VoucherManager", this);
   }
 
-  /// Clean up after completing async work, restoring the original voucher on
+  /// Clean up after completion async work, restoring the original voucher on
   /// the current thread if necessary. This MUST be called before the
   /// VoucherManager object is destroyed. It may also be called in other
   /// places to restore the original voucher and reset the VoucherManager.

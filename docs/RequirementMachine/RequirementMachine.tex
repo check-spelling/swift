@@ -2146,7 +2146,7 @@ The rule's left-hand side has a prefix $\protosym{View}$ equal to its own suffix
 Applying the rule both ways and reducing the result produces the new rule:
 \[\protosym{View}.\namesym{Body}.\namesym{Body}.\protosym{View}\Rightarrow\protosym{View}.\namesym{Body}.\namesym{Body}\]
 The new rule, in turn, overlaps with the first rule, and the process continues forever (or until your algorithm's maximum iteration count is reached, or \emph{in extremis}, when your computer runs out of memory). Figure \ref{swiftuirunaway} shows what this infinite sequence of critical pairs looks like.
-\begin{figure}\caption{Infinitely many critical pairs while completing $\proto{View}$ protocol}\label{swiftuirunaway}
+\begin{figure}\caption{Infinitely many critical pairs while completion $\proto{View}$ protocol}\label{swiftuirunaway}
 \begin{center}
 \begin{tikzcd}
 &\mathmakebox[0pt][c]{
@@ -2505,7 +2505,7 @@ Before moving on to the next topic, there is one final thing worth mentioning. W
 
 In this section, I've been implicitly using a lexicographic order on protocol names, and everything worked ``on accident'' because $\proto{BidirectionalCollection}<\proto{Collection}$ anyway; however this would not have been the case if $\proto{BidirectionalCollection}$ was named differently, for example $\proto{TwoWayCollection}$. The formal definition of the reduction order in Definition \ref{protocolorder} will take protocol inheritance into account.
 
-\begin{figure}\caption{A few critical pairs resolved while completing the $\proto{BidirectionalCollection}$ protocol with an inherited associated type symbol}\label{bidirectionalfig}
+\begin{figure}\caption{A few critical pairs resolved while completion the $\proto{BidirectionalCollection}$ protocol with an inherited associated type symbol}\label{bidirectionalfig}
 \begin{center}
 
 \vspace{10mm}

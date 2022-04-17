@@ -20,7 +20,7 @@ func test(val: E) {
 // BEGIN dummy.swift
 
 // rdar://75358153
-// Previously, completing inside single expression body, then completing inside
+// Previously, completion inside single expression body, then completion inside
 // *non* single expression body in the same function caused a crash because the
 // "has single expression" flag didn't clear. This file tests the scenario not
 // to regress again.

@@ -1214,7 +1214,7 @@ static bool tryEliminateOSLogMessage(SingleValueInstruction *oslogMessage) {
   // Assuming that the library implementation is correct, it means that either
   // OSLogMessage is used in a context where it is not supposed to be used, or
   // we somehow saw a conditional branch with a non-constant argument before
-  // completing evaluation (this can happen with the os_log(_:log:type)
+  // completion evaluation (this can happen with the os_log(_:log:type)
   // overload, when log or type is an optional unwrapping). Report an error
   // that covers both contexts. (Note that it is very hard to distinguish these
   // error cases in the current state.)

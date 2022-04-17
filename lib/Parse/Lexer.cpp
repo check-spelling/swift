@@ -866,7 +866,7 @@ void Lexer::lexOperatorIdentifier() {
       while (*AfterHorzWhitespace == ' ' || *AfterHorzWhitespace == '\t')
         ++AfterHorzWhitespace;
 
-      // First, when we are code completing "x. <ESC>", then make sure to return
+      // First, when we are code completion "x. <ESC>", then make sure to return
       // a tok::period, since that is what the user is wanting to know about.
       if (*AfterHorzWhitespace == '\0' &&
           AfterHorzWhitespace == CodeCompletionPtr) {

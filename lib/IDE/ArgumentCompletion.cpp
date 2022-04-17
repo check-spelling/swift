@@ -58,7 +58,7 @@ bool ArgumentTypeCheckCompletionCallback::addPossibleParams(
         !(PL && PL->get(Idx)->isDefaultArgument()) && !P->isVariadic();
 
     if (P->hasLabel() && !(IsCompletion && Res.IsNoninitialVariadic)) {
-      // Suggest parameter label if parameter has label, we are completing in it
+      // Suggest parameter label if parameter has label, we are completion in it
       // and it is not a variadic parameter that already has arguments
       PossibleParamInfo PP(P, Required);
       if (!llvm::is_contained(Params, PP)) {

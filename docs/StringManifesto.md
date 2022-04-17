@@ -978,7 +978,7 @@ let swiftIndex = s.utf16.index(offset: cocoaIndex)
 ### Formatting
 
 A full treatment of formatting is out of scope of this proposal, but
-we believe it's crucial for completing the text processing picture.  This
+we believe it's crucial for completion the text processing picture.  This
 section details some of the existing issues and thinking that may guide future
 development.
 

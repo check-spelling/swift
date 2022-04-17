@@ -70,7 +70,7 @@ public:
   }
 
   /// Set the decl inside which the code-completion occurred.  This is used when
-  /// completing inside a parameter list or where clause where the Parser's
+  /// completion inside a parameter list or where clause where the Parser's
   /// CurDeclContext will not be where we want to perform lookup.
   void setParsedDecl(Decl *D) {
     ParsedDecl = D;
