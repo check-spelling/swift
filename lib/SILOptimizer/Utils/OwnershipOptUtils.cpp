@@ -1700,7 +1700,7 @@ SILBasicBlock::iterator OwnershipReplaceSingleUseHelper::perform() {
 /// Create end_borrows at all points that cover the inner uses.
 ///
 /// The client must check canCloneTerminator() first to make sure that the
-/// search for transitive uses does not encouter a PointerEscape.
+/// search for transitive uses does not encounter a PointerEscape.
 class GuaranteedPhiBorrowFixup {
   // A phi in mustConvertPhis has already been determined to be part of this
   // new nested borrow scope.
