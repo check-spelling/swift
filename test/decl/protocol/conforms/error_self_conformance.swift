@@ -10,7 +10,7 @@ func testSimple(error: Error) {
 }
 
 protocol ErrorRefinement : Error {}
-func testErrorRefinment(error: ErrorRefinement) {
+func testErrorRefinement(error: ErrorRefinement) {
   wantsError(error) // expected-error {{type 'any ErrorRefinement' cannot conform to 'Error'}} expected-note {{only concrete types such as structs, enums and classes can conform to protocols}}
 }
 
