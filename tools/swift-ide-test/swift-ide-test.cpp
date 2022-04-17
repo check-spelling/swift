@@ -3008,7 +3008,7 @@ static int doPrintModules(const CompilerInvocation &InitInvok,
   registerIDERequestFunctions(CI.getASTContext().evaluator);
   auto &Context = CI.getASTContext();
 
-  // Load implict imports so that Clang importer can use it.
+  // Load implicit imports so that Clang importer can use it.
   for (auto unloadedImport :
        CI.getMainModule()->getImplicitImportInfo().AdditionalUnloadedImports) {
     (void)Context.getModule(unloadedImport.module.getModulePath());
@@ -3075,7 +3075,7 @@ static int doPrintHeaders(const CompilerInvocation &InitInvok,
   registerIDERequestFunctions(CI.getASTContext().evaluator);
   auto &Context = CI.getASTContext();
 
-  // Load implict imports so that Clang importer can use it.
+  // Load implicit imports so that Clang importer can use it.
   for (auto unloadedImport :
        CI.getMainModule()->getImplicitImportInfo().AdditionalUnloadedImports) {
     (void)Context.getModule(unloadedImport.module.getModulePath());
