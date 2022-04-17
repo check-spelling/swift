@@ -1365,7 +1365,7 @@ void AddressMaterialization::initializeComposingUse(Operand *operand) {
 // the materialized address.
 //
 // If \p intoPhiOperand is false, then the materialized address is guaranteed to
-// domaninate the composing user. Map the user onto this address to avoid
+// dominate the composing user. Map the user onto this address to avoid
 // rematerialization.
 //
 // Note: This only materializes the address for the purpose of projection an
