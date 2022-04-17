@@ -1827,7 +1827,7 @@ void swift::salvageDebugInfo(SILInstruction *I) {
       if (VarInfo->DIExpr.hasFragment())
         // Since we can't merge two different op_fragment
         // now, we're simply bailing out if there is an
-        // existing op_fragment in DIExpresison.
+        // existing op_fragment in DIExpression.
         // TODO: Try to merge two op_fragment expressions here.
         continue;
       for (VarDecl *FD : FieldDecls) {
