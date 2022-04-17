@@ -436,7 +436,7 @@ class StackAllocationPromoter {
   BlockToInstMap<StoreInst> initializationPoints;
 
   /// The first instruction in each block that deinitializes the storage that is
-  /// not preceeded by an instruction that initializes it.
+  /// not precedeed by an instruction that initializes it.
   ///
   /// That includes:
   ///     store
@@ -560,7 +560,7 @@ StoreInst *StackAllocationPromoter::promoteAllocationInBlock(
   ///
   /// The lifetime cannot be ended during this function's execution if we don't
   /// yet have enough information to end it.  That occurs when the running
-  /// values are from a load which was not preceeded by a store.  In that case,
+  /// values are from a load which was not precedeed by a store.  In that case,
   /// the lifetime end will be added later, when we have enough information,
   /// namely the live in values, to end it.
   auto canEndLexicalLifetime =
