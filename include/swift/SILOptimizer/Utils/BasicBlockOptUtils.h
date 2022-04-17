@@ -56,7 +56,7 @@ public:
 };
 
 /// Computes the set of blocks from which a path to the return-block exists.
-/// This does not include pathes to a throw-block.
+/// This does not include paths to a throw-block.
 class ReachingReturnBlocks {
     BasicBlockWorklist worklist;
 
