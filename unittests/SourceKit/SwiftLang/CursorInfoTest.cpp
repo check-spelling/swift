@@ -27,7 +27,7 @@ static StringRef getRuntimeLibPath() {
   return sys::path::parent_path(SWIFTLIB_DIR);
 }
 
-static void *createCancallationToken() {
+static void *createCancellationToken() {
   static std::atomic<size_t> handle(1000);
   return reinterpret_cast<void *>(
       handle.fetch_add(1, std::memory_order_relaxed));
@@ -485,7 +485,7 @@ TEST_F(CursorInfoTest, DISABLED_CursorInfoCancellation) {
 
   open(SlowDocName, SlowContents, llvm::makeArrayRef(Args));
 
-  SourceKitCancellationToken CancellationToken = createCancallationToken();
+  SourceKitCancellationToken CancellationToken = createCancellationToken();
 
   // Schedule a cursor info request that takes long to execute. This should be
   // cancelled as the next cursor info (which is faster) gets requested.
