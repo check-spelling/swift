@@ -19,7 +19,7 @@
 /// The "extended lifetime" of the references defined by 'def' transitively
 /// includes the uses of 'def' itself along with the uses of any copies of
 /// 'def'. Canonicalization provably minimizes the OSSA lifetime and its copies
-/// by rewriting all copies and destroys. Only consusming uses that are not on
+/// by rewriting all copies and destroys. Only consuming uses that are not on
 /// the liveness boundary require a copy.
 ///
 /// Example #1: The last consuming use ends the reference lifetime.
