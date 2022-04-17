@@ -2836,7 +2836,7 @@ static AllocationInst *getOptimizableAllocation(SILInstruction *i) {
 
   auto *alloc = cast<AllocationInst>(i);
 
-  // If our aggregate has unreferencable storage, we can't optimize. Return
+  // If our aggregate has dereferencable storage, we can't optimize. Return
   // nullptr.
   if (getMemoryType(alloc).aggregateHasUnreferenceableStorage())
     return nullptr;
