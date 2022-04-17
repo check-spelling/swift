@@ -257,7 +257,7 @@ bb0(%0 : $*Builtin.Int64):
 
 // A begin_access may not be used by a partial_apply or a nested
 // begin_access prior to mandatory inlining. Nonetheless, this does
-// occur in deserialzied SIL. This SIL is only well-formed because the
+// occur in deserialized SIL. This SIL is only well-formed because the
 // function is marked [canonical].
 sil [canonical] [ossa] @accessAroundClosure : $@convention(thin) () -> () {
 bb0:
