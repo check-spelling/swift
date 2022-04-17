@@ -587,7 +587,7 @@ StoreInst *StackAllocationPromoter::promoteAllocationInBlock(
             endLexicalLifetimeBeforeInst(asi, /*beforeInstruction=*/li, ctx,
                                          runningVals->value);
           } else {
-            // If we dont't have enough information, end it endLexicalLifetime.
+            // If we don't have enough information, end it endLexicalLifetime.
             assert(!deinitializationPoints[blockPromotingWithin]);
             deinitializationPoints[blockPromotingWithin] = li;
           }
