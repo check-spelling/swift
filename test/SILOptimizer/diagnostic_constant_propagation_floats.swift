@@ -87,7 +87,7 @@ func testFloatConvertOverflow() {
   let f5: Float32 = -3.4028236E+38 // expected-warning {{'-3.4028236E+38' overflows to -inf during conversion to 'Float32' (aka 'Float')}}
   _blackHole(f5)
 
-  // Diagnositcs for Double truncations have architecture dependent
+  // Diagnostics for Double truncations have architecture dependent
   // messages. See _nonx86 and _x86 test files.
   let d1: Double = 1E308
   _blackHole(d1)
