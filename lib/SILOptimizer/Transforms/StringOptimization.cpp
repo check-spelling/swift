@@ -188,7 +188,7 @@ bool StringOptimization::optimizeStringAppend(ApplyInst *appendCall,
   StringInfo lhsString = getStringInfo(storedStrings[lhsAddr]);
 
   // The following two optimizations are a trade-off: Performance-wise it may be
-  // benefitial to initialize an empty string with reserved capacity and then
+  // beneficial to initialize an empty string with reserved capacity and then
   // append multiple other string components.
   // Removing the empty string (with the reserved capacity) might result in more
   // allocations.
