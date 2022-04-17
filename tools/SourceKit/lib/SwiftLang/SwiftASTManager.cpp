@@ -1191,7 +1191,7 @@ ASTBuildOperationRef ASTProducer::getBuildOperationForConsumer(
       ++Mgr->Impl.Stats->numASTCacheHits;
       return BuildOp;
     } else if (Consumer->canUseASTWithSnapshots(Snapshots)) {
-      ++Mgr->Impl.Stats->numASTsUsedWithSnaphots;
+      ++Mgr->Impl.Stats->numASTsUsedWithSnapshots;
       return BuildOp;
     }
   }
