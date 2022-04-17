@@ -180,7 +180,7 @@ void InstructionDeleter::forceTrackAsDead(SILInstruction *inst) {
 /// operands.
 ///
 /// \p forceDeleteUsers allows deleting an instruction with non-incidental,
-/// non-destoy uses, such as a store.
+/// non-destroy uses, such as a store.
 ///
 /// Does not call callbacks.notifyWillBeDeleted for \p inst. But does
 /// for any other instructions that become dead as a result.

@@ -47,7 +47,7 @@
 //
 //    Secondly, the body closure uses @in_guaranteed convention for the
 //    parameter. Therefore, an alloc_stack is created before the unrolled code
-//    begins to hold the elements, and is destoryed once the unrolled code ends.
+//    begins to hold the elements, and is destroyed once the unrolled code ends.
 //
 //    Thirdly, the body closure throws. Hence, it has to be try_applied. This
 //    means that we need to chain the try_applies in such a way that when the

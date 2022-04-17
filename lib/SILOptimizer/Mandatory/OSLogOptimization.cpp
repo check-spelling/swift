@@ -846,7 +846,7 @@ getUniqueBorrowScopeIntroducingValue(SILValue value) {
 }
 
 /// Replace all uses of \c originalVal by \c foldedVal and adjust lifetimes of
-/// original and folded values by emitting required destory/release instructions
+/// original and folded values by emitting required destroy/release instructions
 /// at the right places. Note that this function does not remove any
 /// instruction.
 ///
@@ -878,7 +878,7 @@ static void replaceAllUsesAndFixLifetimes(SILValue foldedVal,
   if (originalVal.getOwnershipKind() == OwnershipKind::Owned) {
     originalVal->replaceAllUsesWith(foldedVal);
     // Destroy originalVal, which is now unused, immediately after its
-    // definition. Note that originalVal's destorys are now transferred to
+    // definition. Note that originalVal's destroys are now transferred to
     // foldedVal.
     SILInstruction *insertionPoint = &(*std::next(originalInst->getIterator()));
     SILBuilderWithScope builder(insertionPoint);
