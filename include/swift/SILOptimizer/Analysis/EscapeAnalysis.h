@@ -860,7 +860,7 @@ public:
   
     /// Returns true if the graph could be computed.
     ///
-    /// For very large functions (> 10000 nodes), graphs are not cumputed to
+    /// For very large functions (> 10000 nodes), graphs are not computed to
     /// avoid quadratic complexity of the node merging algorithm.
     bool isValid() const {
       assert((valid || isEmpty()) && "invalid graph must not contain nodes");
