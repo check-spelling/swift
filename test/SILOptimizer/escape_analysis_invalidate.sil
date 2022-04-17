@@ -74,7 +74,7 @@ bb0(%0 : $*SomeProtocol, %1 : $SomeClass):
   destroy_addr %stkAdr1 : $*SomeProtocol
 
   // TempRValue optimization kicks in here. The open_existential_addr
-  // ceates a content node that refers back to the dead stack
+  // creates a content node that refers back to the dead stack
   // location.
   %stkAdr2 = alloc_stack $SomeProtocol
   copy_addr %propAdr1 to [initialization] %stkAdr2 : $*SomeProtocol
