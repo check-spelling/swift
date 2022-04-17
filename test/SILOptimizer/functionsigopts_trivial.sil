@@ -1850,7 +1850,7 @@ only(%quintuple : $Quintuple):
 // Nothing to check.
 
 // TEST_WrKlPuEx:
-// Nothig to check.
+// Nothing to check.
 
 // TEST_WrKlSh:
 // CHECK: sil shared [noinline] @$s19take_wrapper_sharedTf4x_n : $@convention(thin) (Klass) -> () {
