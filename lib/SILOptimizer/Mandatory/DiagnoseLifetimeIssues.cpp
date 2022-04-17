@@ -304,7 +304,7 @@ getArgumentState(ApplySite ai, Operand *applyOperand, int callDepth) {
   return argState;
 }
 
-/// Returns true if \p inst is outside the the pruned \p liveness.
+/// Returns true if \p inst is outside the pruned \p liveness.
 static bool isOutOfLifetime(SILInstruction *inst, PrunedLiveness &liveness) {
   // Check if the lifetime of the stored object ends at the store_weak.
   //
