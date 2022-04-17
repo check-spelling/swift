@@ -58,7 +58,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It reuses the
+// -Onone requires a destroy at the lifetime end. It reuses the
 // existing one without adding poison.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingStore : {{.*}} {
@@ -88,7 +88,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It creates a new poison one.
+// -Onone requires a destroy at the lifetime end. It creates a new poison one.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingStoreAndCall : {{.*}} {
 // CHECK: bb0:
@@ -143,7 +143,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It creates a new poison one.
+// -Onone requires a destroy at the lifetime end. It creates a new poison one.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingCallAndCall : {{.*}} {
 // CHECK: bb0:
