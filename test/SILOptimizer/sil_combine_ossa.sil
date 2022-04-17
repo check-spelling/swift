@@ -858,7 +858,7 @@ bb3(%result : @owned $C1):
   return %result : $C1
 }
 
-// In thsi case, we only have a destroy_value,s o we just put it on %0 and
+// In this case, we only have a destroy_value,s o we just put it on %0 and
 // eliminate it, implying we should have a single upcast.
 //
 // CHECK-LABEL: sil [ossa] @upcast_upcast_merge_owned_different_bb_1 :
