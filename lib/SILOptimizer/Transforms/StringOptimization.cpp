@@ -44,7 +44,7 @@ namespace {
 /// This pass must run on high-level SIL, where semantic calls are still in
 /// place.
 ///
-/// The optimization is implemented in a simple way. Therfore it cannot handle
+/// The optimization is implemented in a simple way. Therefore it cannot handle
 /// complicated patterns, e.g. the dataflow analysis for the String.append self
 /// argument is only done within a single block.
 /// But this is totally sufficient to be able to constant propagate strings in
