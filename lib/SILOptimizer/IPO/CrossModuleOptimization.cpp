@@ -404,7 +404,7 @@ bool CrossModuleOptimization::shouldSerialize(SILFunction *function) {
     return true;
 
   if (!conservative) {
-    // The basic heursitic: serialize all generic functions, because it makes a
+    // The basic heuristic: serialize all generic functions, because it makes a
     // huge difference if generic functions can be specialized or not.
     if (function->getLoweredFunctionType()->isPolymorphic())
       return true;

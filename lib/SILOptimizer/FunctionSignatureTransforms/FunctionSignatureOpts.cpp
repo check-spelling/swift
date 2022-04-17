@@ -61,7 +61,7 @@ using SILParameterInfoList = llvm::SmallVector<SILParameterInfo, 8>;
 using ArgumentIndexMap = llvm::SmallDenseMap<int, int>;
 
 //===----------------------------------------------------------------------===//
-//                           Optimization Hueristic
+//                           Optimization Heuristic
 //===----------------------------------------------------------------------===//
 
 /// Set to true to enable the support for partial specialization.
