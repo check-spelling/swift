@@ -229,7 +229,7 @@ private:
   void processFunction(FunctionInfo *info, FunctionOrder &order);
 
   /// Summarize how the function uses the given argument.
-  void processArgument(FunctionInfo *info, SILFunctionArgument *argment,
+  void processArgument(FunctionInfo *info, SILFunctionArgument *argument,
                         ArgumentSummary &summary, FunctionOrder &order);
 
   /// Summarize a partial_apply instruction.
