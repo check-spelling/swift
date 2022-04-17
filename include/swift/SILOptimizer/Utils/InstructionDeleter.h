@@ -24,7 +24,7 @@
 /// is highly bug prone and infeasible.
 ///
 /// 3. Fixup OSSA after deletion so SIL remains valid. Allowing OSSA to be
-/// invalid across API boundaries creates an intractible problem and makes it
+/// invalid across API boundaries creates an intractable problem and makes it
 /// impossible to design composable OSSA utilities.
 ///
 /// Strategies for SIL transformation:
