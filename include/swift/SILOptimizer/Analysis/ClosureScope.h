@@ -20,7 +20,7 @@
 ///
 /// Like CallerAnalysis, ClosureScope is top-down, but unlike CallerAnalysis, it
 /// does not require complex invalidation and recomputation. The underlying
-/// assumption is that no trasformation will add new references to existing
+/// assumption is that no transformation will add new references to existing
 /// non-escaping closures, with some exceptions like SILCloner.
 ///
 /// TODO: When this analysis is used across passes, fix SILCloner to update or
