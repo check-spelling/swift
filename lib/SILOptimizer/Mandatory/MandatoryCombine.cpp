@@ -244,7 +244,7 @@ bool MandatoryCombiner::doOneIteration(SILFunction &function,
   madeChange = false;
 
   addReachableCodeToWorklist(function);
-  MandatoryCombineCanonicalize mcCanonicialize(worklist, deadEndBlocks);
+  MandatoryCombineCanonicalize mcCanonicalize(worklist, deadEndBlocks);
 
   while (!worklist.isEmpty()) {
     auto *instruction = worklist.pop_back_val();
@@ -261,7 +261,7 @@ bool MandatoryCombiner::doOneIteration(SILFunction &function,
         }
       }
 
-      if (mcCanonicialize.tryCanonicalize(instruction)) {
+      if (mcCanonicalize.tryCanonicalize(instruction)) {
         madeChange = true;
         continue;
       }
