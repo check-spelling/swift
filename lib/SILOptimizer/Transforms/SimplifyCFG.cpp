@@ -1976,7 +1976,7 @@ static bool containsOnlyObjMethodCallOnOptional(SILValue optionalValue,
       continue;
     if (inst->isDebugInstruction())
       continue;
-    // An objc_method has no sideffects.
+    // An objc_method has no sideeffects.
     if (isa<ObjCMethodInst>(inst))
       continue;
 
