@@ -53,7 +53,7 @@
 /// instruction iterators during deletion. This is because deleting a single
 /// instruction may require deleting other instructions, such as debug info and
 /// scope-ending instructions. In OSSA code, deleting an instruction may even
-/// cause new instructions to be inserted. This is best handled by aquiring an
+/// cause new instructions to be inserted. This is best handled by acquiring an
 /// UpdatingInstructionIterator from the InstructionDeleter. This is usually
 /// done via InstructionDeleter::updatingRange(SILBasicBlock *).
 /// InstructionDeleter::getIteratorRegistry().makeIterator() offers more
