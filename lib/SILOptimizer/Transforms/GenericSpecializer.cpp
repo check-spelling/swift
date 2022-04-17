@@ -180,7 +180,7 @@ void MandatoryGenericSpecializer::run() {
     if (!func->isDefinition())
       continue;
 
-    // Perform generic specialization and other related optimzations.
+    // Perform generic specialization and other related optimizations.
     bool changed = optimize(func, cha);
 
     if (changed)
