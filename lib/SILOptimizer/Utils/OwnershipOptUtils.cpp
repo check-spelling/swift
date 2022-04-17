@@ -997,7 +997,7 @@ OwnershipLifetimeExtender::borrowOverValue(SILValue newValue,
 // Borrow \p newValue over \p singleGuaranteedUse. Return the new guaranteed
 // value.
 //
-// Precondition: \p newValue dominates dominates \p singleGuaranteedUse.
+// Precondition: \p newValue dominates \p singleGuaranteedUse.
 //
 // Precondition: If \p singleGuaranteedUse ends a borrowed lifetime, the \p
 // newValue also dominates the beginning of the borrow scope.
