@@ -335,7 +335,7 @@ bool OptimizeHopToExecutor::needsExecutor(SILInstruction *inst) {
 }
 
 bool OptimizeHopToExecutor::isGlobalMemory(SILValue addr) {
-  // TODO: use esacpe analysis to rule out locally allocated non-stack objects.
+  // TODO: use escape analysis to rule out locally allocated non-stack objects.
   SILValue base = getAccessBase(addr);
   return !isa<AllocStackInst>(base);
 }
