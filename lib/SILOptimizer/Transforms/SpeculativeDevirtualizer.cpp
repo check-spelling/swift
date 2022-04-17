@@ -374,7 +374,7 @@ static bool tryToSpeculateTarget(FullApplySite AI, ClassHierarchyAnalysis *CHA,
 
   // Don't devirtualize withUnsafeGuaranteed 'self' as this would prevent
   // retain/release removal.
-  //   unmanged._withUnsafeGuaranteedRef { $0.method() }
+  //   unmanaged._withUnsafeGuaranteedRef { $0.method() }
   if (auto *TupleExtract = dyn_cast<TupleExtractInst>(CMI->getOperand()))
     if (auto *UnsafeGuaranteedSelf =
             dyn_cast<BuiltinInst>(TupleExtract->getOperand()))
