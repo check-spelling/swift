@@ -73,7 +73,7 @@
 /// When a pair of non-overlapping accesses, where the first access dominates
 /// the second and there are no conflicts on the same storage in the paths
 /// between them, and they are part of the same sub-region
-/// be it the same block or the sampe loop, merge those accesses to create
+/// be it the same block or the sample loop, merge those accesses to create
 /// a new, larger, scope with a single begin_access for the accesses.
 //===----------------------------------------------------------------------===//
 
