@@ -4480,7 +4480,7 @@ void SILGenFunction::emitProtocolWitness(AbstractionPattern reqtOrigTy,
   //    @convention(method) (@thin Foo.Type) -> () but the "actual" SIL function
   // looks like this:
   //    @convention(c) () -> ()
-  // . We do this by simply omiting the last params.
+  // . We do this by simply omitting the last params.
   // TODO: fix this for static C++ methods.
   if (witness.getDecl()->getClangDecl() &&
       isa<clang::CXXConstructorDecl>(witness.getDecl()->getClangDecl()))
