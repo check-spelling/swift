@@ -988,7 +988,7 @@ void OpaqueStorageAllocation::allocateOpaqueStorage() {
   // SILValues can share storage via projections, but the storage is still
   // singly defined. However, allocatePhi may coalesce multiple values, or even
   // a single value across multiple loop iterations. The burden for checking
-  // inteference is entirely on allocatePhi.
+  // interference is entirely on allocatePhi.
   for (auto &valueStorageI : llvm::reverse(pass.valueStorageMap)) {
     if (auto phi = PhiValue(valueStorageI.value)) {
       allocatePhi(phi);
