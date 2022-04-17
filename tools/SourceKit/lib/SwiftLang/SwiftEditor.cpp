@@ -2075,7 +2075,7 @@ void SwiftEditorDocument::readSyntaxInfo(EditorConsumer &Consumer, bool ReportDi
 
     bool SawChanges = true;
     if (Impl.Edited) {
-      // We're ansering an edit request. Report all highlighted token ranges not
+      // We're answering an edit request. Report all highlighted token ranges not
       // in the previous syntax map to the Consumer and extend the AffectedRange
       // to contain all added/removed token ranges.
       SawChanges =
