@@ -908,7 +908,7 @@ public:
                 TokensInRange,
                 getImmediateContext(),
                 /*Common Parent Expr*/ nullptr,
-                /*SinleEntry*/ true,
+                /*SingleEntry*/ true,
                 getUnhandledEffects(ContainedASTNodes),
                 getOrphanKind(ContainedASTNodes),
                 llvm::makeArrayRef(ContainedASTNodes),
