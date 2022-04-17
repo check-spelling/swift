@@ -304,7 +304,7 @@ class ASTBuildOperation
   const SwiftInvocationRef InvokRef;
   const IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem;
 
-  /// The contents of all explicit input files of the compiler invoation, which
+  /// The contents of all explicit input files of the compiler innovation, which
   /// can be determined at construction time of the \c ASTBuildOperation.
   const std::vector<FileContent> FileContents;
 
