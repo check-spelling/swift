@@ -817,7 +817,7 @@ ArgumentDecoderInfo DistributedAccessor::findArgumentDecoder(
       decoderDecl->isFinal()) {
     auto *decodeSIL = IGM.getSILModule().lookUpFunction(SILDeclRef(decodeFn));
     auto *fnPtr = IGM.getAddrOfSILFunction(decodeSIL, NotForDefinition,
-                                           /*isDynamicallyReplacible=*/false);
+                                           /*isDynamicallyReplaceable=*/false);
 
     auto methodPtr = FunctionPointer::forDirect(
         classifyFunctionPointerKind(decodeSIL), fnPtr,

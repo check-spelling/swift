@@ -996,7 +996,7 @@ information when inlined.
 The function is a compiler generated thunk.
 ::
 
-  sil-function-attribute ::= '[dynamically_replacable]'
+  sil-function-attribute ::= '[dynamically_replaceable]'
 
 The function can be replaced at runtime with a different implementation.
 Optimizations must not assume anything about such a function, even if the SIL
@@ -4680,8 +4680,8 @@ dynamic_function_ref
   // $@convention(thin) T -> U must be a thin function type
   // %1 has type $T -> U
 
-Creates a reference to a `dynamically_replacable` SIL function. A
-`dynamically_replacable` SIL function can be replaced at runtime.
+Creates a reference to a `dynamically_replaceable` SIL function. A
+`dynamically_replaceable` SIL function can be replaced at runtime.
 
 For the following Swift code::
 
@@ -4693,7 +4693,7 @@ For the following Swift code::
 
 We will generate::
 
-  sil [dynamically_replacable] @test_dynamically_replaceable : $@convention(thin) () -> () {
+  sil [dynamically_replaceable] @test_dynamically_replaceable : $@convention(thin) () -> () {
   bb0:
     %0 = tuple ()
     return %0 : $()

@@ -1002,7 +1002,7 @@ static bool parseDeclSILOptional(bool *isTransparent,
       *isTransparent = true;
     else if (isSerialized && SP.P.Tok.getText() == "serialized")
       *isSerialized = IsSerialized;
-    else if (isDynamic && SP.P.Tok.getText() == "dynamically_replacable")
+    else if (isDynamic && SP.P.Tok.getText() == "dynamically_replaceable")
       *isDynamic = IsDynamic;
     else if (isDistributed && SP.P.Tok.getText() == "distributed")
       *isDistributed = IsDistributed;

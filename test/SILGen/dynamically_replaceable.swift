@@ -3,22 +3,22 @@
 // RUN: %target-swift-emit-silgen -swift-version 5 %s -disable-previous-implementation-calls-in-dynamic-replacements | %FileCheck %s --check-prefix=NOPREVIOUS
 
 // CHECK-LABEL: sil hidden [ossa] @$s23dynamically_replaceable014maybe_dynamic_B0yyF : $@convention(thin) () -> () {
-// IMPLICIT-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable014maybe_dynamic_B0yyF : $@convention(thin) () -> () {
+// IMPLICIT-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable014maybe_dynamic_B0yyF : $@convention(thin) () -> () {
 func maybe_dynamic_replaceable() {
 }
 
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable08dynamic_B0yyF : $@convention(thin) () -> () {
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable08dynamic_B0yyF : $@convention(thin) () -> () {
 dynamic func dynamic_replaceable() {
 }
 
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV1xACSi_tcfC : $@convention(method) (Int, @thin Strukt.Type) -> Strukt
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B0yyF : $@convention(method) (Strukt) -> () {
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B4_varSivg
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B4_varSivs
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktVyS2icig : $@convention(method) (Int, Strukt) -> Int
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktVyS2icis : $@convention(method) (Int, Int, @inout Strukt) -> ()
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV22property_with_observerSivW
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable6StruktV22property_with_observerSivw
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV1xACSi_tcfC : $@convention(method) (Int, @thin Strukt.Type) -> Strukt
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B0yyF : $@convention(method) (Strukt) -> () {
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B4_varSivg
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV08dynamic_B4_varSivs
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktVyS2icig : $@convention(method) (Int, Strukt) -> Int
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktVyS2icis : $@convention(method) (Int, Int, @inout Strukt) -> ()
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV22property_with_observerSivW
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6StruktV22property_with_observerSivw
 struct Strukt {
   dynamic init(x: Int) {
   }
@@ -49,14 +49,14 @@ struct Strukt {
   }
 }
 
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC1xACSi_tcfc : $@convention(method) (Int, @owned Klass) -> @owned Klass
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B0yyF : $@convention(method) (@guaranteed Klass) -> () {
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B4_varSivg
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B4_varSivs
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassCyS2icig : $@convention(method) (Int, @guaranteed Klass) -> Int
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassCyS2icis : $@convention(method) (Int, Int, @guaranteed Klass) -> ()
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC22property_with_observerSivW
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable5KlassC22property_with_observerSivw
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC1xACSi_tcfc : $@convention(method) (Int, @owned Klass) -> @owned Klass
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B0yyF : $@convention(method) (@guaranteed Klass) -> () {
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B4_varSivg
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC08dynamic_B4_varSivs
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassCyS2icig : $@convention(method) (Int, @guaranteed Klass) -> Int
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassCyS2icis : $@convention(method) (Int, Int, @guaranteed Klass) -> ()
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC22property_with_observerSivW
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable5KlassC22property_with_observerSivw
 class Klass {
   dynamic init(x: Int) {
   }
@@ -95,7 +95,7 @@ class Klass {
 }
 
 class SubKlass : Klass {
-  // CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable8SubKlassC1xACSi_tcfc
+  // CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable8SubKlassC1xACSi_tcfc
   // CHECK: // dynamic_function_ref Klass.init(x:)
   // CHECK: [[FUN:%.*]] = dynamic_function_ref @$s23dynamically_replaceable5KlassC1xACSi_tcfc
   // CHECK: apply [[FUN]]
@@ -103,7 +103,7 @@ class SubKlass : Klass {
     super.init(x: x)
   }
 }
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable6globalSivg : $@convention(thin) () -> Int {
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable6globalSivg : $@convention(thin) () -> Int {
 dynamic var global : Int {
   return 1
 }
@@ -295,8 +295,8 @@ struct GenericS<T> {
     }
   }
 
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable8GenericSV22property_with_observerSivW
-// CHECK-LABEL: sil private [dynamically_replacable] [ossa] @$s23dynamically_replaceable8GenericSV22property_with_observerSivw
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable8GenericSV22property_with_observerSivW
+// CHECK-LABEL: sil private [dynamically_replaceable] [ossa] @$s23dynamically_replaceable8GenericSV22property_with_observerSivw
   dynamic var property_with_observer : Int {
     didSet {
     }
@@ -363,8 +363,8 @@ extension GenericS {
 }
 
 dynamic var globalX = 0
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable7globalXSivg : $@convention(thin) () -> Int
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable7globalXSivs : $@convention(thin) (Int) -> ()
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable7globalXSivg : $@convention(thin) () -> Int
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable7globalXSivs : $@convention(thin) (Int) -> ()
 // CHECK-LABEL: sil hidden [ossa] @$s23dynamically_replaceable7getsetXyS2iF
 // CHECK: dynamic_function_ref @$s23dynamically_replaceable7globalXSivs
 // CHECK: dynamic_function_ref @$s23dynamically_replaceable7globalXSivg
@@ -374,7 +374,7 @@ func getsetX(_ x: Int) -> Int {
 }
 
 // CHECK-LABEL: sil hidden [ossa] @$s23dynamically_replaceable18funcWithDefaultArgyySSFfA_
-// CHECK-LABEL: sil hidden [dynamically_replacable] [ossa] @$s23dynamically_replaceable18funcWithDefaultArgyySSF
+// CHECK-LABEL: sil hidden [dynamically_replaceable] [ossa] @$s23dynamically_replaceable18funcWithDefaultArgyySSF
 dynamic func funcWithDefaultArg(_ arg : String = String("hello")) {
   print("hello")
 }
@@ -390,7 +390,7 @@ defer {
   let y = x
 }
 
-// IMPLICIT-LABEL: sil [dynamically_replacable] [ossa] @$s23dynamically_replaceable16testWithLocalFunyyF
+// IMPLICIT-LABEL: sil [dynamically_replaceable] [ossa] @$s23dynamically_replaceable16testWithLocalFunyyF
 // IMPLICIT-LABEL: sil private [ossa] @$s23dynamically_replaceable16testWithLocalFunyyF05localF0L_yyF
 // IMPLICIT-LABEL: sil private [ossa] @$s23dynamically_replaceable16testWithLocalFunyyF05localF0L_yyF0geF0L_yyF
 // IMPLICIT-LABEL: sil private [ossa] @$s23dynamically_replaceable16testWithLocalFunyyFyycfU_

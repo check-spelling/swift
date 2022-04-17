@@ -82,10 +82,10 @@ bb3(%result : @owned $AnNSArray):
   return %result : $AnNSArray
 }
 
-sil [_semantics "convertFromObjectiveC"] [dynamically_replacable] @bridgeFromObjectiveC2 :
+sil [_semantics "convertFromObjectiveC"] [dynamically_replaceable] @bridgeFromObjectiveC2 :
   $@convention(thin) <τ_0_0> (@owned AnNSArray) -> @owned AnArray<τ_0_0>
 
-sil [_semantics "convertToObjectiveC"] [dynamically_replacable] @bridgeToObjectiveC2:
+sil [_semantics "convertToObjectiveC"] [dynamically_replaceable] @bridgeToObjectiveC2:
   $@convention(method) <τ_0_0> (@owned AnArray<τ_0_0>) -> @owned AnNSArray
 
 // This should not crash.

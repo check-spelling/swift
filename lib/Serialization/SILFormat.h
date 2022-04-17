@@ -279,7 +279,7 @@ namespace sil_block {
                      BCFixed<1>,  // has qualified ownership
                      BCFixed<1>,  // force weak linking
                      BC_AVAIL_TUPLE, // availability for weak linking
-                     BCFixed<1>,  // is dynamically replacable
+                     BCFixed<1>,  // is dynamically replaceable
                      BCFixed<1>,  // exact self class
                      BCFixed<1>,  // is distributed
                      TypeIDField, // SILFunctionType

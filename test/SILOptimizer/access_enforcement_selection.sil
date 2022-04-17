@@ -99,7 +99,7 @@ bb0:
   return %9 : $()
 }
 
-sil [dynamically_replacable] [ossa] @closureCapturingByStorageAddress2 : $@convention(thin) (@inout_aliasable Builtin.Int64) -> ()
+sil [dynamically_replaceable] [ossa] @closureCapturingByStorageAddress2 : $@convention(thin) (@inout_aliasable Builtin.Int64) -> ()
 
 // Make sure that we handle dynamic_function_ref.
 sil hidden [ossa] @escapeAsArgumentToPartialApplyDynamic : $@convention(thin) () -> () {
