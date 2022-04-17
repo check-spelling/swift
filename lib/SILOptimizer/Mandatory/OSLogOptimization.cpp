@@ -818,10 +818,10 @@ getEndPointsOfDataDependentChain(SingleValueInstruction *value, SILFunction *fun
       valueDefinition ? valueDefinition : &(value->getParentBlock()->front());
   ValueLifetimeAnalysis lifetimeAnalysis(def, transitiveUsers);
   ValueLifetimeAnalysis::Frontier frontier;
-  bool hasCriticlEdges = lifetimeAnalysis.computeFrontier(
+  bool hasCriticalEdges = lifetimeAnalysis.computeFrontier(
       frontier, ValueLifetimeAnalysis::DontModifyCFG);
   endUsers.append(frontier.begin(), frontier.end());
-  if (!hasCriticlEdges)
+  if (!hasCriticalEdges)
     return;
   // If there are some lifetime frontiers on the critical edges, take the
   // first instruction of the target of the critical edge as the frontier. This
