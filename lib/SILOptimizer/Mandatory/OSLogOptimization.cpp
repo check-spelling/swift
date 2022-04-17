@@ -841,7 +841,7 @@ getEndPointsOfDataDependentChain(SingleValueInstruction *value, SILFunction *fun
 static Optional<BorrowedValue>
 getUniqueBorrowScopeIntroducingValue(SILValue value) {
   assert(value.getOwnershipKind() == OwnershipKind::Guaranteed &&
-         "parameter must be a guarenteed value");
+         "parameter must be a guaranteed value");
   return getSingleBorrowIntroducingValue(value);
 }
 
