@@ -235,14 +235,14 @@ extension TestPrespecialized {
 }
 
 extension PublicThing {
-  // CHECK-LABEL: sil [_specialize exported: true, kind: full, target: "$s1A11PublicThingV11doStuffWithyyxF", where T == PublicPlainThing] [_specialize exported: true, kind: full, target: "$s1A11PublicThingV11doStuffWithyyxF", where T == Float] [ossa] @$s1A11PublicThingV15specialize_attrE17specializedoStuffyyxF : $@convention(method) <T> (@in_guaranteed T, PublicThing<T>) -> () {
+  // CHECK-LABEL: sil [_specialize exported: true, kind: full, target: "$s1A11PublicThingV11doStuffWithyyxF", where T == PublicPlainThing] [_specialize exported: true, kind: full, target: "$s1A11PublicThingV11doStuffWithyyxF", where T == Float] [ossa] @$s1A11PublicThingV15specialize_attrE17specializedDoStuffyyxF : $@convention(method) <T> (@in_guaranteed T, PublicThing<T>) -> () {
 
   // CHECK-OPT-DAG: sil @$s1A11PublicThingV11doStuffWithyyxFAA0a5PlainB0V_Ts5 : $@convention(method) (PublicPlainThing, PublicThing<PublicPlainThing>) -> () {
   // CHECK-OPT-DAG: sil @$s1A11PublicThingV11doStuffWithyyxFSf_Ts5 : $@convention(method) (Float, PublicThing<Float>) -> () {
 
   @_specialize(exported: true, kind: full, target: doStuffWith(_:), where T == Float)
   @_specialize(exported: true, kind: full, target: doStuffWith(_:), where T == PublicPlainThing)
-  public func specializedoStuff(_ t: T) {}
+  public func specializedDoStuff(_ t: T) {}
 }
 
 @_specializeExtension

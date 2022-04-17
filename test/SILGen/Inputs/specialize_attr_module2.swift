@@ -3,7 +3,7 @@ import A
 extension PublicThing {
   @_specialize(exported: true, kind: full, target: doStuffWith(_:), where T == Int)
   @_specialize(exported: true, kind: full, target: doStuffWith(_:), availability: macOS 10.50, *; where T == Int16)
-  public func specializedoStuff2(_ t: T) {}
+  public func specializedDoStuff2(_ t: T) {}
 }
 
 @_specializeExtension
