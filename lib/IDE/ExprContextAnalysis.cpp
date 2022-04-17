@@ -88,7 +88,7 @@ class ExprFinder : public ASTWalker {
   SourceRange TargetRange;
   Expr *FoundExpr = nullptr;
 
-  template <typename NodeType> bool isInterstingRange(NodeType *Node) {
+  template <typename NodeType> bool isInterestingRange(NodeType *Node) {
     return SM.rangeContains(Node->getSourceRange(), TargetRange);
   }
 
@@ -125,15 +125,15 @@ public:
       FoundExpr = E;
       return {false, nullptr};
     }
-    return {isInterstingRange(E), E};
+    return {isInterestingRange(E), E};
   }
 
   std::pair<bool, Pattern *> walkToPatternPre(Pattern *P) override {
-    return {isInterstingRange(P), P};
+    return {isInterestingRange(P), P};
   }
 
   std::pair<bool, Stmt *> walkToStmtPre(Stmt *S) override {
-    return {isInterstingRange(S), S};
+    return {isInterestingRange(S), S};
   }
 
   bool walkToTypeReprPre(TypeRepr *T) override { return false; }
