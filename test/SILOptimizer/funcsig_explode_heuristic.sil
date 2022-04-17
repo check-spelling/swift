@@ -54,7 +54,7 @@ bb0(%0 : $BigTrivial):
 }
 
 // If a value is never used, do not touch it. We leave it for dead argument
-// elimination. We have delibrately turned this off to test that behavior.
+// elimination. We have deliberately turned this off to test that behavior.
 //
 // CHECK-LABEL: sil @big_arg_with_no_uses : $@convention(thin) (@guaranteed LargeNonTrivialStructOneNonTrivialField) -> () {
 // CHECK-NOT: apply
