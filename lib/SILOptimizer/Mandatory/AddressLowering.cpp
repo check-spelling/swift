@@ -2469,7 +2469,7 @@ protected:
   void visitDeinitExistentialValueInst(
       DeinitExistentialValueInst *deinitExistential) {
     // FIXME: Unimplemented
-    llvm::report_fatal_error("Unimplemented DeinitExsitentialValue use.");
+    llvm::report_fatal_error("Unimplemented DeinitExistentialValue use.");
   }
 
   void visitDestroyValueInst(DestroyValueInst *destroy) {
