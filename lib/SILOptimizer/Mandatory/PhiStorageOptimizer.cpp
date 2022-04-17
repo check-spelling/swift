@@ -135,7 +135,7 @@ void CoalescedPhi::coalesce(PhiValue phi,
 /// Optimize phi storage by coalescing phi operands.
 ///
 /// Finds all non-interfering phi operands and adds them to the result's
-/// coalecedOperands. The algorithm can be described in the abstract as follows
+/// coalescedOperands. The algorithm can be described in the abstract as follows
 /// (assuming no critical edges):
 ///
 /// All blocks are in one of three states at any point:
@@ -158,7 +158,7 @@ void CoalescedPhi::coalesce(PhiValue phi,
 ///
 ///       Occupied: record interference, stop scanning, continue to next use.
 ///
-///   If no occupied blocks were reached, mark this phi operand coalseced. It's
+///   If no occupied blocks were reached, mark this phi operand coalesced. It's
 ///   storage can be projected from the phi storage.
 ///
 ///   Mark all live blocks occupied.
