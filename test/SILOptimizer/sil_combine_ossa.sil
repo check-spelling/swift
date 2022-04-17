@@ -3302,7 +3302,7 @@ enum ErrorEnum: Error {
     case other
 }
 
-// In OSSA we can compeltely remove this test case from sil_combine.sil. I added
+// In OSSA we can completely remove this test case from sil_combine.sil. I added
 // a version afterwards that is too complicated for sil-combine that should show
 // the behavior specified.
 //
