@@ -1142,7 +1142,7 @@ bb0:
   %3 = function_ref @klass_allocator : $@convention(method) (@thick Klass.Type) -> @owned Klass
   %4 = apply %3(%2) : $@convention(method) (@thick Klass.Type) -> @owned Klass
   // We can never in constant propagation forward %5 today since we would need
-  // to know that we are eliminting all of its uses. But the pass doesn't
+  // to know that we are eliminating all of its uses. But the pass doesn't
   // understand that today and so destroy_value %5 in bb2 stops our ability to
   // optimize.
   %5 = tuple (%1 : $Int, %4 : $Klass)
