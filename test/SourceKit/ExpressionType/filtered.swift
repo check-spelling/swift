@@ -3,9 +3,9 @@ protocol Prot {}
 
 protocol Prot1 {}
 
-class Clas: Prot {
-  var value: Clas { return self }
-  func getValue() -> Clas { return self }
+class Clazz: Prot {
+  var value: Clazz { return self }
+  func getValue() -> Clazz { return self }
 }
 
 struct Stru: Prot, Prot1 {
@@ -21,7 +21,7 @@ func ArrayC(_ a: [C]) {
 	_ = a[0]
 }
 
-func ArrayClass(_ a: [Clas]) {
+func ArrayClass(_ a: [Clazz]) {
 	_ = a[0].value.getValue().value
 }
 
@@ -36,9 +36,9 @@ class Proto2Conformer: Proto2 {}
 func foo(_ c: Proto2Conformer) { _ = c }
 
 // BOTH: <ExpressionTypes>
-// BOTH: (126, 130): Clas
+// BOTH: (126, 130): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
-// BOTH: (168, 172): Clas
+// BOTH: (168, 172): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
 // BOTH: (232, 236): Stru
 // BOTH: conforming to: s:8filtered4ProtP
@@ -46,13 +46,13 @@ func foo(_ c: Proto2Conformer) { _ = c }
 // BOTH: (274, 278): Stru
 // BOTH: conforming to: s:8filtered4ProtP
 // BOTH: conforming to: s:8filtered5Prot1P
-// BOTH: (434, 461): Clas
+// BOTH: (434, 461): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
-// BOTH: (434, 455): Clas
+// BOTH: (434, 455): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
-// BOTH: (434, 444): Clas
+// BOTH: (434, 444): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
-// BOTH: (434, 438): Clas
+// BOTH: (434, 438): Clazz
 // BOTH: conforming to: s:8filtered4ProtP
 // BOTH: (500, 527): Stru
 // BOTH: conforming to: s:8filtered4ProtP
