@@ -192,7 +192,7 @@ bb0:
 // the second element indicate whether an overflow happened or not.
 // The interpreter currently makes the entire tuple unknown in the case of
 // overflow. This should be replaced by the correct semantics of the builtin
-// which produces a trucated value for the first element and returns true for
+// which produces a truncated value for the first element and returns true for
 // the second element.
 
 // CHECK-LABEL: @interpretSignedTruncationError
