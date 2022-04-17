@@ -28,7 +28,7 @@
 /// connections to Definite Initialization. This is because early in the
 /// development of Swift, Predictable Memory Optimizations and Definite
 /// Initialization were actually the same pass. The pass grew really big and the
-/// two passes were split, but still used similra utility code. This became the
+/// two passes were split, but still used similar utility code. This became the
 /// original DIMemoryUseCollector.*. This code was full of conditional logic for
 /// all of the various cases that made it difficult to understand which code was
 /// needed for Predictable Mem Opts and what was needed for DI. The introduction
