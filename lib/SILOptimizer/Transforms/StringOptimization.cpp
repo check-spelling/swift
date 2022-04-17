@@ -410,7 +410,7 @@ static bool mayWriteToIdentifyableObject(SILInstruction *inst) {
   return isa<StoreInst>(inst) || isa<ApplyInst>(inst);
 }
 
-/// Returns the store intstruction if \p inst is a store of a String to an
+/// Returns the store instruction if \p inst is a store of a String to an
 /// identifiable object.
 StoreInst *StringOptimization::
 isStringStoreToIdentifyableObject(SILInstruction *inst) {

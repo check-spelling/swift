@@ -79,7 +79,7 @@ killInstAndIncidentalUses(SingleValueInstruction *inst,
 //===----------------------------------------------------------------------===//
 
 // If simplification is successful, return a valid iterator to the next
-// intruction that wasn't erased.
+// instruction that wasn't erased.
 static Optional<SILBasicBlock::iterator>
 simplifyAndReplace(SILInstruction *inst, CanonicalizeInstruction &pass) {
   // Erase the simplified instruction and any instructions that end its

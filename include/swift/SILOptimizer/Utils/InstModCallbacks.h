@@ -1,4 +1,4 @@
-//===--- InstModCallbacks.h - intruction modification callbacks -*- C++ -*-===//
+//===--- InstModCallbacks.h - instruction modification callbacks -*- C++ -*-===//
 //
 // This source file is part of the Swift.org open source project
 //

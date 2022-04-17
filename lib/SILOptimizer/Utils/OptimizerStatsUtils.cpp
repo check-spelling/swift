@@ -164,7 +164,7 @@ llvm::cl::opt<StatsOnlyInstructionsOpt, true, llvm::cl::parser<std::string>>
     StatsOnlyInstructions(
         "sil-stats-only-instructions",
         llvm::cl::desc(
-            "Comma separated list of SIL insruction names, whose stats "
+            "Comma separated list of SIL instruction names, whose stats "
             "should be collected"),
         llvm::cl::Hidden, llvm::cl::ZeroOrMore,
         llvm::cl::value_desc("instruction name"),

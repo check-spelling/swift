@@ -153,7 +153,7 @@ using UpdatingReverseInstructionIterator =
     UpdatingListIterator<SILBasicBlock::reverse_iterator, true,
                          UpdatingInstructionIteratorRegistry>;
 
-/// Track instruction iterators that need updating when intructions are added or
+/// Track instruction iterators that need updating when instructions are added or
 /// deleted. Iterators can be tracked across multiple levels of the call
 /// stack. This registry object must outlive any iterators that it vends.
 ///
