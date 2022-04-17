@@ -465,7 +465,7 @@ TEST_F(CursorInfoTest, DISABLED_CursorInfoCancelsPreviousRequest) {
 
   bool expired = FirstCursorInfoSema.wait(30 * 1000);
   if (expired)
-    llvm::report_fatal_error("Did not receive a resonse for the first request");
+    llvm::report_fatal_error("Did not receive a response for the first request");
 }
 
 // Disabled until we re-enable cancellation (rdar://91251055)
@@ -503,5 +503,5 @@ TEST_F(CursorInfoTest, DISABLED_CursorInfoCancellation) {
 
   bool expired = CursorInfoSema.wait(30 * 1000);
   if (expired)
-    llvm::report_fatal_error("Did not receive a resonse for the first request");
+    llvm::report_fatal_error("Did not receive a response for the first request");
 }
