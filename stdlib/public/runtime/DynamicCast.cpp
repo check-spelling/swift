@@ -1288,7 +1288,7 @@ tryCastToFunction(
   const auto destFuncType = cast<FunctionTypeMetadata>(destType);
 
   // Function casts succeed on exact matches, or if the target type is
-  // throwier than the source type.
+  // thrower than the source type.
   //
   // TODO: We could also allow ABI-compatible variance, such as casting
   // a dynamic Base -> Derived to Derived -> Base. We wouldn't be able to
