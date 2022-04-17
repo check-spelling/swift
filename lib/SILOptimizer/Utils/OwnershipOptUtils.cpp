@@ -591,7 +591,7 @@ void BorrowedLifetimeExtender::analyzeExtendedScope() {
 // same type.
 //
 // TODO: consider reusing copies that dominate multiple reborrowed
-// operands. Howeer, this requires copying in an earlier block and inserting
+// operands. However, this requires copying in an earlier block and inserting
 // post-dominating destroys, which may be better handled in an ownership phi
 // canonicalization pass.
 SILValue BorrowedLifetimeExtender::createCopyAtEdge(PhiOperand reborrowOper) {
