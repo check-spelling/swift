@@ -2543,7 +2543,7 @@ void SwiftLangSupport::editorReplaceText(StringRef Name,
       SyntaxCache->addEdit(Offset, Offset + Length, Buf->getBufferSize());
     }
 
-    // If client doesn't need any information, we doen't need to parse it.
+    // If client doesn't need any information, we doesn't need to parse it.
 
 
     SyntaxParsingCache *SyntaxCachePtr = nullptr;
