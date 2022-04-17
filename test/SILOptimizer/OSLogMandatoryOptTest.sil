@@ -1057,7 +1057,7 @@ bb0:
 }
 
 // The following tests are for checking that constant folding doesn't
-// cause a crash when evaulating the instructions of an animation signpost.
+// cause a crash when evaluating the instructions of an animation signpost.
 
 // Protocol stub for CVarArgStub
 protocol CVarArgStub {}
