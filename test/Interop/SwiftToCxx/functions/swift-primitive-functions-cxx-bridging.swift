@@ -4,8 +4,8 @@
 
 // RUN: %check-interop-cxx-header-in-clang(%t/functions.h)
 
-// CHECK:      inline float passThrougCFloat(float x) noexcept SWIFT_WARN_UNUSED_RESULT {
-// CHECK-NEXT: return _impl::$s9Functions16passThrougCFloatyS2fF(x);
+// CHECK:      inline float passThroughCFloat(float x) noexcept SWIFT_WARN_UNUSED_RESULT {
+// CHECK-NEXT: return _impl::$s9Functions16passThroughCFloatyS2fF(x);
 // CHECK-NEXT: }
 
 // CHECK:      inline bool passThroughBool(bool x) noexcept SWIFT_WARN_UNUSED_RESULT {
@@ -162,7 +162,7 @@ public func passThroughCUnsignedShort(_ x: CUnsignedShort) -> CUnsignedShort { r
 public func passThroughCUnsignedInt(_ x: CUnsignedInt) -> CUnsignedInt { return x }
 public func passThroughCUnsignedLongLong(_ x: CUnsignedLongLong) -> CUnsignedLongLong { return x }
 
-public func passThrougCFloat(_ x: CFloat) -> CFloat { return x }
+public func passThroughCFloat(_ x: CFloat) -> CFloat { return x }
 public func passThroughCDouble(_ x: CDouble) -> CDouble { return x }
 
 public func passThroughInt8(_ x: Int8) -> Int8 { return x }
