@@ -2081,7 +2081,7 @@ static bool onlyForwardsNone(SILBasicBlock *noneBB, SILBasicBlock *someBB,
 ///   \             |       v
 ///    \            ... more bbs? (A)
 ///     \           /
-///       ulimateBB
+///       ultimateBB
 ///
 /// This routine does not support diverging control flow in (A). This means that
 /// there must not be any loops or diamonds beginning in that region. We do
