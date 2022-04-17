@@ -1,7 +1,7 @@
 // RUN: %target-swift-frontend -swift-version 5 -typecheck -dump-ast %s | %FileCheck  %s
 
-struct Strukt {
-  // CHECK: (struct_decl {{.*}} "Strukt"
+struct Struct {
+  // CHECK: (struct_decl {{.*}} "Struct"
   // CHECK: (var_decl {{.*}} "dynamicStorageOnlyVar" type='Int' interface type='Int' access=internal dynamic readImpl=stored writeImpl=stored readWriteImpl=stored
   // CHECK: (accessor_decl {{.*}} access=internal dynamic get_for=dynamicStorageOnlyVar
   // CHECK: (accessor_decl {{.*}} access=internal dynamic set_for=dynamicStorageOnlyVar
@@ -126,7 +126,7 @@ struct Strukt {
   // CHECK: (accessor_decl {{.*}} access=internal dynamic set_for=subscript(_:)
   // CHECK: (accessor_decl {{.*}} access=internal get_for=subscript(_:)
   // CHECK: (accessor_decl {{.*}} access=internal _modify_for=subscript(_:)
-  dynamic subscript(_ index: Strukt) -> Int {
+  dynamic subscript(_ index: Struct) -> Int {
     _read {
     }
     set {
