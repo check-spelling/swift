@@ -352,7 +352,7 @@ class SILInstruction : public llvm::ilist_node<SILInstruction> {
 
   /// Total number of created and deleted SILInstructions.
   ///
-  /// Ideally, those counters would be inside SILModules to allow mutiple
+  /// Ideally, those counters would be inside SILModules to allow multiple
   /// SILModules (e.g. in different threads).
   static int NumCreatedInstructions;
   static int NumDeletedInstructions;

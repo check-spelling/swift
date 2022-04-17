@@ -1008,7 +1008,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
     diagnose(ctx, loc, diag::constexpr_value_unknown_at_top_level);
     return;
   }
-  case UnknownReason::MutipleTopLevelWriters: {
+  case UnknownReason::MultipleTopLevelWriters: {
     // For top-level errors, trigger loc is better than diagLoc.
     auto loc = emitTriggerLocInDiag ? triggerLoc : diagLoc;
     diagnose(ctx, loc, diag::constexpr_multiple_writers_found_at_top_level);
