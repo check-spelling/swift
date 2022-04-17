@@ -2703,7 +2703,7 @@ bool EscapeAnalysis::canEscapeToUsePoint(SILValue value,
     // First check if 'node' may escape in a way not represented by the
     // connection graph, assuming that it may represent part of the object
     // pointed to by 'value'. If 'node' happens to represent another object
-    // indirectly reachabe from 'value', then it cannot actually escape to this
+    // indirectly reachable from 'value', then it cannot actually escape to this
     // usePoint, so passing the original value is still conservatively correct.
     if (node->valueEscapesInsideFunction(value))
       return true;
