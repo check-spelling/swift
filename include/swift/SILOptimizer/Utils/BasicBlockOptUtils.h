@@ -195,7 +195,7 @@ protected:
   /// Will cloning require an SSA update?
   bool needsSSAUpdate = false;
 
-  /// Transient object for analyzing a single address projction chain. It's
+  /// Transient object for analyzing a single address projection chain. It's
   /// state is reset each time analyzeAddressProjections is called.
   SinkAddressProjections sinkProj;
 
