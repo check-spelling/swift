@@ -2042,7 +2042,7 @@ bool PullbackCloner::Implementation::run() {
       return true;
   }
   // Otherwise, perform standard pullback generation.
-  // Visit original blocks blocks in post-order and perform differentiation
+  // Visit original blocks in post-order and perform differentiation
   // in corresponding pullback blocks. If errors occurred, back out.
   else {
     for (auto *bb : originalBlocks) {
