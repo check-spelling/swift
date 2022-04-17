@@ -71,7 +71,7 @@
 /// phi operand. Such a copy implies that both the operand and phi value are
 /// live past the phi. Nonetheleses, they could still be coalesced as
 /// follows... First coalesce all direct phi operands. Then transitively
-/// coalesce copies by checking if the copy's source is coalescable, then
+/// coalesce copies by checking if the copy's source is coalesceable, then
 /// redoing the liveness traversal from the uses of the copy.
 ///
 /// TODO: This approach uses on-the-fly liveness discovery for all incoming
