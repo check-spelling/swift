@@ -266,7 +266,7 @@ class ASTBuildOperation
     /// The AST that was created by the build operation.
     ASTUnitRef AST;
     /// An error message emitted by the creation of the AST. There might still
-    /// be an AST if an error occurred, but it's usefulnes depends on the
+    /// be an AST if an error occurred, but it's usefulness depends on the
     /// severity of the error.
     std::string Error;
     /// Whether the build operation was cancelled. There might be an AST and
