@@ -1312,7 +1312,7 @@ static SILInstruction *beginOfInterpolation(ApplyInst *oslogInit) {
         seenInstructions.insert(definingInstruction);
         candidateStartInstructions.insert(definingInstruction);
       }
-      // If there is no definining instruction for this operand, it could be a
+      // If there is no defining instruction for this operand, it could be a
       // basic block or function parameter. Such operands are not considered
       // in the backward slice. Dependencies through them are safe to ignore
       // in this context.
