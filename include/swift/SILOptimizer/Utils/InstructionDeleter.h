@@ -64,7 +64,7 @@
 /// For data structures that contain instruction pointers and persist across
 /// calls to forceDelete* or cleanupDeadInstructions... There is no need to
 /// create an updating iterator. Simply check Instruction::isDeleted() when
-/// retriving a pointer from the data structure.
+/// retrieving a pointer from the data structure.
 ///
 /// Using InstModCallbacks:
 ///
