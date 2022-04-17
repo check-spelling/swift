@@ -284,7 +284,7 @@ void addSimplifyCFGSILCombinePasses(SILPassPipelinePlan &P) {
   // Jump threading can expose opportunity for silcombine (enum -> is_enum_tag->
   // cond_br).
   P.addSILCombine();
-  // Which can expose opportunity for simplifcfg.
+  // Which can expose opportunity for simplifycfg.
   P.addSimplifyCFG();
 }
 
