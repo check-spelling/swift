@@ -182,7 +182,7 @@ public:
 /// instead.
 ///
 /// After cloning, call updateSSAAfterCloning. This is decoupled from cloning
-/// becaused some clients perform CFG edges updates after cloning but before
+/// because some clients perform CFG edges updates after cloning but before
 /// splitting CFG edges.
 class BasicBlockCloner : public SILCloner<BasicBlockCloner> {
   using SuperTy = SILCloner<BasicBlockCloner>;

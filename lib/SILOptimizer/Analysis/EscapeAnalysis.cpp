@@ -610,7 +610,7 @@ void EscapeAnalysis::ConnectionGraph::initializePointsTo(CGNode *initialNode,
     if (node->pointsTo) {
       assert(node->pointsTo == newPointsTo);
       // Since this node already had a pointsTo, it must reach a pointsTo
-      // edge. Stop traversing the defer-web here--this is complete becaused
+      // edge. Stop traversing the defer-web here--this is complete because
       // nodes are initialized one at a time, each time a new defer edge is
       // created. If this were not complete, then the backward traversal below
       // in Step 2 could reach uninitialized nodes not seen here in Step 1.
@@ -2859,7 +2859,7 @@ bool EscapeAnalysis::canPointToSameMemory(SILValue V1, SILValue V2) {
 // TODO: In the future, we may have an AliasAnalysis query that distinguishes
 // between retain-sinking vs. release-hoisting. With SemanticARC, we may not
 // need to do this, but it is possible to be much more aggressive with
-// release-hoisting. This is becase, for a retain/release pair, it's always ok
+// release-hoisting. This is because, for a retain/release pair, it's always ok
 // to release earlier as long as there are no subsequent aliasing uses. If the
 // caller is only concerned with release hoisting and knows there are no
 // subsequent aliasing uses protected by a local release, then the connection

@@ -489,7 +489,7 @@ func keypathToEmptyEnum() -> Never {
   // does not trigger an unreachable code warning here.
   let kp = \StructWithNeverProp.property // no warning
   let s = StructWithNeverProp()
-  // Emit a diagnostic here becase the keypath is actually used.
+  // Emit a diagnostic here because the keypath is actually used.
   let prop = s[keyPath: kp]
     // expected-warning@-1 {{will never be executed}} \
     // expected-note {{a call to a never-returning function}} \

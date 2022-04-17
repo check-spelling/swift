@@ -615,7 +615,7 @@ struct SwiftSemanticToken {
 #if !defined(_MSC_VER)
 static_assert(sizeof(SwiftSemanticToken) == 8, "Too big");
 // FIXME: MSVC doesn't pack bitfields with different underlying types.
-// Giving up to check this in MSVC for now, becasue static_assert is only for
+// Giving up to check this in MSVC for now, because static_assert is only for
 // keeping low memory usage.
 #endif
 
