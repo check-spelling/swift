@@ -2035,7 +2035,7 @@ SILValue ApplyRewriter::materializeIndirectResultAddress(SILValue oldResult,
   });
 
   if (oldResult && !oldResult->use_empty()) {
-    // Insert reloads immediately after the call. Get the reaload insertion
+    // Insert reloads immediately after the call. Get the reload insertion
     // point after emitting dealloc to ensure the reload happens first.
     auto reloadBuilder = pass.getBuilder(getResultInsertionPoint());
 
