@@ -501,7 +501,7 @@ macro(add_sourcekit_xpc_service name framework_target)
   list(APPEND RPATH_LIST "@loader_path/${relative_lib_path}")
 
   # Add rpath for sourcekitdInProc
-  # lib/${framework_taget}.framework/Versions/A/XPCServices/${name}.xpc/Contents/MacOS/${name}
+  # lib/${framework_target}.framework/Versions/A/XPCServices/${name}.xpc/Contents/MacOS/${name}
   set_target_properties(${name} PROPERTIES
                         BUILD_WITH_INSTALL_RPATH On
                         INSTALL_RPATH "${RPATH_LIST}"
