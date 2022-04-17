@@ -289,7 +289,7 @@ static bool growingSubstitutions(SubstitutionMap Subs1,
     // They are not comparable in this sense.
   }
 
-  // The substitition list is not growing.
+  // The substitution list is not growing.
   return false;
 }
 

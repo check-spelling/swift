@@ -729,7 +729,7 @@ SILCombiner::buildConcreteOpenedExistentialInfoFromSoleConformingType(
   if (!PCA->getSoleConformingType(PD, CHA, ConcreteType))
     return None;
 
-  // Determine OpenedArchetypeDef and SubstituionMap.
+  // Determine OpenedArchetypeDef and SubstitutionMap.
   ConcreteOpenedExistentialInfo COAI(ArgOperand, ConcreteType, PD);
   if (!COAI.CEI)
     return None;

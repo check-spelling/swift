@@ -262,7 +262,7 @@ void ConcreteExistentialInfo::initializeSubstitutionMap(
       ExistentialSig, [&](SubstitutableType *type) { return ConcreteType; },
       [&](CanType /*depType*/, Type /*replaceType*/,
           ProtocolDecl *proto) -> ProtocolConformanceRef {
-        // Directly providing ExistentialConformances to the SubstitionMap will
+        // Directly providing ExistentialConformances to the SubstitutionMap will
         // fail because of the mismatch between opened archetype conformance and
         // existential value conformance. Instead, provide a conformance lookup
         // function that pulls only the necessary conformances out of
