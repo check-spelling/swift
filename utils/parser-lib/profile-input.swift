@@ -1975,7 +1975,7 @@ extension BrowserViewController: IntroViewControllerDelegate {
     func launchFxAFromDeeplinkURL(_ url: URL) {
         self.profile.prefs.removeObjectForKey("AdjustDeeplinkKey")
         var query = url.getQuery()
-        query["entrypoint"] = "adjust_deepklink_ios"
+        query["entrypoint"] = "adjust_deeplink_ios"
         let fxaParams: FxALaunchParams
         fxaParams = FxALaunchParams(query: query)
         self.presentSignInViewController(fxaParams)
