@@ -514,7 +514,7 @@ emitDerivativeFunctionReference(
     auto *desiredResultIndices = desiredConfig.resultIndices;
     // NOTE(TF-893): Extending capacity is necessary when `originalFnTy` has
     // parameters corresponding to captured variables.
-    // TODO: If posssible, change `autodiff::getLoweredParameterIndices` to
+    // TODO: If possible, change `autodiff::getLoweredParameterIndices` to
     // take `CaptureInfo` into account.
     if (originalFnTy->getNumParameters() >
         desiredParameterIndices->getCapacity()) {

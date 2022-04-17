@@ -1302,7 +1302,7 @@ void SILGenModule::emitDifferentiabilityWitness(
   // NOTE(TF-893): Extending capacity is necessary when `origSilFnType` has
   // parameters corresponding to captured variables. These parameters do not
   // appear in the type of `origFnType`.
-  // TODO: If posssible, change `autodiff::getLoweredParameterIndices` to
+  // TODO: If possible, change `autodiff::getLoweredParameterIndices` to
   // take `CaptureInfo` into account.
   if (origSilFnType->getNumParameters() > silParamIndices->getCapacity())
     silParamIndices = silParamIndices->extendingCapacity(
