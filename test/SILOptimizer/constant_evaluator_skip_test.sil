@@ -292,8 +292,8 @@ bb0(%0 : $*Int64):
   return %15 : $()
 }
 
-// CHECK-LABEL: @interpretInteleavedSkipAndNonSkip
-sil @interpretInteleavedSkipAndNonSkip : $@convention(thin) () -> Builtin.Int64 {
+// CHECK-LABEL: @interpretInterleavedSkipAndNonSkip
+sil @interpretInterleavedSkipAndNonSkip : $@convention(thin) () -> Builtin.Int64 {
 bb0:
   %0 = alloc_stack $Outer, var, name "outer"
   %1 = integer_literal $Builtin.Int64, 101
