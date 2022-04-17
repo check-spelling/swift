@@ -119,7 +119,7 @@ public func testrecur() -> Int {
   return bas() + bar()
 }
 
-// Test to make sure AppliesToSpecialize in AllocBoxToStack is populated correctly when there are common function calls for mutiple allox_boxes.
+// Test to make sure AppliesToSpecialize in AllocBoxToStack is populated correctly when there are common function calls for multiple allox_boxes.
 // Order of function calls constructed in PromotedOperands: bar common bas common.
 // AppliesToSpecialize should have the order: bar bas common.
 // Only then, the functions get specialized correctly, and we won't see an assert in checkNoPromotedBoxInApply.

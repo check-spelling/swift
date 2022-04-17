@@ -138,7 +138,7 @@ public:
 
     /// A top-level value has multiple writers. This is only relevant in the
     /// non-flow-sensitive evaluation mode,  which is used by #assert.
-    MutipleTopLevelWriters,
+    MultipleTopLevelWriters,
 
     /// Indicates the return value of an instruction that was not evaluated
     /// during interpretation.

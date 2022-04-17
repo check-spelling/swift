@@ -504,7 +504,7 @@ enum Binary {
   case two
 }
 
-struct TestMutipleTries {
+struct TestMultipleTries {
   var stored: Int
   var computed: Int {
     _read {
@@ -591,7 +591,7 @@ struct TestMutipleTries {
   }
 }
 
-struct TestMutipleCatches {
+struct TestMultipleCatches {
   enum NumError: Error {
     case One
     case Two
