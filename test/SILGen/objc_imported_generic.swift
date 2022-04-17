@@ -39,7 +39,7 @@ public func genericSubscriptOnAnyObject(o: AnyObject, b: Bool) -> AnyObject? {
 
 // CHECK-LABEL: sil [ossa] @$s21objc_imported_generic0C20SubscriptOnAnyObject1o1byXlSgyXl_SbtF
 // CHECK: bb0([[ANY:%.*]]
-// CHCEK:   [[OPENED_ANY:%.*]] = open_existential_ref [[ANY]]
+// CHECK:   [[OPENED_ANY:%.*]] = open_existential_ref [[ANY]]
 // CHECK:   [[OPENED_ANY_COPY:%.*]] = copy_value [[OPENED_ANY]]
 // CHECK:   dynamic_method_br [[OPENED_ANY_COPY]] : $@opened([[TAG:.*]]) AnyObject, #GenericClass.subscript!getter.foreign, bb1
 // CHECK:   bb1({{%.*}} : $@convention(objc_method) (UInt16, @opened([[TAG]]) AnyObject) -> @autoreleased AnyObject):
