@@ -327,7 +327,7 @@ void DiagnoseLifetimeIssues::reportDeadStore(SILInstruction *allocationInst) {
   SILValue storedDef = cast<SingleValueInstruction>(allocationInst);
   liveness.initializeDefBlock(storedDef->getParentBlock());
 
-  // Compute the canoncial lifetime of storedDef, like the copy-propagation pass
+  // Compute the canonical lifetime of storedDef, like the copy-propagation pass
   // would do.
   State state = visitUses(storedDef, /*updateLivenessAndWeakStores*/ true,
                           /*callDepth*/ 0);
