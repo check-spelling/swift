@@ -168,7 +168,7 @@ collectLoads(Operand *addressUse, CopyAddrInst *originalCopy,
     //
     //   %addr = begin_access [read]
     //      ... // there can be no writes to %addr here
-    //   end_acess %addr   // <- This is where the use actually ends.
+    //   end_access %addr   // <- This is where the use actually ends.
     for (EndAccessInst *endAccess : beginAccess->getEndAccesses()) {
       if (endAccess->getParent() != block)
         return false;

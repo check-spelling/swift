@@ -286,7 +286,7 @@ void DominatedAccessAnalysis::analyzeAccess(BeginAccessInst *BAI,
   if (!domStorage)
     return;
 
-  // Set the current accesss isInner flag if it's inside a coroutine scope.
+  // Set the current access isInner flag if it's inside a coroutine scope.
   if (!state.inScopeCoroutines.empty())
     domStorage.setIsInner();
 
