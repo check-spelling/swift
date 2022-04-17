@@ -22,7 +22,7 @@ class ValueDecl;
 namespace ide {
 
 /// Populate \p severity and \p Out with the context-free diagnostics for \p D.
-/// See \c NotRecommendedReason for an explaination of context-free vs.
+/// See \c NotRecommendedReason for an explanation of context-free vs.
 /// contextual diagnostics.
 /// Returns \c true if it fails to generate the diagnostics.
 bool getContextFreeCompletionDiagnostics(
@@ -30,7 +30,7 @@ bool getContextFreeCompletionDiagnostics(
     CodeCompletionDiagnosticSeverity &severity, llvm::raw_ostream &Out);
 
 /// Populate \p severity and \p Out with the contextual diagnostics for \p D.
-/// See \c NotRecommendedReason for an explaination of context-free vs.
+/// See \c NotRecommendedReason for an explanation of context-free vs.
 /// contextual diagnostics.
 /// Returns \c true if it fails to generate the diagnostics.
 bool getContextualCompletionDiagnostics(
