@@ -97,7 +97,7 @@ bool CanonicalizeBorrowScope::isRewritableOSSAForward(SILInstruction *inst) {
     auto operOwnership = forwardedOper->getOperandOwnership();
     if (operOwnership == OperandOwnership::TrivialUse)
       return false;
-    // Don't mess with unowned conversions. They need to be copied immeidately.
+    // Don't mess with unowned conversions. They need to be copied immediately.
     if (operOwnership != OperandOwnership::ForwardingBorrow
         && operOwnership != OperandOwnership::ForwardingConsume) {
       return false;
