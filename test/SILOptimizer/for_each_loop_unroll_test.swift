@@ -89,7 +89,7 @@ func testNoUnrollScenario() {
 }
 
 // FIXME: Currently, array literals with address-only types cannot be unrolled
-// as they are initialied using copy_addr instead of store.
+// as they are initialized using copy_addr instead of store.
 // CHECK-LABEL: sil hidden @$s25for_each_loop_unroll_test0E27UnrollingOfAddressOnlyTypes1x1yyx_xtlF
 func testUnrollingOfAddressOnlyTypes<T>(x: T, y: T) {
   let a = [x, y]
