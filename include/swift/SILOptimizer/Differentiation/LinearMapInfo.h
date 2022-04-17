@@ -81,7 +81,7 @@ private:
   /// corresponding linear map field declaration in the linear map struct.
   llvm::DenseMap<ApplyInst *, VarDecl *> linearMapFieldMap;
 
-  /// Mapping from predecessor-succcessor basic block pairs in the original
+  /// Mapping from predecessor-successor basic block pairs in the original
   /// function to the corresponding branching trace enum case.
   llvm::DenseMap<std::pair<SILBasicBlock *, SILBasicBlock *>, EnumElementDecl *>
       branchingTraceEnumCases;
