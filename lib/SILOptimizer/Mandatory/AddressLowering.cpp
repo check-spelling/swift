@@ -3040,7 +3040,7 @@ protected:
 //                           Rewrite Opaque Values
 //===----------------------------------------------------------------------===//
 
-// Rewrite applies with indirect paramters or results of loadable types which
+// Rewrite applies with indirect parameters or results of loadable types which
 // were not visited during opaque value rewritting.
 static void rewriteIndirectApply(FullApplySite apply,
                                  AddressLoweringState &pass) {
