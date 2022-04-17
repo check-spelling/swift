@@ -499,7 +499,7 @@ func testContextualType() {
 class Base {
   func foo() {}
 }
-class Derivied: Base {
+class Derived: Base {
   override func foo() {
     #^OVERRIDE^#
 // OVERRIDE: Begin completions
