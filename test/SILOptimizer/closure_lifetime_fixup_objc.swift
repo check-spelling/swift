@@ -54,7 +54,7 @@ public protocol DangerousEscaper {
 // Release of sentinel copy (4).
 // CHECK:   strong_release [[SENTINEL]]
 
-// Extendend lifetime (2).
+// Extended lifetime (2).
 // CHECK:   strong_release [[ARG]]
 // CHECK:   return
 // CHECK: } // end sil function '$s27closure_lifetime_fixup_objc19couldActuallyEscapeyyyyc_AA16DangerousEscaper_ptF'
