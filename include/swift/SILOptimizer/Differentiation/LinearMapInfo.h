@@ -33,7 +33,7 @@ namespace autodiff {
 class ADContext;
 
 /// Linear map struct and branching trace enum information for an original
-/// function and and derivative function (JVP or VJP).
+/// function and derivative function (JVP or VJP).
 ///
 /// Linear map structs contain all callee linear maps produced in a JVP/VJP
 /// basic block. A linear map struct is created for each basic block in the
