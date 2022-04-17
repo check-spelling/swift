@@ -95,7 +95,7 @@ bool initCompilerInvocation(
     std::string &Error);
 
 bool initInvocationByClangArguments(ArrayRef<const char *> ArgList,
-                                    CompilerInvocation &Invok,
+                                    CompilerInvocation &Invoke,
                                     std::string &Error);
 
 /// Visits all overridden declarations exhaustively from VD, including protocol
