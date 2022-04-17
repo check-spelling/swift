@@ -410,7 +410,7 @@ static void removeForEachCall(TryApplyInst *forEachCall,
 ///      that contains the forEach call.
 ///    - store_borrow the element e_i into the alloc_stack A. Note that we
 ///      can use the owned copy of e_i created in the previous step.
-///    - try_apply the forEach's body closure on the the alloc_stack A.
+///    - try_apply the forEach's body closure on the alloc_stack A.
 ///      If i is not the last index, jump to b_i+1 in the normal case of the
 ///      try_apply. If i is the last index of the array jump to the normal
 ///      target of the forEach call. Jump to a new error block: err_i in the

@@ -1175,7 +1175,7 @@ sil @interpretStaticStringInit : $@convention(thin) () -> Builtin.Word {
 } // CHECK: Returns string: "static error message"
 
 // Tests for builtin "assert_configuration". Constant evaluator evaluates this
-// builtin to 0, meaning that the the configuration is "debug".
+// builtin to 0, meaning that the configuration is "debug".
 
 // CHECK-LABEL: @interpretAssertConfiguration
 sil @interpretAssertConfiguration : $@convention(thin) () -> Builtin.Int32 {

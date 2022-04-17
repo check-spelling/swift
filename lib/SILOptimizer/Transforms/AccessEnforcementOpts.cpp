@@ -58,7 +58,7 @@
 /// already promote the obvious cases to static checks. However, there are two
 /// reasons that dynamic local markers may be disabled: (1) inlining may cause
 /// closure access to become local access (2) local storage may truly escape,
-/// but none of the the local access scopes cross a call site.
+/// but none of the local access scopes cross a call site.
 ///
 /// TODO: Perform another run of AccessEnforcementSelection immediately before
 /// this pass. Currently, that pass only works well when run before

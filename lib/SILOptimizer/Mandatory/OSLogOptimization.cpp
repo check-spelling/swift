@@ -897,7 +897,7 @@ static void replaceAllUsesAndFixLifetimes(SILValue foldedVal,
 
   // FIXME: getUniqueBorrowScopeIntroducingValue may look though various storage
   // casts. There's no reason to think that it's valid to replace uses of
-  // originalVal with a new borrow of the the "introducing value". All casts
+  // originalVal with a new borrow of the "introducing value". All casts
   // potentially need to be cloned.
   Optional<BorrowedValue> originalScopeBegin =
       getUniqueBorrowScopeIntroducingValue(originalVal);

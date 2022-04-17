@@ -1083,7 +1083,7 @@ void StmtEmitter::visitAsyncForEachStmt(ForEachStmt *S) {
   JumpDest loopDest = createJumpDest(S->getBody());
   SGF.B.emitBlock(loopDest.getBlock(), S);
 
-  // Compute the reference to the the generator's next() && cancel().
+  // Compute the reference to the generator's next() && cancel().
   auto generatorProto =
       SGF.getASTContext().getProtocol(KnownProtocolKind::AsyncIteratorProtocol);
   ValueDecl *generatorNextReq = generatorProto->getSingleRequirement(
@@ -1313,7 +1313,7 @@ void StmtEmitter::visitForEachStmt(ForEachStmt *S) {
   JumpDest endDest = createJumpDest(S->getBody());
   SGF.BreakContinueDestStack.push_back({ S, endDest, loopDest });
 
-  // Compute the reference to the the iterator's next().
+  // Compute the reference to the iterator's next().
   auto iteratorProto =
       SGF.getASTContext().getProtocol(KnownProtocolKind::IteratorProtocol);
   ValueDecl *iteratorNextReq = iteratorProto->getSingleRequirement(
