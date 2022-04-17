@@ -106,7 +106,7 @@ public func performMoveOnVarMultiBlockError2(_ p: Klass) {
     nonConsumingUse(x)
 }
 
-public func performMoveConditionalReinitalization(_ p: Klass) {
+public func performMoveConditionalReinitialization(_ p: Klass) {
     var x = p
 
     if booleanValue {
@@ -121,7 +121,7 @@ public func performMoveConditionalReinitalization(_ p: Klass) {
     nonConsumingUse(x)
 }
 
-public func performMoveConditionalReinitalization2(_ p: Klass) {
+public func performMoveConditionalReinitialization2(_ p: Klass) {
     var x = p // expected-error {{'x' used after being moved}}
 
     if booleanValue {
@@ -137,7 +137,7 @@ public func performMoveConditionalReinitalization2(_ p: Klass) {
     nonConsumingUse(x)
 }
 
-public func performMoveConditionalReinitalization3(_ p: Klass, _ p2: Klass, _ p3: Klass) {
+public func performMoveConditionalReinitialization3(_ p: Klass, _ p2: Klass, _ p3: Klass) {
     var x = p // expected-error {{'x' used after being moved}}
               // expected-error @-1 {{'x' used after being moved}}
 
