@@ -557,7 +557,7 @@ void CanonicalizeOSSALifetime::findOrInsertDestroys() {
     switch (liveness.getBlockLiveness(bb)) {
     case PrunedLiveBlocks::LiveOut:
       // A lifetimeEndBlock may be determined to be LiveOut after analyzing the
-      // liveness. It is irrelevent for finding the boundary.
+      // liveness. It is irrelevant for finding the boundary.
       break;
     case PrunedLiveBlocks::LiveWithin: {
       // The liveness boundary is inside this block. Insert a final destroy
