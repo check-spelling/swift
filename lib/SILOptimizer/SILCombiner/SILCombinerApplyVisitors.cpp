@@ -857,7 +857,7 @@ static bool canReplaceCopiedArg(FullApplySite Apply, SILValue Arg,
   //
   // It's possible for an address to be initialized/deinitialized/reinitialized.
   // Rather than keeping track of liveness, we very conservatively check that
-  // all deinitialization occures after the call.
+  // all deinitialization occurs after the call.
   auto isDestroy = [](Operand *use) {
     switch (use->getUser()->getKind()) {
     default:
