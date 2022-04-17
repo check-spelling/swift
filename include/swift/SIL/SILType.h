@@ -556,7 +556,7 @@ public:
   bool aggregateContainsRecord(SILType Ty, SILModule &SILMod,
                                TypeExpansionContext context) const;
 
-  /// Returns true if this SILType is an aggregate with unreferenceable storage,
+  /// Returns true if this SILType is an aggregate with referenceable storage,
   /// meaning it cannot be fully destructured in SIL.
   bool aggregateHasUnreferenceableStorage() const;
 

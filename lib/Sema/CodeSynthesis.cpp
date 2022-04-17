@@ -1434,7 +1434,7 @@ HasDefaultInitRequest::evaluate(Evaluator &evaluator,
 
   if (auto *sd = dyn_cast<StructDecl>(decl)) {
     assert(!sd->hasUnreferenceableStorage() &&
-           "User-defined structs cannot have unreferenceable storage");
+           "User-defined structs cannot have referenceable storage");
     (void)sd;
   }
 

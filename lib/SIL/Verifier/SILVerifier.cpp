@@ -2816,7 +2816,7 @@ public:
     auto *structDecl = SI->getType().getStructOrBoundGenericStruct();
     require(structDecl, "StructInst must return a struct");
     require(!structDecl->hasUnreferenceableStorage(),
-            "Cannot build a struct with unreferenceable storage from elements "
+            "Cannot build a struct with referenceable storage from elements "
             "using StructInst");
     require(!checkResilience(structDecl, F.getModule().getSwiftModule(),
                              F.getResilienceExpansion()),

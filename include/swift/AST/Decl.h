@@ -3986,7 +3986,7 @@ public:
     return NTD && classof(NTD);
   }
 
-  /// Does this struct contain unreferenceable storage, such as C fields that
+  /// Does this struct contain referenceable storage, such as C fields that
   /// cannot be represented in Swift?
   bool hasUnreferenceableStorage() const {
     return Bits.StructDecl.HasUnreferenceableStorage;
