@@ -1134,7 +1134,7 @@ void StackAllocationPromoter::endLexicalLifetime(BlockSetVector &phiBlocks) {
   // have live-in or live-out values.
   //
   // Visiting the incoming and outgoing edges works as follows in the above
-  // example:  The worklist is initialiized with {(bb1, ::Out), (bb2, ::Out)}.
+  // example:  The worklist is initialized with {(bb1, ::Out), (bb2, ::Out)}.
   // When visiting (bb1, ::Out), we see that bb1 is neither unreachable nor
   // has exactly one successor without live-in values.  So we add (bb2, ::In) to
   // the worklist.  Next, we visit (bb2, ::Out).  We see that it _also_ doesn't
