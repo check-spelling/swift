@@ -216,7 +216,7 @@ enum class CompletionKind : uint8_t {
   ForEachSequence,
   AfterPoundExpr,
   AfterPoundDirective,
-  PlatformConditon,
+  PlatformCondition,
   AfterIfStmtElse,
   GenericRequirement,
   PrecedenceGroup,

@@ -4771,7 +4771,7 @@ struct CallbackCondition {
     }
   }
 
-  /// Initializes a `CallbackCondtion` from a case statement inside a switch
+  /// Initializes a `CallbackCondition` from a case statement inside a switch
   /// on `Subject` with `Result` type, ie.
   /// ```
   /// switch <Subject> {

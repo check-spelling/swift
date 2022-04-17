@@ -579,7 +579,7 @@ void CodeCompletionCallbacksImpl::completeAfterPoundDirective() {
 
 void CodeCompletionCallbacksImpl::completePlatformCondition() {
   CurDeclContext = P.CurDeclContext;
-  Kind = CompletionKind::PlatformConditon;
+  Kind = CompletionKind::PlatformCondition;
 }
 
 void CodeCompletionCallbacksImpl::completeAfterIfStmtElse() {
@@ -906,7 +906,7 @@ void CodeCompletionCallbacksImpl::addKeywords(CodeCompletionResultSink &Sink,
   case CompletionKind::LabeledTrailingClosure:
   case CompletionKind::AfterPoundExpr:
   case CompletionKind::AfterPoundDirective:
-  case CompletionKind::PlatformConditon:
+  case CompletionKind::PlatformCondition:
   case CompletionKind::GenericRequirement:
   case CompletionKind::KeyPathExprObjC:
   case CompletionKind::KeyPathExprSwift:
@@ -1860,7 +1860,7 @@ void CodeCompletionCallbacksImpl::doneParsing() {
     break;
   }
 
-  case CompletionKind::PlatformConditon: {
+  case CompletionKind::PlatformCondition: {
     addPlatformConditions(CompletionContext.getResultSink());
     addConditionalCompilationFlags(CurDeclContext->getASTContext(),
                                    CompletionContext.getResultSink());
