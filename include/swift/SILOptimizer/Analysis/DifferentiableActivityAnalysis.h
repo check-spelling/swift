@@ -166,7 +166,7 @@ private:
   /// - Incoming values, if the value is a basic block argument.
   void setUsefulAndPropagateToOperands(SILValue value,
                                        unsigned dependentVariableIndex);
-  /// Propagates usefulnesss to the operands of the given instruction.
+  /// Propagates usefulness to the operands of the given instruction.
   void propagateUseful(SILInstruction *inst, unsigned dependentVariableIndex);
   /// Marks the given address or class-typed value as useful and recursively
   /// propagates usefulness inwards (to operands) through projections. Skips
