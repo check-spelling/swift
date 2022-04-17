@@ -814,7 +814,7 @@ public:
 
     // Never repeat the same function signature optimization on the same
     // function. Multiple function signature optimizations are composed by
-    // successively optmizing the newly created functions. Each optimization
+    // successively optimizing the newly created functions. Each optimization
     // creates a new level of thunk which are all ultimately inlined away.
     //
     // This happens, for example, when a reference to the original function is
