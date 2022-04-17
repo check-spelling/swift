@@ -98,7 +98,7 @@ struct InstModCallbacks {
   ///
   ///   instToDelete->eraseFromParent();
   ///
-  /// The reason this callback is reponsible for deleting the instruction is to
+  /// The reason this callback is responsible for deleting the instruction is to
   /// interoperate more easily with
   /// CanonicalizeInstruction::killInstruction(). This allows updates to choose
   /// whether to happen before or after deleting the instruction and possibly
