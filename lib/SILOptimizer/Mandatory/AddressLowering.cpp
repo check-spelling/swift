@@ -1521,7 +1521,7 @@ namespace {
 //
 // For blocks with multiple phis, all moves of phi operands semantically occur
 // in parallel on the CFG edge from the predecessor to the phi block. As these
-// moves are inserted into the predecessor's intruction list, maintain the
+// moves are inserted into the predecessor's instruction list, maintain the
 // illusion of parallel moves by resolving any interference between the phi
 // moves. This is done by checking for anti-dependencies to or from other phi
 // moves. If one phi move's source reads from another phi move's dest, then the

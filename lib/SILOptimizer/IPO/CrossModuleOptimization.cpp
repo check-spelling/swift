@@ -102,7 +102,7 @@ private:
   void makeSubstUsableFromInline(const SubstitutionMap &substs);
 };
 
-/// Visitor for making used types of an intruction inlinable.
+/// Visitor for making used types of an instruction inlinable.
 ///
 /// We use the SILCloner for visiting types, though it sucks that we allocate
 /// instructions just to delete them immediately. But it's better than to

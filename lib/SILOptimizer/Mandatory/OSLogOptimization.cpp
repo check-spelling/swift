@@ -1332,7 +1332,7 @@ static SILInstruction *beginOfInterpolation(ApplyInst *oslogInit) {
     // If we have an alloc_stack instruction, include stores into it into the
     // backward dependency list. However, whether alloc_stack precedes the
     // definitions of values stored into the location in the control-flow order
-    // can only be determined by traversing the instrutions in the control-flow
+    // can only be determined by traversing the instructions in the control-flow
     // order.
     AllocStackInst *allocStackInst = cast<AllocStackInst>(inst);
     for (StoreInst *storeInst : allocStackInst->getUsersOfType<StoreInst>()) {
