@@ -1209,10 +1209,10 @@ getNotableRegions(StringRef SourceText, unsigned NameOffset, StringRef Name,
   SourceLoc NameLoc = SM.getLocForOffset(BufferId, NameOffset);
   auto LineAndCol = SM.getLineAndColumnInBuffer(NameLoc);
 
-  UnresolvedLoc UnresoledName{NameLoc, true};
+  UnresolvedLoc UnresolvedName{NameLoc, true};
 
   NameMatcher Matcher(*Instance->getPrimarySourceFile());
-  auto Resolved = Matcher.resolve(llvm::makeArrayRef(UnresoledName), None);
+  auto Resolved = Matcher.resolve(llvm::makeArrayRef(UnresolvedName), None);
   assert(!Resolved.empty() && "Failed to resolve generated func name loc");
 
   RenameLoc RenameConfig = {
