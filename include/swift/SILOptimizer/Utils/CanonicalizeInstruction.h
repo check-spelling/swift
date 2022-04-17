@@ -18,7 +18,7 @@
 ///
 /// Unlike SILCombine, these peepholes must work on 'raw' SIL form and should be
 /// limited to those necessary to aid in diagnostics and other mandatory
-/// pipelin/e passes. Optimization may only be done to the extent that it
+/// pipeline passes. Optimization may only be done to the extent that it
 /// neither interferes with diagnostics nor increases compile time.
 ///
 //===----------------------------------------------------------------------===//
