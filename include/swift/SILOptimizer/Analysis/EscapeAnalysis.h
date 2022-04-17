@@ -867,7 +867,7 @@ public:
       return valid;
     }
     
-    /// Invalides the graph in case it's getting too large.
+    /// Invalidates the graph in case it's getting too large.
     void invalidate() {
       clear();
       valid = false;
