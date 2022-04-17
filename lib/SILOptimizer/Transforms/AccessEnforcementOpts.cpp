@@ -814,7 +814,7 @@ RegionState &AccessConflictAndMergeAnalysis::mergePredAccesses(
     (void)bbRegionParentID;
     auto predStateIter = localRegionStates.find(pred);
     if (predStateIter == localRegionStates.end()) {
-      // Backedge / irreducable control flow - bail
+      // Backedge / irreducible control flow - bail
       state.reset();
       break;
     }
