@@ -60,7 +60,7 @@ namespace {
 ///   dealloc_stack %temp : $*T
 ///
 /// This differs from the copy forwarding algorithm because it handles
-/// copy source and dest lifetimes that are unavoidably overlappying. Instead,
+/// copy source and dest lifetimes that are unavoidably overlapping. Instead,
 /// it finds cases in which it is easy to determine that the source is
 /// unmodified during the copy destination's lifetime. Thus, the destination can
 /// be viewed as a short-lived "rvalue".
