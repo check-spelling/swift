@@ -695,7 +695,7 @@ void AccessConflictAndMergeAnalysis::visitBeginAccess(
   // end_access %x
   if (BeginAccessInst *mergeableAccess =
           findMergeableOutOfScopeAccess(state, beginAccess)) {
-    LLVM_DEBUG(llvm::dbgs() << "Found mergable pair: " << *mergeableAccess
+    LLVM_DEBUG(llvm::dbgs() << "Found mergeable pair: " << *mergeableAccess
                             << "  with " << *beginAccess << "\n");
     result.mergePairs.emplace_back(mergeableAccess, beginAccess);
   }
