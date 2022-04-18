@@ -234,7 +234,7 @@ static bool tryConvertSimpleMoveFromAllocStackTemporary(
     return false;
 
   // Ok, we can perform our optimization! Change move_addr's source to be the
-  // original copy_addr's src and add add uses of the stack location to an
+  // original copy_addr's src and add uses of the stack location to an
   // instruction deleter. We will eliminate them later.
   if (cai) {
     LLVM_DEBUG(llvm::dbgs() << "        Success! Performing optimization!\n");
