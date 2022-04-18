@@ -1407,8 +1407,8 @@ struct Rdar89773376 {
 extension Rdar89773376 {
   init(string: String) { self.intVal = 1 }
 }
-func testRdar89773376(arry: [Int]) {
-  arry.map { Rdar89773376(#^RDAR89773376^#) }
+func testRdar89773376(ary: [Int]) {
+  ary.map { Rdar89773376(#^RDAR89773376^#) }
 // RDAR89773376: Begin completions, 2 items
 // RDAR89773376-DAG: Decl[Constructor]/CurrNominal/Flair[ArgLabels]: ['(']{#string: String#}[')'][#Rdar89773376#];
 // RDAR89773376-DAG: Decl[Constructor]/CurrNominal/Flair[ArgLabels]: ['(']{#intVal: Int#}[')'][#Rdar89773376#];
