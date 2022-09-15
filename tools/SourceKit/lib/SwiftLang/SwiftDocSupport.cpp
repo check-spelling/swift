@@ -266,7 +266,7 @@ static void initDocGenericParams(const Decl *D, DocEntityInfo &Info,
 
   // If we have a synthesized target, map from its base type into the this
   // declaration's innermost type context, or if we're dealing with the
-  // synthesized extention itself rather than a member, into its extended
+  // synthesized extension itself rather than a member, into its extended
   // nominal (the extension's own requirements shouldn't be considered in the
   // substitution).
   unsigned TypeContextDepth = 0;
@@ -1087,7 +1087,7 @@ static bool reportModuleDocInfo(CompilerInvocation Invocation,
   ASTContext &Ctx = CI.getASTContext();
   registerIDERequestFunctions(Ctx.evaluator);
 
-  // Load implict imports so that Clang importer can use it.
+  // Load implicit imports so that Clang importer can use it.
   for (auto unloadedImport :
        CI.getMainModule()->getImplicitImportInfo().AdditionalUnloadedImports) {
     (void)Ctx.getModule(unloadedImport.module.getModulePath());
@@ -1424,9 +1424,9 @@ void SwiftLangSupport::findLocalRenameRanges(
     ArrayRef<const char *> Args, SourceKitCancellationToken CancellationToken,
     CategorizedRenameRangesReceiver Receiver) {
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, Filename, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<ArrayRef<CategorizedRenameRanges>>::fromError(Error));
     return;
@@ -1462,7 +1462,7 @@ void SwiftLangSupport::findLocalRenameRanges(
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
-  getASTManager()->processASTAsync(Invok, ASTConsumer, &OncePerASTToken,
+  getASTManager()->processASTAsync(Invoke, ASTConsumer, &OncePerASTToken,
                                    CancellationToken,
                                    llvm::vfs::getRealFileSystem());
 }

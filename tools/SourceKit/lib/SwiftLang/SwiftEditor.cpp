@@ -615,7 +615,7 @@ struct SwiftSemanticToken {
 #if !defined(_MSC_VER)
 static_assert(sizeof(SwiftSemanticToken) == 8, "Too big");
 // FIXME: MSVC doesn't pack bitfields with different underlying types.
-// Giving up to check this in MSVC for now, becasue static_assert is only for
+// Giving up to check this in MSVC for now, because static_assert is only for
 // keeping low memory usage.
 #endif
 
@@ -625,7 +625,7 @@ class SwiftDocumentSemanticInfo :
   const std::string Filename;
   std::weak_ptr<SwiftASTManager> ASTMgr;
   std::shared_ptr<NotificationCenter> NotificationCtr;
-  ThreadSafeRefCntPtr<SwiftInvocation> InvokRef;
+  ThreadSafeRefCntPtr<SwiftInvocation> InvokeRef;
   llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem;
   std::string CompilerArgsError;
 
@@ -647,7 +647,7 @@ public:
         fileSystem(fileSystem) {}
 
   SwiftInvocationRef getInvocation() const {
-    return InvokRef;
+    return InvokeRef;
   }
 
   llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> getFileSystem() const {
@@ -658,7 +658,7 @@ public:
 
   void setCompilerArgs(ArrayRef<const char *> Args) {
     if (auto ASTMgr = this->ASTMgr.lock()) {
-      InvokRef =
+      InvokeRef =
           ASTMgr->getTypecheckInvocation(Args, Filename, CompilerArgsError);
     }
   }
@@ -676,9 +676,9 @@ public:
                           ImmutableTextSnapshotRef Snapshot,
                           uint64_t ASTGeneration);
   void removeCachedAST() {
-    if (InvokRef) {
+    if (InvokeRef) {
       if (auto ASTMgr = this->ASTMgr.lock()) {
-        ASTMgr->removeCachedAST(InvokRef);
+        ASTMgr->removeCachedAST(InvokeRef);
       }
     }
   }
@@ -1086,8 +1086,8 @@ void SwiftDocumentSemanticInfo::processLatestSnapshotAsync(
     EditableTextBufferRef EditableBuffer,
     SourceKitCancellationToken CancellationToken) {
 
-  SwiftInvocationRef Invok = InvokRef;
-  if (!Invok)
+  SwiftInvocationRef Invoke = InvokeRef;
+  if (!Invoke)
     return;
 
   RefPtr<SwiftDocumentSemanticInfo> SemaInfoRef = this;
@@ -1099,7 +1099,7 @@ void SwiftDocumentSemanticInfo::processLatestSnapshotAsync(
   // SwiftDocumentSemanticInfo pointer so use that for the token.
   const void *OncePerASTToken = SemaInfoRef.get();
   if (auto ASTMgr = this->ASTMgr.lock()) {
-    ASTMgr->processASTAsync(Invok, std::move(Consumer), OncePerASTToken,
+    ASTMgr->processASTAsync(Invoke, std::move(Consumer), OncePerASTToken,
                             CancellationToken, fileSystem);
   }
 }
@@ -2078,7 +2078,7 @@ void SwiftEditorDocument::readSyntaxInfo(EditorConsumer &Consumer, bool ReportDi
 
     bool SawChanges = true;
     if (Impl.Edited) {
-      // We're ansering an edit request. Report all highlighted token ranges not
+      // We're answering an edit request. Report all highlighted token ranges not
       // in the previous syntax map to the Consumer and extend the AffectedRange
       // to contain all added/removed token ranges.
       SawChanges =
@@ -2546,7 +2546,7 @@ void SwiftLangSupport::editorReplaceText(StringRef Name,
       SyntaxCache->addEdit(Offset, Offset + Length, Buf->getBufferSize());
     }
 
-    // If client doesn't need any information, we doen't need to parse it.
+    // If client doesn't need any information, we doesn't need to parse it.
 
 
     SyntaxParsingCache *SyntaxCachePtr = nullptr;

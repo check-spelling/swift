@@ -249,7 +249,7 @@ public:
   void set(StringRef Name, SwiftInterfaceGenContextRef IFaceGen);
   bool remove(StringRef Name);
   SwiftInterfaceGenContextRef find(StringRef ModuleName,
-                                   const swift::CompilerInvocation &Invok);
+                                   const swift::CompilerInvocation &Invoke);
 };
 
 struct SwiftCompletionCache
@@ -525,7 +525,7 @@ public:
     std::shared_ptr<std::atomic<bool>> CancellationFlag;
   };
 
-  /// Execute \p PerformOperation sychronously with the parameters necessary to
+  /// Execute \p PerformOperation synchronously with the parameters necessary to
   /// invoke a completion-like operation on \c CompletionInstance.
   void performWithParamsToCompletionLikeOperation(
       llvm::MemoryBuffer *UnresolvedInputFile, unsigned Offset,

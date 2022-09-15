@@ -677,7 +677,7 @@ static void mapLocToLatestSnapshot(
 /// Returns true for error.
 static bool passCursorInfoForModule(ModuleEntity Mod,
                                     SwiftInterfaceGenMap &IFaceGenContexts,
-                                    const CompilerInvocation &Invok,
+                                    const CompilerInvocation &Invoke,
                        std::function<void(const RequestResult<CursorInfoData> &)> Receiver) {
   std::string FullName = Mod.getFullName();
   SmallVector<CursorSymbolInfo, 1> Symbols;
@@ -687,7 +687,7 @@ static bool passCursorInfoForModule(ModuleEntity Mod,
   Symbol.Kind = SwiftLangSupport::getUIDForModuleRef();
   Symbol.Name = Mod.getName();
   Symbol.ModuleName = FullName;
-  if (auto IFaceGenRef = IFaceGenContexts.find(Symbol.ModuleName, Invok))
+  if (auto IFaceGenRef = IFaceGenContexts.find(Symbol.ModuleName, Invoke))
     Symbol.ModuleInterfaceName = IFaceGenRef->getDocumentName();
   Symbol.IsSystem = Mod.isSystemModule();
   if (auto MD = Mod.getAsSwiftModule()) {
@@ -1447,12 +1447,12 @@ public:
 static void resolveCursor(
     SwiftLangSupport &Lang, StringRef InputFile, unsigned Offset,
     unsigned Length, bool Actionables, bool SymbolGraph,
-    SwiftInvocationRef Invok, bool TryExistingAST,
+    SwiftInvocationRef Invoke, bool TryExistingAST,
     bool CancelOnSubsequentRequest,
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem,
     SourceKitCancellationToken CancellationToken,
     std::function<void(const RequestResult<CursorInfoData> &)> Receiver) {
-  assert(Invok);
+  assert(Invoke);
   assert(fileSystem);
 
   class CursorInfoConsumer : public CursorRangeInfoConsumer {
@@ -1533,19 +1533,19 @@ static void resolveCursor(
                           CursorInfoRequest{CursorInfoOwner(File, Loc)},
                           ResolvedCursorInfo());
 
-      CompilerInvocation CompInvok;
-      ASTInvok->applyTo(CompInvok);
+      CompilerInvocation CompInvoke;
+      ASTInvok->applyTo(CompInvoke);
 
       switch (CursorInfo.Kind) {
       case CursorInfoKind::ModuleRef:
         passCursorInfoForModule(CursorInfo.Mod, Lang.getIFaceGenContexts(),
-                                CompInvok, Receiver);
+                                CompInvoke, Receiver);
         return;
       case CursorInfoKind::ValueRef: {
         std::string Diagnostic;
         bool Success = passCursorInfoForDecl(
             CursorInfo, MainModule, Actionables, SymbolGraph, Actions, Lang,
-            CompInvok, Diagnostic, getPreviousASTSnaps(), Receiver);
+            CompInvoke, Diagnostic, getPreviousASTSnaps(), Receiver);
         if (!Success) {
           if (!getPreviousASTSnaps().empty()) {
             // Attempt again using the up-to-date AST.
@@ -1602,7 +1602,7 @@ static void resolveCursor(
   };
 
   auto Consumer = std::make_shared<CursorInfoConsumer>(
-      InputFile, Offset, Length, Actionables, SymbolGraph, Lang, Invok,
+      InputFile, Offset, Length, Actionables, SymbolGraph, Lang, Invoke,
       TryExistingAST, CancelOnSubsequentRequest, CancellationToken, Receiver);
 
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
@@ -1612,12 +1612,12 @@ static void resolveCursor(
   const void *Once = nullptr;
   if (CancelOnSubsequentRequest)
     Once = Actionables ? &OncePerASTTokenWithActionables : &OncePerASTToken;
-  Lang.getASTManager()->processASTAsync(Invok, std::move(Consumer), Once,
+  Lang.getASTManager()->processASTAsync(Invoke, std::move(Consumer), Once,
                                         CancellationToken, fileSystem);
 }
 
 static void computeDiagnostics(
-    SwiftLangSupport &Lang, StringRef InputFile, SwiftInvocationRef Invok,
+    SwiftLangSupport &Lang, StringRef InputFile, SwiftInvocationRef Invoke,
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem,
     SourceKitCancellationToken CancellationToken,
     std::function<void(const RequestResult<DiagnosticsResult> &)> Receiver) {
@@ -1645,17 +1645,17 @@ static void computeDiagnostics(
 
   auto Consumer = std::make_shared<DiagnosticsConsumer>(std::move(Receiver));
 
-  Lang.getASTManager()->processASTAsync(Invok, std::move(Consumer),
+  Lang.getASTManager()->processASTAsync(Invoke, std::move(Consumer),
                                         /*OncePerASTToken=*/nullptr,
                                         CancellationToken, FileSystem);
 }
 
 static void resolveName(
     SwiftLangSupport &Lang, StringRef InputFile, unsigned Offset,
-    SwiftInvocationRef Invok, bool TryExistingAST, NameTranslatingInfo &Input,
+    SwiftInvocationRef Invoke, bool TryExistingAST, NameTranslatingInfo &Input,
     SourceKitCancellationToken CancellationToken,
     std::function<void(const RequestResult<NameTranslatingInfo> &)> Receiver) {
-  assert(Invok);
+  assert(Invoke);
 
   class NameInfoConsumer : public CursorRangeInfoConsumer {
     NameTranslatingInfo Input;
@@ -1699,8 +1699,8 @@ static void resolveName(
         return;
       }
 
-      CompilerInvocation CompInvok;
-      ASTInvok->applyTo(CompInvok);
+      CompilerInvocation CompInvoke;
+      ASTInvok->applyTo(CompInvoke);
 
       switch(CursorInfo.Kind) {
       case CursorInfoKind::ModuleRef:
@@ -1748,21 +1748,21 @@ static void resolveName(
   };
 
   auto Consumer = std::make_shared<NameInfoConsumer>(
-      InputFile, Offset, Lang, Invok, TryExistingAST, Input, CancellationToken,
+      InputFile, Offset, Lang, Invoke, TryExistingAST, Input, CancellationToken,
       Receiver);
 
   Lang.getASTManager()->processASTAsync(
-      Invok, std::move(Consumer), /*OncePerASTToken=*/nullptr,
+      Invoke, std::move(Consumer), /*OncePerASTToken=*/nullptr,
       CancellationToken, llvm::vfs::getRealFileSystem());
 }
 
 static void
 resolveRange(SwiftLangSupport &Lang, StringRef InputFile, unsigned Offset,
-             unsigned Length, SwiftInvocationRef Invok, bool TryExistingAST,
+             unsigned Length, SwiftInvocationRef Invoke, bool TryExistingAST,
              bool CancelOnSubsequentRequest,
              SourceKitCancellationToken CancellationToken,
              std::function<void(const RequestResult<RangeInfo> &)> Receiver) {
-  assert(Invok);
+  assert(Invoke);
 
   class RangeInfoConsumer : public CursorRangeInfoConsumer {
     SourceKitCancellationToken CancellationToken;
@@ -1786,8 +1786,8 @@ resolveRange(SwiftLangSupport &Lang, StringRef InputFile, unsigned Offset,
         RangeInfoRequest(RangeInfoOwner({File, Offset, Length})),
                                                  ResolvedRangeInfo());
 
-      CompilerInvocation CompInvok;
-      ASTInvok->applyTo(CompInvok);
+      CompilerInvocation CompInvoke;
+      ASTInvok->applyTo(CompInvoke);
 
       RangeInfo Result;
       Result.RangeKind = Lang.getUIDForRangeKind(Info.Kind);
@@ -1839,13 +1839,13 @@ resolveRange(SwiftLangSupport &Lang, StringRef InputFile, unsigned Offset,
   };
 
   auto Consumer = std::make_shared<RangeInfoConsumer>(
-      InputFile, Offset, Length, Lang, Invok, TryExistingAST,
+      InputFile, Offset, Length, Lang, Invoke, TryExistingAST,
       CancelOnSubsequentRequest, CancellationToken, Receiver);
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
   const void *Once = CancelOnSubsequentRequest ? &OncePerASTToken : nullptr;
-  Lang.getASTManager()->processASTAsync(Invok, std::move(Consumer), Once,
+  Lang.getASTManager()->processASTAsync(Invoke, std::move(Consumer), Once,
                                         CancellationToken,
                                         llvm::vfs::getRealFileSystem());
 }
@@ -1868,10 +1868,10 @@ void SwiftLangSupport::getCursorInfo(
       SwiftInterfaceGenContext::ResolvedEntity Entity;
       Entity = IFaceGenRef->resolveEntityForOffset(Offset);
       if (Entity.isResolved()) {
-        CompilerInvocation Invok;
-        IFaceGenRef->applyTo(Invok);
+        CompilerInvocation Invoke;
+        IFaceGenRef->applyTo(Invoke);
         if (Entity.Mod) {
-          passCursorInfoForModule(Entity.Mod, IFaceGenContexts, Invok,
+          passCursorInfoForModule(Entity.Mod, IFaceGenContexts, Invoke,
                                   Receiver);
         } else {
           std::string Diagnostic;  // Unused.
@@ -1880,7 +1880,7 @@ void SwiftLangSupport::getCursorInfo(
           Info.ValueD = const_cast<ValueDecl *>(Entity.Dcl);
           Info.IsRef = Entity.IsRef;
           passCursorInfoForDecl(Info, MainModule, Actionables, SymbolGraph, {},
-                                *this, Invok, Diagnostic, {}, Receiver);
+                                *this, Invoke, Diagnostic, {}, Receiver);
         }
       } else {
         CursorInfoData Info;
@@ -1893,18 +1893,18 @@ void SwiftLangSupport::getCursorInfo(
   }
 
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, InputFile, fileSystem, Error);
   if (!Error.empty()) {
     LOG_WARN_FUNC("error creating ASTInvocation: " << Error);
   }
-  if (!Invok) {
+  if (!Invoke) {
     Receiver(RequestResult<CursorInfoData>::fromError(Error));
     return;
   }
 
   resolveCursor(*this, InputFile, Offset, Length, Actionables, SymbolGraph,
-                Invok, /*TryExistingAST=*/true, CancelOnSubsequentRequest,
+                Invoke, /*TryExistingAST=*/true, CancelOnSubsequentRequest,
                 fileSystem, CancellationToken, Receiver);
 }
 
@@ -1921,17 +1921,17 @@ void SwiftLangSupport::getDiagnostics(
   }
 
   std::string InvocationError;
-  SwiftInvocationRef Invok = ASTMgr->getTypecheckInvocation(
+  SwiftInvocationRef Invoke = ASTMgr->getTypecheckInvocation(
       Args, InputFile, FileSystem, InvocationError);
   if (!InvocationError.empty()) {
     LOG_WARN_FUNC("error creating ASTInvocation: " << InvocationError);
   }
-  if (!Invok) {
+  if (!Invoke) {
     Receiver(RequestResult<DiagnosticsResult>::fromError(InvocationError));
     return;
   }
 
-  computeDiagnostics(*this, InputFile, Invok, FileSystem, CancellationToken,
+  computeDiagnostics(*this, InputFile, Invoke, FileSystem, CancellationToken,
                      Receiver);
 }
 
@@ -1947,9 +1947,9 @@ void SwiftLangSupport::getRangeInfo(
     return;
   }
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, InputFile, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<RangeInfo>::fromError(Error));
     return;
@@ -1958,7 +1958,7 @@ void SwiftLangSupport::getRangeInfo(
     Receiver(RequestResult<RangeInfo>::fromError("Invalid range length."));
     return;
   }
-  resolveRange(*this, InputFile, Offset, Length, Invok, /*TryExistingAST=*/true,
+  resolveRange(*this, InputFile, Offset, Length, Invoke, /*TryExistingAST=*/true,
                CancelOnSubsequentRequest, CancellationToken, Receiver);
 }
 
@@ -1972,8 +1972,8 @@ void SwiftLangSupport::getNameInfo(
       SwiftInterfaceGenContext::ResolvedEntity Entity;
       Entity = IFaceGenRef->resolveEntityForOffset(Offset);
       if (Entity.isResolved()) {
-        CompilerInvocation Invok;
-        IFaceGenRef->applyTo(Invok);
+        CompilerInvocation Invoke;
+        IFaceGenRef->applyTo(Invoke);
         if (Entity.Mod) {
           // Module is ignored
         } else {
@@ -1991,26 +1991,26 @@ void SwiftLangSupport::getNameInfo(
   }
 
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, InputFile, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<NameTranslatingInfo>::fromError(Error));
     return;
   }
 
-  resolveName(*this, InputFile, Offset, Invok, /*TryExistingAST=*/true, Input,
+  resolveName(*this, InputFile, Offset, Invoke, /*TryExistingAST=*/true, Input,
               CancellationToken, Receiver);
 }
 
 static void resolveCursorFromUSR(
     SwiftLangSupport &Lang, StringRef InputFile, StringRef USR,
-    SwiftInvocationRef Invok, bool TryExistingAST,
+    SwiftInvocationRef Invoke, bool TryExistingAST,
     bool CancelOnSubsequentRequest,
     llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem,
     SourceKitCancellationToken CancellationToken,
     std::function<void(const RequestResult<CursorInfoData> &)> Receiver) {
-  assert(Invok);
+  assert(Invoke);
 
   class CursorInfoConsumer : public SwiftASTConsumer {
     std::string InputFile;
@@ -2074,11 +2074,11 @@ static void resolveCursorFromUSR(
         return;
       }
 
-      CompilerInvocation CompInvok;
-      ASTInvok->applyTo(CompInvok);
+      CompilerInvocation CompInvoke;
+      ASTInvok->applyTo(CompInvoke);
 
       if (auto *M = dyn_cast<ModuleDecl>(D)) {
-        passCursorInfoForModule(M, Lang.getIFaceGenContexts(), CompInvok,
+        passCursorInfoForModule(M, Lang.getIFaceGenContexts(), CompInvoke,
                                 Receiver);
       } else {
         ResolvedCursorInfo Info;
@@ -2096,7 +2096,7 @@ static void resolveCursorFromUSR(
         std::string Diagnostic;
         bool Success =
             passCursorInfoForDecl(Info, MainModule, /*AddRefactorings*/ false,
-                                  /*AddSymbolGraph*/ false, {}, Lang, CompInvok,
+                                  /*AddSymbolGraph*/ false, {}, Lang, CompInvoke,
                                   Diagnostic, PreviousASTSnaps, Receiver);
         if (!Success) {
           if (!PreviousASTSnaps.empty()) {
@@ -2126,13 +2126,13 @@ static void resolveCursorFromUSR(
   };
 
   auto Consumer = std::make_shared<CursorInfoConsumer>(
-      InputFile, USR, Lang, Invok, TryExistingAST, CancelOnSubsequentRequest,
+      InputFile, USR, Lang, Invoke, TryExistingAST, CancelOnSubsequentRequest,
       CancellationToken, Receiver);
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
   const void *Once = CancelOnSubsequentRequest ? &OncePerASTToken : nullptr;
-  Lang.getASTManager()->processASTAsync(Invok, std::move(Consumer), Once,
+  Lang.getASTManager()->processASTAsync(Invoke, std::move(Consumer), Once,
                                         CancellationToken, fileSystem);
 }
 
@@ -2156,15 +2156,15 @@ void SwiftLangSupport::getCursorInfoFromUSR(
   }
 
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, filename, fileSystem, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<CursorInfoData>::fromError(Error));
     return;
   }
 
-  resolveCursorFromUSR(*this, filename, USR, Invok, /*TryExistingAST=*/true,
+  resolveCursorFromUSR(*this, filename, USR, Invoke, /*TryExistingAST=*/true,
                        CancelOnSubsequentRequest, fileSystem, CancellationToken,
                        Receiver);
 }
@@ -2215,7 +2215,7 @@ public:
       //     print(x)
       Dcl = V->getCanonicalVarDecl();
 
-      // If we have a prioperty wrapper backing property or projected value, use
+      // If we have a property wrapper backing property or projected value, use
       // the wrapped property instead (i.e. if this is _foo or $foo, pretend
       // it's foo).
       if (auto *Wrapped = V->getOriginalWrappedProperty()) {
@@ -2283,7 +2283,7 @@ private:
     if (auto *V = dyn_cast<VarDecl>(D)) {
       D = V->getCanonicalVarDecl();
 
-      // If we have a prioperty wrapper backing property or projected value, use
+      // If we have a property wrapper backing property or projected value, use
       // the wrapped property for comparison instead (i.e. if this is _foo or
       // $foo, pretend it's foo).
       if (auto *Wrapped = V->getOriginalWrappedProperty()) {
@@ -2316,9 +2316,9 @@ void SwiftLangSupport::findRelatedIdentifiersInFile(
     std::function<void(const RequestResult<RelatedIdentsInfo> &)> Receiver) {
 
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, InputFile, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<RelatedIdentsInfo>::fromError(Error));
     return;
@@ -2327,13 +2327,13 @@ void SwiftLangSupport::findRelatedIdentifiersInFile(
   class RelatedIdConsumer : public SwiftASTConsumer {
     unsigned Offset;
     std::function<void(const RequestResult<RelatedIdentsInfo> &)> Receiver;
-    SwiftInvocationRef Invok;
+    SwiftInvocationRef Invoke;
 
   public:
     RelatedIdConsumer(unsigned Offset,
                       std::function<void(const RequestResult<RelatedIdentsInfo> &)> Receiver,
-                      SwiftInvocationRef Invok)
-      : Offset(Offset), Receiver(std::move(Receiver)), Invok(Invok) { }
+                      SwiftInvocationRef Invoke)
+      : Offset(Offset), Receiver(std::move(Receiver)), Invoke(Invoke) { }
 
     // FIXME: Don't silently eat errors here.
     void handlePrimaryAST(ASTUnitRef AstUnit) override {
@@ -2445,12 +2445,12 @@ void SwiftLangSupport::findRelatedIdentifiersInFile(
     }
   };
 
-  auto Consumer = std::make_shared<RelatedIdConsumer>(Offset, Receiver, Invok);
+  auto Consumer = std::make_shared<RelatedIdConsumer>(Offset, Receiver, Invoke);
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
   const void *Once = CancelOnSubsequentRequest ? &OncePerASTToken : nullptr;
-  ASTMgr->processASTAsync(Invok, std::move(Consumer), Once, CancellationToken,
+  ASTMgr->processASTAsync(Invoke, std::move(Consumer), Once, CancellationToken,
                           llvm::vfs::getRealFileSystem());
 }
 
@@ -2472,14 +2472,14 @@ void SwiftLangSupport::semanticRefactoring(
     ArrayRef<const char *> Args, SourceKitCancellationToken CancellationToken,
     CategorizedEditsReceiver Receiver) {
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, Filename, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<ArrayRef<CategorizedEdits>>::fromError(Error));
     return;
   }
-  assert(Invok);
+  assert(Invoke);
 
   class SemaRefactoringConsumer : public SwiftASTConsumer {
     SemanticRefactoringInfo Info;
@@ -2518,7 +2518,7 @@ void SwiftLangSupport::semanticRefactoring(
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
-  getASTManager()->processASTAsync(Invok, std::move(Consumer), &OncePerASTToken,
+  getASTManager()->processASTAsync(Invoke, std::move(Consumer), &OncePerASTToken,
                                    CancellationToken,
                                    llvm::vfs::getRealFileSystem());
 }
@@ -2530,14 +2530,14 @@ void SwiftLangSupport::collectExpressionTypes(
     std::function<void(const RequestResult<ExpressionTypesInFile> &)>
         Receiver) {
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, FileName, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<ExpressionTypesInFile>::fromError(Error));
     return;
   }
-  assert(Invok);
+  assert(Invoke);
   class ExpressionTypeCollector: public SwiftASTConsumer {
     std::function<void(const RequestResult<ExpressionTypesInFile> &)> Receiver;
     std::vector<const char *> ExpectedProtocols;
@@ -2581,7 +2581,7 @@ void SwiftLangSupport::collectExpressionTypes(
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
-  getASTManager()->processASTAsync(Invok, std::move(Collector),
+  getASTManager()->processASTAsync(Invoke, std::move(Collector),
                                    &OncePerASTToken, CancellationToken,
                                    llvm::vfs::getRealFileSystem());
 }
@@ -2591,14 +2591,14 @@ void SwiftLangSupport::collectVariableTypes(
     Optional<unsigned> Length, SourceKitCancellationToken CancellationToken,
     std::function<void(const RequestResult<VariableTypesInFile> &)> Receiver) {
   std::string Error;
-  SwiftInvocationRef Invok =
+  SwiftInvocationRef Invoke =
       ASTMgr->getTypecheckInvocation(Args, FileName, Error);
-  if (!Invok) {
+  if (!Invoke) {
     LOG_WARN_FUNC("failed to create an ASTInvocation: " << Error);
     Receiver(RequestResult<VariableTypesInFile>::fromError(Error));
     return;
   }
-  assert(Invok);
+  assert(Invoke);
 
   class VariableTypeCollectorASTConsumer : public SwiftASTConsumer {
   private:
@@ -2658,7 +2658,7 @@ void SwiftLangSupport::collectVariableTypes(
   /// FIXME: When request cancellation is implemented and Xcode adopts it,
   /// don't use 'OncePerASTToken'.
   static const char OncePerASTToken = 0;
-  getASTManager()->processASTAsync(Invok, std::move(Collector),
+  getASTManager()->processASTAsync(Invoke, std::move(Collector),
                                    &OncePerASTToken, CancellationToken,
                                    llvm::vfs::getRealFileSystem());
 }

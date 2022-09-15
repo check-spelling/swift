@@ -41,7 +41,7 @@
 // operation already be finished, the consumer is directly called with the
 // result. Otherwise, a new ASTBuildOperation is created, the consumer is added
 // to it and the ASTBuildOperation is scheduled on
-// SwiftASTManager::Implemenation::ASTBuildQueue. This ensures that only one
+// SwiftASTManager::Implementation::ASTBuildQueue. This ensures that only one
 // AST is built at a time.
 // The SwiftASTManager keeps a weak reference to the consumer, so that the
 // consumer can be cancelled if new requests come in (see implementation of
@@ -199,7 +199,7 @@ public:
   /// An AST was produced that the consumer should handle.
   virtual void handlePrimaryAST(ASTUnitRef AstUnit) = 0;
 
-  /// Creation of the AST failed due to \p Error. The request corresonding to
+  /// Creation of the AST failed due to \p Error. The request corresponding to
   /// this consumer should fail.
   virtual void failed(StringRef Error);
 
@@ -257,7 +257,7 @@ public:
   /// token, that is enqueued waiting to be executed on the same AST, will be
   /// cancelled.
   void
-  processASTAsync(SwiftInvocationRef Invok, SwiftASTConsumerRef ASTConsumer,
+  processASTAsync(SwiftInvocationRef Invoke, SwiftASTConsumerRef ASTConsumer,
                   const void *OncePerASTToken,
                   SourceKitCancellationToken CancellationToken,
                   llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> fileSystem);
@@ -280,7 +280,7 @@ public:
       llvm::IntrusiveRefCntPtr<llvm::vfs::FileSystem> FileSystem,
       std::string &Error);
 
-  bool initCompilerInvocation(swift::CompilerInvocation &CompInvok,
+  bool initCompilerInvocation(swift::CompilerInvocation &CompInvoke,
                               ArrayRef<const char *> OrigArgs,
                               swift::FrontendOptions::ActionType Action,
                               StringRef PrimaryFile, std::string &Error);
@@ -296,7 +296,7 @@ public:
                                       std::string &Error,
                                       bool AllowInputs = true);
 
-  void removeCachedAST(SwiftInvocationRef Invok);
+  void removeCachedAST(SwiftInvocationRef Invoke);
 
   struct Implementation;
   Implementation &Impl;

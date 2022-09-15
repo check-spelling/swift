@@ -61,7 +61,7 @@ public:
   bool isModule() const;
   swift::ModuleDecl *getModuleDecl() const;
 
-  bool matches(StringRef ModuleName, const swift::CompilerInvocation &Invok);
+  bool matches(StringRef ModuleName, const swift::CompilerInvocation &Invoke);
 
   /// Note: requires exclusive access to the underlying AST.
   void reportEditorInfo(EditorConsumer &Consumer) const;
@@ -92,7 +92,7 @@ public:
   /// (offset,length) pair into the interface source if it finds one.
   llvm::Optional<std::pair<unsigned, unsigned>> findUSRRange(StringRef USR) const;
 
-  void applyTo(swift::CompilerInvocation &CompInvok) const;
+  void applyTo(swift::CompilerInvocation &CompInvoke) const;
 
   class Implementation;
 

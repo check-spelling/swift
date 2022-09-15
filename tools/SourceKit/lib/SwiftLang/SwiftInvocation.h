@@ -33,7 +33,7 @@ public:
   struct Implementation;
   Implementation &Impl;
 
-  void applyTo(swift::CompilerInvocation &CompInvok) const;
+  void applyTo(swift::CompilerInvocation &CompInvoke) const;
   void raw(std::vector<std::string> &Args, std::string &PrimaryFile) const;
 
 private:
