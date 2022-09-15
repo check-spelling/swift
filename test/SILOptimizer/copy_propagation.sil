@@ -9,7 +9,7 @@
 // %.sil then both be piped to CHECK-ONONE and used as the input for an
 // optimized round-trip. It's important to ensure that importing
 // -Onone code into a -O pipeline does not impair optimization. This
-// doesn't work yet because mandatory copy-propatation handles all
+// doesn't work yet because mandatory copy-propagation handles all
 // defs (not just copied ones). This could be fixed with an internal
 // option. We would also need a way to strip the [poison] from
 // destroys that aren't regenerated, otherwise the check lines
@@ -58,7 +58,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It reuses the
+// -Onone requires a destroy at the lifetime end. It reuses the
 // existing one without adding poison.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingStore : {{.*}} {
@@ -88,7 +88,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It creates a new poison one.
+// -Onone requires a destroy at the lifetime end. It creates a new poison one.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingStoreAndCall : {{.*}} {
 // CHECK: bb0:
@@ -119,7 +119,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone reuses the existint lifetime-ending destroy.
+// -Onone reuses the existing lifetime-ending destroy.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingCall : {{.*}} {
 // CHECK: bb0:
@@ -143,7 +143,7 @@ bb0:
 }
 
 // -O removes the copy/destroy
-// -Onone requres a destroy at the lifetime end. It creates a new poison one.
+// -Onone requires a destroy at the lifetime end. It creates a new poison one.
 //
 // CHECK-LABEL: sil [ossa] @testDestroyAfterConsumingCallAndCall : {{.*}} {
 // CHECK: bb0:
@@ -614,7 +614,7 @@ bb2:
   return %v : $()
 }
 
-// Original Overlapping (unnecessarilly extends pruned liveness):
+// Original Overlapping (unnecessarily extends pruned liveness):
 //
 //     %def
 //     begin_access // access scope unrelated to def
@@ -657,7 +657,7 @@ bb1:
   return %v : $()
 }
 
-// Original Overlapping (unnecessarilly extends pruned liveness):
+// Original Overlapping (unnecessarily extends pruned liveness):
 //
 // TODO: this copy could be avoided but is probably an unusual case,
 // and sinking the destroy outside the access scope might help to

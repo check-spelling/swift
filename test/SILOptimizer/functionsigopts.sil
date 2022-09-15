@@ -1781,13 +1781,13 @@ bb0(%0 : $T):
   return %r : $()
 }
 
-// CHECK-LABEL: sil [signature_optimized_thunk] [always_inline] @generic_func_with_multple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> ()
-// CHECK: function_ref @$s026generic_func_with_multple_a15_args_and_dead_A4_argTf4nd_n : $@convention(thin) <τ_0_0, τ_0_1> (@in τ_0_0) -> ()
+// CHECK-LABEL: sil [signature_optimized_thunk] [always_inline] @generic_func_with_multiple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> ()
+// CHECK: function_ref @$s026generic_func_with_multiple_a15_args_and_dead_A4_argTf4nd_n : $@convention(thin) <τ_0_0, τ_0_1> (@in τ_0_0) -> ()
 // Call the specialization which has only one function argument, because another one is dead
 // and was eliminated.
 // CHECK: apply
-// CHECK: end sil function 'generic_func_with_multple_generic_args_and_dead_generic_arg'
-sil [noinline] @generic_func_with_multple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> () {
+// CHECK: end sil function 'generic_func_with_multiple_generic_args_and_dead_generic_arg'
+sil [noinline] @generic_func_with_multiple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> () {
 bb0(%0 : $*T, %1 : $*S):
   %f = function_ref @use_Generic : $@convention(thin) <T>(@in_guaranteed T) -> ()
   apply %f<T>(%0) : $@convention(thin) <T>(@in_guaranteed T) -> ()
@@ -1795,13 +1795,13 @@ bb0(%0 : $*T, %1 : $*S):
   return %r : $()
 }
 
-sil [noinline] @generic_func_with_multple_generic_args_and_dead_generic_arg_caller : $@convention(thin) <T> (@in T) -> () {
+sil [noinline] @generic_func_with_multiple_generic_args_and_dead_generic_arg_caller : $@convention(thin) <T> (@in T) -> () {
 bb0(%0 : $*T):
   %2 = alloc_stack $T
   copy_addr %0 to [initialization] %2 : $*T
   %4 = alloc_stack $T
   copy_addr %0 to [initialization] %4 : $*T
-  %f = function_ref @generic_func_with_multple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> ()
+  %f = function_ref @generic_func_with_multiple_generic_args_and_dead_generic_arg : $@convention(thin) <T, S> (@in T, @in S) -> ()
   apply %f<T, T>(%2, %4) : $@convention(thin) <T, S> (@in T, @in S) -> () 
   dealloc_stack %4 : $*T
   dealloc_stack %2 : $*T
