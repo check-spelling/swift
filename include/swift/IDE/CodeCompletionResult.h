@@ -219,7 +219,7 @@ enum class CompletionKind : uint8_t {
   ForEachInKw,
   AfterPoundExpr,
   AfterPoundDirective,
-  PlatformConditon,
+  PlatformCondition,
   AfterIfStmtElse,
   GenericRequirement,
   PrecedenceGroup,
@@ -265,7 +265,7 @@ enum class NotRecommendedReason : uint8_t {
 };
 
 /// TODO: We consider deprecation warnings as context free although they don't
-/// produce deprecation warnings insdide context that have the same or a
+/// produce deprecation warnings inside context that have the same or a
 /// stronger deprecation attribute.
 /// E.g.
 /// In SDK:
@@ -361,7 +361,7 @@ public:
   /// Memberwise initializer. \p AssociatedKInd is opaque and will be
   /// interpreted based on \p Kind. If \p KnownOperatorKind is \c None and the
   /// completion item is an operator, it will be determined based on the
-  /// compleiton string.
+  /// completion string.
   ///
   /// \note The caller must ensure that the \p CompleitonString and all the
   /// \c Ref types outlive this result, typically by storing them in the same

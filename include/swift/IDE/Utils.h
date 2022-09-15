@@ -95,7 +95,7 @@ bool initCompilerInvocation(
     std::string &Error);
 
 bool initInvocationByClangArguments(ArrayRef<const char *> ArgList,
-                                    CompilerInvocation &Invok,
+                                    CompilerInvocation &Invoke,
                                     std::string &Error);
 
 /// Visits all overridden declarations exhaustively from VD, including protocol
@@ -391,7 +391,7 @@ struct ResolvedRangeInfo {
                       CommonExprParent(CommonExprParent) {}
   ResolvedRangeInfo(ArrayRef<Token> TokensInRange) :
   ResolvedRangeInfo(RangeKind::Invalid, {nullptr, ExitState::Unsure},
-                    TokensInRange, nullptr, /*Commom Expr Parent*/nullptr,
+                    TokensInRange, nullptr, /*Common Expr Parent*/nullptr,
                     /*Single entry*/true, /*UnhandledEffects*/{},
                     OrphanKind::None, {}, {}, {}) {}
   ResolvedRangeInfo(): ResolvedRangeInfo(ArrayRef<Token>()) {}

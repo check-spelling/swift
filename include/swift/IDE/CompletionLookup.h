@@ -44,7 +44,7 @@ bool KeyPathFilter(ValueDecl *decl, DeclVisibilityKind,
                    DynamicLookupInfo dynamicLookupInfo);
 
 /// Returns \c true only if the completion is happening for top-level
-/// declrarations. i.e.:
+/// declarations. i.e.:
 ///
 ///     if condition {
 ///       #false#
@@ -601,7 +601,7 @@ public:
 
   void getPoundAvailablePlatformCompletions();
 
-  /// \p Loc is the location of the code completin token.
+  /// \p Loc is the location of the code completion token.
   /// \p isForDeclResult determines if were are spelling out the result type
   /// of a declaration.
   void getSelfTypeCompletionInDeclContext(SourceLoc Loc, bool isForDeclResult);

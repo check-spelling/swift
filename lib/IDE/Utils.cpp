@@ -424,7 +424,7 @@ static std::string adjustClangTriple(StringRef TripleStr) {
 }
 
 bool ide::initInvocationByClangArguments(ArrayRef<const char *> ArgList,
-                                         CompilerInvocation &Invok,
+                                         CompilerInvocation &Invoke,
                                          std::string &Error) {
   llvm::IntrusiveRefCntPtr<clang::DiagnosticOptions> DiagOpts{
     new clang::DiagnosticOptions()
@@ -443,9 +443,9 @@ bool ide::initInvocationByClangArguments(ArrayRef<const char *> ArgList,
   ClangArgList.insert(ClangArgList.end(), ArgList.begin(), ArgList.end());
 
   // Create a new Clang compiler invocation.
-  std::unique_ptr<clang::CompilerInvocation> ClangInvok =
+  std::unique_ptr<clang::CompilerInvocation> ClangInvoke =
       clang::createInvocationFromCommandLine(ClangArgList, ClangDiags);
-  if (!ClangInvok || ClangDiags->hasErrorOccurred()) {
+  if (!ClangInvoke || ClangDiags->hasErrorOccurred()) {
     for (auto I = DiagBuf.err_begin(), E = DiagBuf.err_end(); I != E; ++I) {
       Error += I->second;
       Error += " ";
@@ -453,16 +453,16 @@ bool ide::initInvocationByClangArguments(ArrayRef<const char *> ArgList,
     return true;
   }
 
-  auto &PPOpts = ClangInvok->getPreprocessorOpts();
-  auto &HSOpts = ClangInvok->getHeaderSearchOpts();
+  auto &PPOpts = ClangInvoke->getPreprocessorOpts();
+  auto &HSOpts = ClangInvoke->getHeaderSearchOpts();
 
-  Invok.setTargetTriple(adjustClangTriple(ClangInvok->getTargetOpts().Triple));
+  Invoke.setTargetTriple(adjustClangTriple(ClangInvoke->getTargetOpts().Triple));
   if (!HSOpts.Sysroot.empty())
-    Invok.setSDKPath(HSOpts.Sysroot);
+    Invoke.setSDKPath(HSOpts.Sysroot);
   if (!HSOpts.ModuleCachePath.empty())
-    Invok.setClangModuleCachePath(HSOpts.ModuleCachePath);
+    Invoke.setClangModuleCachePath(HSOpts.ModuleCachePath);
 
-  auto &CCArgs = Invok.getClangImporterOptions().ExtraArgs;
+  auto &CCArgs = Invoke.getClangImporterOptions().ExtraArgs;
   for (auto MacroEntry : PPOpts.Macros) {
     std::string MacroFlag;
     if (MacroEntry.second)
@@ -538,21 +538,21 @@ bool ide::initInvocationByClangArguments(ArrayRef<const char *> ArgList,
     CCArgs.push_back(Entry);
   }
 
-  if (!ClangInvok->getLangOpts()->isCompilingModule()) {
+  if (!ClangInvoke->getLangOpts()->isCompilingModule()) {
     CCArgs.push_back("-Xclang");
     llvm::SmallString<64> Str;
     Str += "-fmodule-name=";
-    Str += ClangInvok->getLangOpts()->CurrentModule;
+    Str += ClangInvoke->getLangOpts()->CurrentModule;
     CCArgs.push_back(std::string(Str.str()));
   }
 
   if (PPOpts.DetailedRecord) {
-    Invok.getClangImporterOptions().DetailedPreprocessingRecord = true;
+    Invoke.getClangImporterOptions().DetailedPreprocessingRecord = true;
   }
 
-  if (!ClangInvok->getFrontendOpts().Inputs.empty()) {
-    Invok.getFrontendOptions().ImplicitObjCHeaderPath =
-        ClangInvok->getFrontendOpts().Inputs[0].getFile().str();
+  if (!ClangInvoke->getFrontendOpts().Inputs.empty()) {
+    Invoke.getFrontendOptions().ImplicitObjCHeaderPath =
+        ClangInvoke->getFrontendOpts().Inputs[0].getFile().str();
   }
 
   return false;
@@ -1146,7 +1146,7 @@ ClangNode swift::ide::extensionGetClangNode(const ExtensionDecl *ext) {
   // If it has a Clang node (directly),
   if (ext->hasClangNode()) return ext->getClangNode();
 
-  // Check whether it was syntheszed into a module-scope context.
+  // Check whether it was synthesized into a module-scope context.
   if (!isa<ClangModuleUnit>(ext->getModuleScopeContext()))
     return ClangNode();
 
