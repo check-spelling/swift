@@ -129,7 +129,7 @@ public:
     UnknownWitnessMethodConformance,
 
     /// Attempted to determine the SIL function of a witness method  and failed.
-    NoWitnesTableEntry,
+    NoWitnessTableEntry,
 
     /// The value of a top-level variable cannot be determined to be a constant.
     /// This is only relevant in the backward evaluation mode, which is used by
@@ -138,7 +138,7 @@ public:
 
     /// A top-level value has multiple writers. This is only relevant in the
     /// non-flow-sensitive evaluation mode,  which is used by #assert.
-    MutipleTopLevelWriters,
+    MultipleTopLevelWriters,
 
     /// Indicates the return value of an instruction that was not evaluated
     /// during interpretation.
@@ -188,7 +188,7 @@ public:
     return reason;
   }
 
-  SILFunction *getCalleeWithoutImplmentation() {
+  SILFunction *getCalleeWithoutImplementation() {
     assert(kind == UnknownKind::CalleeImplementationUnknown);
     return payload.function;
   }

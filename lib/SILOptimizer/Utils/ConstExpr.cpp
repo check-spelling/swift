@@ -438,7 +438,7 @@ SymbolicValue ConstExprFunctionState::computeConstantValue(SILValue value) {
 
     LLVM_DEBUG(llvm::dbgs()
                << "ConstExpr Unresolved witness: " << *value << "\n");
-    return getUnknown(evaluator, value, UnknownReason::NoWitnesTableEntry);
+    return getUnknown(evaluator, value, UnknownReason::NoWitnessTableEntry);
   }
 
   if (auto *builtin = dyn_cast<BuiltinInst>(value))
@@ -1455,7 +1455,7 @@ ConstExprFunctionState::initializeAddressFromSingleWriter(SILValue addr) {
         // Forbid multiple assignment.
         if (getMemoryValue().getKind() != SymbolicValue::UninitMemory)
           return error(getUnknown(evaluator, addr,
-                                  UnknownReason::MutipleTopLevelWriters));
+                                  UnknownReason::MultipleTopLevelWriters));
 
         auto result = getConstantValue(si->getOperand(0));
         if (!result.isConstant())
@@ -1476,7 +1476,7 @@ ConstExprFunctionState::initializeAddressFromSingleWriter(SILValue addr) {
       // Forbid multiple assignment.
       if (getMemoryValue().getKind() != SymbolicValue::UninitMemory)
         return error(
-            getUnknown(evaluator, addr, UnknownReason::MutipleTopLevelWriters));
+            getUnknown(evaluator, addr, UnknownReason::MultipleTopLevelWriters));
 
       auto result = getConstAddrAndLoadResult(cai->getOperand(0));
       if (!result.isConstant())
@@ -1501,7 +1501,7 @@ ConstExprFunctionState::initializeAddressFromSingleWriter(SILValue addr) {
       // Forbid multiple assignment.
       if (getMemoryValue().getKind() != SymbolicValue::UninitMemory)
         return error(
-            getUnknown(evaluator, addr, UnknownReason::MutipleTopLevelWriters));
+            getUnknown(evaluator, addr, UnknownReason::MultipleTopLevelWriters));
 
       // The callee needs to be a direct call to a constant expression.
       auto callResult = computeCallResult(apply);

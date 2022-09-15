@@ -1008,7 +1008,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
     diagnose(ctx, loc, diag::constexpr_value_unknown_at_top_level);
     return;
   }
-  case UnknownReason::MutipleTopLevelWriters: {
+  case UnknownReason::MultipleTopLevelWriters: {
     // For top-level errors, trigger loc is better than diagLoc.
     auto loc = emitTriggerLocInDiag ? triggerLoc : diagLoc;
     diagnose(ctx, loc, diag::constexpr_multiple_writers_found_at_top_level);
@@ -1033,7 +1033,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
     return;
   }
   case UnknownReason::CalleeImplementationUnknown: {
-    SILFunction *callee = unknownReason.getCalleeWithoutImplmentation();
+    SILFunction *callee = unknownReason.getCalleeWithoutImplementation();
     std::string demangledCalleeName =
         demangleSymbolNameForDiagnostics(callee->getName());
     diagnose(ctx, diagLoc, diag::constexpr_found_callee_with_no_body,
@@ -1084,7 +1084,7 @@ void SymbolicValue::emitUnknownDiagnosticNotes(SILLocation fallbackLoc) {
                triggerLocSkipsInternalLocs);
     return;
   }
-  case UnknownReason::NoWitnesTableEntry: {
+  case UnknownReason::NoWitnessTableEntry: {
     SmallString<8> witnessMethodName;
     getWitnessMethodName(dyn_cast<WitnessMethodInst>(unknownNode),
                          witnessMethodName);
