@@ -3,8 +3,8 @@
 import ClassTemplateInstantiationErrors
 
 // CHECK: error: no member named 'doesNotExist' in 'IntWrapper'
-// CHECK: note: in instantiation of member function 'CannotBeInstantianted<IntWrapper>::memberWrongType' requested here
+// CHECK: note: in instantiation of member function 'CannotBeInstantiated<IntWrapper>::memberWrongType' requested here
 public func test() {
-  var x = CannotBeInstantianted<IntWrapper>(CChar(0), CChar(0))
+  var x = CannotBeInstantiated<IntWrapper>(CChar(0), CChar(0))
   x.incValue() // This is just to make sure "x" isn't removed.
 }

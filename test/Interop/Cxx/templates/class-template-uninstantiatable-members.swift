@@ -8,12 +8,12 @@ import StdlibUnittest
 var TemplatesTestSuite = TestSuite("Template with uninstantiatable members")
 
 TemplatesTestSuite.test("Calls valid member") {
-  var x = CannotBeInstantianted<IntWrapper>(IntWrapper(value: 41))
+  var x = CannotBeInstantiated<IntWrapper>(IntWrapper(value: 41))
   expectEqual(x.incValue(), 42)
 }
 
 TemplatesTestSuite.test("Calls valid member on arg") {
-  var x = CannotBeInstantianted<IntWrapper>(IntWrapper(value: 0))
+  var x = CannotBeInstantiated<IntWrapper>(IntWrapper(value: 0))
   expectEqual(x.incValue(IntWrapper(value: 41)), 42)
 }
 
