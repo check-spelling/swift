@@ -294,7 +294,7 @@ class BrowserViewController: UIViewController {
             self.displayedPopoverController = nil
         }
 
-        // If we are displying a private tab, hide any elements in the tab that we wouldn't want shown
+        // If we are displaying a private tab, hide any elements in the tab that we wouldn't want shown
         // when the app is in the home switcher
         guard let privateTab = tabManager.selectedTab, privateTab.isPrivate else {
             return
@@ -581,7 +581,7 @@ class BrowserViewController: UIViewController {
     }
 
     fileprivate func showQueuedAlertIfAvailable() {
-        if let queuedAlertInfo = tabManager.selectedTab?.dequeueJavascriptAlertPrompt() {
+        if let queuedAlertInfo = tabManager.selectedTab?.dequeueJavaScriptAlertPrompt() {
             let alertController = queuedAlertInfo.alertController()
             alertController.delegate = self
             present(alertController, animated: true, completion: nil)
@@ -1104,7 +1104,7 @@ class BrowserViewController: UIViewController {
                 postLocationChangeNotificationForTab(tab, navigation: navigation)
 
                 // Fire the readability check. This is here and not in the pageShow event handler in ReaderMode.js anymore
-                // because that event wil not always fire due to unreliable page caching. This will either let us know that
+                // because that event will not always fire due to unreliable page caching. This will either let us know that
                 // the currently loaded page can be turned into reading mode or if the page already is in reading mode. We
                 // ignore the result because we are being called back asynchronous when the readermode status changes.
                 webView.evaluateJavaScript("\(ReaderModeNamespace).checkReadability()", completionHandler: nil)
@@ -1975,7 +1975,7 @@ extension BrowserViewController: IntroViewControllerDelegate {
     func launchFxAFromDeeplinkURL(_ url: URL) {
         self.profile.prefs.removeObjectForKey("AdjustDeeplinkKey")
         var query = url.getQuery()
-        query["entrypoint"] = "adjust_deepklink_ios"
+        query["entrypoint"] = "adjust_deeplink_ios"
         let fxaParams: FxALaunchParams
         fxaParams = FxALaunchParams(query: query)
         self.presentSignInViewController(fxaParams)
@@ -2275,7 +2275,7 @@ extension BrowserViewController {
         }
         webView.evaluateJavaScript("__firefox__.searchQueryForField()") { (result, _) in
             guard let searchQuery = result as? String, let favicon = self.tabManager.selectedTab!.displayFavicon else {
-                //Javascript responded with an incorrectly formatted message. Show an error.
+                //JavaScript responded with an incorrectly formatted message. Show an error.
                 let alert = ThirdPartySearchAlerts.failedToAddThirdPartySearch()
                 self.present(alert, animated: true, completion: nil)
                 return
