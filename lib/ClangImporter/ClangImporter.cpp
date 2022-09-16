@@ -6123,7 +6123,7 @@ bool IsSafeUseOfCxxDecl::evaluate(Evaluator &evaluator,
     return true;
 
 
-  // All other record semantics kinds are some varient of an "owned" type, so
+  // All other record semantics kinds are some variant of an "owned" type, so
   // dis-allow potential projections.
   return cxxMethodIsSafe;
 }
