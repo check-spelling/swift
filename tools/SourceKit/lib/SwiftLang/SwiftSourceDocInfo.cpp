@@ -2192,7 +2192,7 @@ class RelatedIdScanner : public SourceEntityWalker {
   ValueDecl *Dcl;
   llvm::SmallDenseSet<std::pair<unsigned, unsigned>, 8> &Ranges;
   /// Declarations that are tied to the same name as \c Dcl and should thus also
-  /// be renamed if \c Dcl is renamed. Most notabliy this contains closure
+  /// be renamed if \c Dcl is renamed. Most notably this contains closure
   /// captures like `[foo]`.
   llvm::SmallVectorImpl<ValueDecl *> &RelatedDecls;
   SourceManager &SourceMgr;
