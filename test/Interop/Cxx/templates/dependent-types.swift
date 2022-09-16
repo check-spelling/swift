@@ -84,7 +84,7 @@ DependentTypesTestSuite.test("Function template methods (static)") {
   expectEqual(m2.getValue(), 32)
 }
 
-DependentTypesTestSuite.test("Complex different dependent return type inferrd.") {
+DependentTypesTestSuite.test("Complex different dependent return type inferred.") {
   let m = complexDependantReturnTypeInferred(M<Int>(value: 42)) as! M<Int>
   expectEqual(m.getValue(), 42)
 }
