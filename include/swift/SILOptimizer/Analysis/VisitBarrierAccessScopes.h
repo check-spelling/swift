@@ -295,7 +295,7 @@ private:
   /// SILCFGBackwardDFS::Visitor
   friend struct SILCFGBackwardDFS<This>;
 
-  /// Whether the block is in the region of interest.  Just a passhthrough to
+  /// Whether the block is in the region of interest.  Just a passthrough to
   /// our visitor.
   bool isInRegion(SILBasicBlock *block) { return visitor.isInRegion(block); }
 };
