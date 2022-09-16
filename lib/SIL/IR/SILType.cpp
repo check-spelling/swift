@@ -232,7 +232,7 @@ static bool isSingleSwiftRefcounted(SILModule &M,
   // Is the type a Swift-refcounted class?
   // For a generic type, consider its superclass constraint, if any.
   auto ClassTy = Ty;
-  if (auto archety = dyn_cast<ArchetypeType>(Ty)) {
+  if (auto archetype = dyn_cast<ArchetypeType>(Ty)) {
     if (auto superclass = Ty->getSuperclass()) {
       ClassTy = superclass->getCanonicalType();
     }
