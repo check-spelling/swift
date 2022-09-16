@@ -122,7 +122,7 @@ PackType *PackConformance::getAssociatedType(Type assocType) const {
 }
 
 /// Project the corresponding associated conformance from each pack element
-/// of the conforming type, collecting the results into a new pack conformnace
+/// of the conforming type, collecting the results into a new pack conformance
 /// whose conforming type has the same pack expansion structure as our
 /// conforming type.
 PackConformance *PackConformance::getAssociatedConformance(
