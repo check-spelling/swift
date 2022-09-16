@@ -244,7 +244,7 @@ func computeInnerAndOuterLiferanges(instruction: SingleValueInstruction, in domB
       // instructions (for which the `visitUse` closure is not called).
       outerBlockRange.insert(defBlock)
       
-      // We need to explicitly add predecessor blocks of phi-arguments becaues they
+      // We need to explicitly add predecessor blocks of phi-arguments because they
       // are not necesesarily visited by `EscapeInfo.walkDown`.
       // This is important for the special case where there is a back-edge from the
       // inner range to the inner rage's begin-block:
