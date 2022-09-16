@@ -781,7 +781,7 @@ void SILGenFunction::emitProlog(CaptureInfo captureInfo,
   }
 
   // IMPORTANT: This block should be the last one in `emitProlog`, 
-  // since it terminates BB and no instructions should be insterted after it.
+  // since it terminates BB and no instructions should be inserted after it.
   // Emit an unreachable instruction if a parameter type is
   // uninhabited
   if (paramList) {
