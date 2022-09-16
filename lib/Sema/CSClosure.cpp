@@ -1244,7 +1244,7 @@ private:
     if (auto patternBinding = dyn_cast<PatternBindingDecl>(decl)) {
       SolutionApplicationTarget target(patternBinding);
 
-      // If this is a placeholder varaible with an initializer, let's set
+      // If this is a placeholder variable with an initializer, let's set
       // the inferred type, and ask `typeCheckDecl` to type-check initializer.
       if (isPlaceholderVar(patternBinding) && patternBinding->getInit(0)) {
         auto *pattern = patternBinding->getPattern(0);
