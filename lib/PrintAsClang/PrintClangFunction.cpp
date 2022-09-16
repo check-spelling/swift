@@ -515,7 +515,7 @@ static void printDirectReturnOrParamCType(
       });
   assert(Count > 0 && "missing return values");
 
-  // FIXME: is this "prettyfying" logic sound for multiple return values?
+  // FIXME: is this "prettifying" logic sound for multiple return values?
   if (isKnownCType(valueType, typeMapping) ||
       (Count == 1 && lastOffset.isZero() && !valueType->hasTypeParameter() &&
        valueType->isAnyClassReferenceType())) {
