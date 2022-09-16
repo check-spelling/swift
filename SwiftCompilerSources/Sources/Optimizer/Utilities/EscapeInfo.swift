@@ -524,7 +524,7 @@ fileprivate struct EscapeInfoWalker<V: EscapeInfoVisitor> : ValueDefUseWalker,
       return .continueWalk
     }
     if analyzeAddresses && p.matches(pattern: SmallProjectionPath(.anyValueFields).push(.anyClassField)) {
-      // Any address of a class property of the object to destroy cannot esacpe the destructor.
+      // Any address of a class property of the object to destroy cannot escape the destructor.
       // (Whereas a value stored in such a property could escape.)
       return .continueWalk
     }
