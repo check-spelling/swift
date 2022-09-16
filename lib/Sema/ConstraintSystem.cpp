@@ -5324,7 +5324,7 @@ void constraints::simplifyLocator(ASTNode &anchor,
 
     case ConstraintLocator::AnyPatternDecl: {
       // This element is just a marker for `_` pattern since it doesn't
-      // have a declaration. We need to make sure that it only appaears
+      // have a declaration. We need to make sure that it only appears
       // when anchored on `AnyPattern`.
       assert(getAsPattern<AnyPattern>(anchor));
       path = path.slice(1);
