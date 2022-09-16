@@ -393,7 +393,7 @@ static ConstructorDecl *createImplicitConstructor(NominalTypeDecl *decl,
               var->getAttrs().hasAttribute<TypeWrapperIgnoredAttr>()))
           continue;
 
-        // If this is a memberwise initializeable property include
+        // If this is a memberwise initializable property include
         // it into the type wrapper initializer otherwise the instance
         // of type wrapped type wouldn't be completely initialized.
         if (var->isMemberwiseInitialized(/*preferDeclaredProperties=*/true))
