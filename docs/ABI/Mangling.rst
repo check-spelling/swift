@@ -102,7 +102,7 @@ The following symbolic reference kinds are currently implemented:
      metadata-access-function ::= '\x09' .{4}  // Reference points directly to metadata access function that can be invoked to produce referenced object
    #endif
 
-   #if SWIFT_RUNTIME_VERISON >= 5.7
+   #if SWIFT_RUNTIME_VERSION >= 5.7
      symbolic-extended-existential-type-shape ::= '\x0A' .{4} // Reference points directly to an ExtendedExistentialTypeShape
      symbolic-extended-existential-type-shape ::= '\x0B' .{4} // Reference points directly to a NonUniqueExtendedExistentialTypeShape
    #endif
