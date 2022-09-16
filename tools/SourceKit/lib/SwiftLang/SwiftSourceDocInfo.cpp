@@ -2231,7 +2231,7 @@ private:
     if (Cancelled)
       return false;
 
-    // Check if there are closure captures like `[foo]` where the caputred
+    // Check if there are closure captures like `[foo]` where the captured
     // variable should also be renamed
     if (auto CaptureList = dyn_cast<CaptureListExpr>(E)) {
       for (auto ShorthandShadow : getShorthandShadows(CaptureList)) {
