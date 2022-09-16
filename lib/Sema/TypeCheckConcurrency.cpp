@@ -5163,7 +5163,7 @@ ActorReferenceResult ActorReferenceResult::forReference(
       declIsolation = declIsolation.subst(declRef.getSubstitutions());
   }
 
-  // If the entity we are referencing is not a value, we're in thesame
+  // If the entity we are referencing is not a value, we're in the same
   // concurrency domain.
   if (isNonValueReference(declRef.getDecl()))
     return forSameConcurrencyDomain(declIsolation);
