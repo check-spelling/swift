@@ -650,7 +650,7 @@ std::string nodeToString(NodePointer Root,
                          const DemangleOptions &Options = DemangleOptions());
 
 /// Transforms a mangled key path accessor thunk helper
-/// into the identfier/subscript that would be used to invoke it in swift code.
+/// into the identifier/subscript that would be used to invoke it in swift code.
 std::string keyPathSourceString(const char *MangledName,
                                 size_t MangledNameLength);
 

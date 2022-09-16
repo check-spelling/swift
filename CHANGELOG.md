@@ -9389,7 +9389,7 @@ Swift 1.0
 [SE-0121]: <https://github.com/apple/swift-evolution/blob/main/proposals/0121-remove-optional-comparison-operators.md>
 [SE-0122]: <https://github.com/apple/swift-evolution/blob/main/proposals/0122-use-colons-for-subscript-type-declarations.md>
 [SE-0123]: <https://github.com/apple/swift-evolution/blob/main/proposals/0123-disallow-value-to-optional-coercion-in-operator-arguments.md>
-[SE-0124]: <https://github.com/apple/swift-evolution/blob/main/proposals/0124-bitpattern-label-for-int-initializer-objectidentfier.md>
+[SE-0124]: <https://github.com/apple/swift-evolution/blob/main/proposals/0124-bitpattern-label-for-int-initializer-objectidentifier.md>
 [SE-0125]: <https://github.com/apple/swift-evolution/blob/main/proposals/0125-remove-nonobjectivecbase.md>
 [SE-0126]: <https://github.com/apple/swift-evolution/blob/main/proposals/0126-refactor-metatypes-repurpose-t-dot-self-and-mirror.md>
 [SE-0127]: <https://github.com/apple/swift-evolution/blob/main/proposals/0127-cleaning-up-stdlib-ptr-buffer.md>
