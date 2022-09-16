@@ -842,7 +842,7 @@ Result Parser::parseIfConfigRaw(
         // To do this, push three empty syntax nodes onto the stack.
         //  - First one for unexpected nodes between the #else keyword and the
         //    condition
-        //  - One for the condition itself (whcih doesn't exist)
+        //  - One for the condition itself (which doesn't exist)
         //  - And finally one for the unexpected nodes between the condition and
         //    the elements
         SyntaxContext->addRawSyntax(ParsedRawSyntaxNode());
