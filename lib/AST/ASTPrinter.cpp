@@ -6327,7 +6327,7 @@ public:
     // FIXME: The desugared type is used here only to support
     // existential types with protocol typealiases in Swift
     // interfaces. Verifying that the underlying type of a
-    // protocol typealias is a constriant type is fundamentally
+    // protocol typealias is a constraint type is fundamentally
     // circular, so the desugared type should be written in source.
     if (Options.DesugarExistentialConstraint && !T->isAnyObject()) {
       visit(T->getConstraintType()->getDesugaredType());
