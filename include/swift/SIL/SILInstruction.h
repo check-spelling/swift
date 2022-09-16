@@ -5097,7 +5097,7 @@ public:
 /// memory region, before binding it to a contiguous region of type $T. This
 /// token has no purpose unless it is consumed be a rebind_memory instruction.
 ///
-/// Semantics: changes the type information assocated with a memory region. This
+/// Semantics: changes the type information associated with a memory region. This
 /// affects all memory operations that alias with the given region of memory,
 /// regardless of their type or address provenance. For optimizations that query
 /// side effects, this is equivalent to writing and immediately reading an
