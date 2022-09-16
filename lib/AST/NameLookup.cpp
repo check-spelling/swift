@@ -259,7 +259,7 @@ void UsableFilteringDeclConsumer::foundDecl(ValueDecl *D,
       //     var value = ""
       //   }
       // In this case, 'var value' wins, regardless of their source order.
-      // So, for confilicting local values in the same decl context, even if the
+      // So, for conflicting local values in the same decl context, even if the
       // 'var value' is reported after 'func value', don't shadow it, but we
       // shadow everything with the name after that.
       if (reason == DeclVisibilityKind::LocalVariable &&

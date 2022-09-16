@@ -53,7 +53,7 @@ import Lib // expected-error {{'Lib' inconsistently imported for SPI only}}
 @_implementationOnly import Lib // expected-error {{'Lib' inconsistently imported for SPI only}}
 // expected-note @-1 {{imported as implementation-only here}}
 
-/// Many confliciting imports lead to many diagnostics.
+/// Many conflicting imports lead to many diagnostics.
 //--- SPIOnly_IOI_Exported_Default.swift
 @_spiOnly import Lib // expected-note 3 {{imported for SPI only here}}
 // expected-warning @-1 {{'Lib' inconsistently imported as implementation-only}}
