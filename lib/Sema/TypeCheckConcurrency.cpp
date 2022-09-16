@@ -3123,7 +3123,7 @@ ClosureActorIsolation swift::determineClosureActorIsolation(
   return checker.determineClosureIsolation(closure);
 }
 
-/// Determine whethere there is an explicit isolation attribute
+/// Determine whether there is an explicit isolation attribute
 /// of any kind.
 static bool hasExplicitIsolationAttribute(const Decl *decl) {
   if (auto nonisolatedAttr =
