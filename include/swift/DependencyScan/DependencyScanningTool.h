@@ -92,7 +92,7 @@ public:
   void resetCache();
   
   const std::vector<DependencyScannerDiagnosticCollectingConsumer::ScannerDiagnosticInfo>& getDiagnostics() const { return CDC.Diagnostics; }
-  /// Discared the collection of diagnostics encountered so far.
+  /// Discard the collection of diagnostics encountered so far.
   void resetDiagnostics();
 
 private:
