@@ -330,7 +330,7 @@ TypeSyntax SyntaxFactory::makeTypeIdentifier(StringRef TypeName,
     /*UnexpectedNodes=*/None,
     /*Name=*/identifier,
     /*UnexpectedNodes=*/None,
-    /*GenerigArgumentClause=*/None
+    /*GenericArgumentClause=*/None
   );
 }
 
