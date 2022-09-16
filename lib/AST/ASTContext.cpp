@@ -1935,7 +1935,7 @@ static void diagnoseScannerFailure(StringRef moduleName,
   if (dependencyOf.hasValue()) {
     auto path = findPathToDependency(dependencyOf.getValue(), cache, searchPathSet);
     // We may fail to construct a path in some cases, such as a Swift overlay of a Clang
-    // module dependnecy.
+    // module dependency.
     if (path.empty())
       path = {dependencyOf.getValue()};
     
