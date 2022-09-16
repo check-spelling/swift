@@ -31,10 +31,10 @@ public actor Actor {
   }
 }
 
-let a = Actor(name: "Arhtur Dent")
+let a = Actor(name: "Arthur Dent")
 await print(a.name)
 // CHECK: in getter
-// CHECK-NEXT: Arhtur Dent
+// CHECK-NEXT: Arthur Dent
 await print(a.age)
 // CHECK: in getter
 // CHECK-NEXT: nil
