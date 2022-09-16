@@ -568,7 +568,7 @@ std::pair<bool, bool> LivenessChecker::testInstVectorLiveness(
     // not have any boundary violations for any leaf node of our root value.
     if (!livenessVector.any()) {
       // TODO: Today, we don't tell the user the actual field itself where the
-      // violation occured and just instead just shows the two instructions. We
+      // violation occurred and just instead just shows the two instructions. We
       // could be more specific though...
       LLVM_DEBUG(llvm::dbgs() << "        Not within the boundary.\n");
       continue;
