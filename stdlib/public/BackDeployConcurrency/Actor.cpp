@@ -1377,7 +1377,7 @@ Job *DefaultActorImpl::claimNextJobOrGiveUp(bool actorIsOwned,
 
     State newState = oldState;
 
-    // If the priority we're currently running with is adqeuate for
+    // If the priority we're currently running with is adequate for
     // all the remaining jobs, try to dequeue something.
     // FIXME: should this be an exact match in priority instead of
     // potentially running jobs with too high a priority?
