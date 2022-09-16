@@ -11,8 +11,8 @@ module Test {
 //--- Inputs/test.h
 struct
     __attribute__((swift_attr("import_reference")))
-    __attribute__((swift_attr("retain:nonexistant")))
-    __attribute__((swift_attr("release:nonexistant")))
+    __attribute__((swift_attr("retain:nonexistent")))
+    __attribute__((swift_attr("release:nonexistent")))
 NonExistant {};
 
 struct
@@ -32,8 +32,8 @@ void badRelease(BadRetainRelease *v, int i);
 
 import Test
 
-// CHECK: error: cannot find retain function 'nonexistant' for reference type 'NonExistant'.
-// CHECK: error: cannot find release function 'nonexistant' for reference type 'NonExistant'.
+// CHECK: error: cannot find retain function 'nonexistent' for reference type 'NonExistant'.
+// CHECK: error: cannot find release function 'nonexistent' for reference type 'NonExistant'.
 public func test(x: NonExistant) { }
 
 // CHECK: error: reference type 'NoRetainRelease' must have 'retain:' swift attribute.
