@@ -119,7 +119,7 @@ EXPERIMENTAL_FEATURE(AdditiveArithmeticDerivedConformances)
 /// @Sendable.
 EXPERIMENTAL_FEATURE(SendableCompletionHandlers)
 
-/// Enables opaque type erasure without also enabling implict dynamic
+/// Enables opaque type erasure without also enabling implicit dynamic
 EXPERIMENTAL_FEATURE(OpaqueTypeErasure)
 
 /// Whether to enable experimental @typeWrapper feature which allows to
