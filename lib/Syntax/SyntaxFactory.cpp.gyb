@@ -272,7 +272,7 @@ SyntaxFactory::makeTupleTypeElement(llvm::Optional<TokenSyntax> Label,
     /*UnexpectedNodes=*/None,
     /*Ellipsis=*/None,
     /*UnexpectedNodes=*/None,
-    /*Intitializer=*/None,
+    /*Initializer=*/None,
     /*UnexpectedNodes=*/None,
     /*TrailingComma=*/TrailingComma
   );
