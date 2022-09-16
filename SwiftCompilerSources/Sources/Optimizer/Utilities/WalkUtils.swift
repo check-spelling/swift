@@ -422,7 +422,7 @@ extension AddressDefUseWalker {
          is IndexAddrInst, is MarkMustCheckInst:
       // FIXME: for now `index_addr` is treated as a forwarding instruction since
       // SmallProjectionPath does not track indices.
-      // This is ok since `index_addr` is eventually preceeded by a `tail_addr`
+      // This is ok since `index_addr` is eventually preceded by a `tail_addr`
       // which has pushed a `"ct"` component on the path that matches any
       // `index_addr` address.
       return walkDownUses(ofAddress: instruction as! SingleValueInstruction, path: path)
@@ -647,7 +647,7 @@ extension AddressUseDefWalker {
          is MarkMustCheckInst:
       // FIXME: for now `index_addr` is treated as a forwarding instruction since
       // SmallProjectionPath does not track indices.
-      // This is ok since `index_addr` is eventually preceeded by a `tail_addr`
+      // This is ok since `index_addr` is eventually preceded by a `tail_addr`
       // which has pushed a `"ct"` component on the path that matches any
       // `index_addr` address.
       return walkUp(address: (def as! Instruction).operands[0].value, path: path)
