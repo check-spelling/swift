@@ -779,7 +779,7 @@ bb0:
   %4 = ref_element_addr %3 : $Z, #Z.y
   store %0 to [init] %4 : $*Y
   end_borrow %3 : $Z
-  // destoying %1 and %8 may escape %0 in its destructor
+  // destroying %1 and %8 may escape %0 in its destructor
   destroy_value %1 : $Z
   %8 = enum $E, #E.A!enumelt, %2 : $Z
   destroy_value %8 : $E
