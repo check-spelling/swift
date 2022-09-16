@@ -479,7 +479,7 @@ extension Value {
   // Although an AccessPathWalker is created for each call of these properties,
   // it's very unlikely that this will end up in memory allocations.
   // Only in the rare case of `pointer_to_address` -> `address_to_pointer` pairs, which
-  // go through phi-arguments, the AccessPathWalker will allocate memnory in its cache.
+  // go through phi-arguments, the AccessPathWalker will allocate memory in its cache.
 
   /// Computes the access base of this address value.
   var accessBase: AccessBase {
