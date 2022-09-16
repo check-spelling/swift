@@ -403,7 +403,7 @@ bool TempRValueOptPass::extendAccessScopes(
       if (!aa->isNoAlias(copySrc, endAccess->getSource()) &&
 
           // There cannot be any aliasing modifying accesses within the liferange
-          // of the temporary, because we would have cought this in
+          // of the temporary, because we would have caught this in
           // `getLastUseWhileSourceIsNotModified`.
           // But there are cases where `AliasAnalysis::isNoAlias` is less precise
           // than `AliasAnalysis::mayWriteToMemory`. Therefore, just ignore any
