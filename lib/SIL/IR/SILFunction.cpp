@@ -299,7 +299,7 @@ void SILFunction::restoreFromSnapshot(int ID) {
 
   // Beside the function body, only restore those properties, which are/can be
   // modified by passes.
-  // TODO: There should be a clear sepratation from initialize-once properties
+  // TODO: There should be a clear separation from initialize-once properties
   //       (`let`) and properties which can be modified by passes (`var`).
   copyEffects(sn);
 
