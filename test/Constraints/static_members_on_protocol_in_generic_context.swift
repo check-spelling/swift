@@ -341,7 +341,7 @@ extension Container {
 }
 
 // rdar://88513939 - Allow to call init through a typealias using leading-dot syntax in generic context
-func test_leading_dot_syntax_with_typelias() {
+func test_leading_dot_syntax_with_typealias() {
   func test<T: Container>(_: T) {} // expected-note {{required by local function 'test' where 'T' = 'Box<T>.Type'}}
 
   test(Container.box(1)) // Ok
