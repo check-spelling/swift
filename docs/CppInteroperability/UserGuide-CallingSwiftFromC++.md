@@ -696,7 +696,7 @@ public final class Bicycle: Vehicle {
 }
 ```
 
-Get a corresponding C++ class hierachy in C++:
+Get a corresponding C++ class hierarchy in C++:
 
 ```c++
 class Vehicle { ... };
