@@ -271,7 +271,7 @@ private:
     return false;
   }
 
-  /// Effect procecessing
+  /// Effect processing
 
   bool handleEffect(typename Effects::Effect effect) {
     switch (effect.value) {
