@@ -244,7 +244,7 @@ int autolink_extract_main(ArrayRef<const char *> Args, const char *Argv0,
 
   // Keep track of whether we've already added the common
   // Swift libraries that ususally have autolink directives
-  // in most object fiels
+  // in most object files
   std::unordered_map<std::string, bool> SwiftRuntimeLibraries = {
       {"-lswiftSwiftOnoneSupport", false},
       {"-lswiftCore", false},
