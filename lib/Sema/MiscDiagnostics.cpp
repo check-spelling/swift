@@ -5137,7 +5137,7 @@ diagnoseDictionaryLiteralDuplicateKeyEntries(const Expr *E,
       // maybe be evaluated to different values. e.g.
       // "\(a) \(a)" where 'a' is a computed variable.
       case ExprKind::InterpolatedStringLiteral:
-      // Also skip object literals as most of them takes paramenters that can
+      // Also skip object literals as most of them takes parameters that can
       // contain expressions that although equal may evaluate to different
       // values e.g. #fileLiteral(resourceName: a) where 'a' is a computed
       // property is valid.
