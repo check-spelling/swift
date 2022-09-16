@@ -198,11 +198,11 @@ bb5:
   return %a1 : $Int32
 }
 
-// CHECK-LABEL: sil @dont_promote_with_crictical_exit_edge
+// CHECK-LABEL: sil @dont_promote_with_critical_exit_edge
 // CHECK: alloc_ref $XX
 // CHECK-NOT: dealloc_ref
-// CHECK: } // end sil function 'dont_promote_with_crictical_exit_edge'
-sil @dont_promote_with_crictical_exit_edge : $@convention(thin) () -> () {
+// CHECK: } // end sil function 'dont_promote_with_critical_exit_edge'
+sil @dont_promote_with_critical_exit_edge : $@convention(thin) () -> () {
 bb0:
   br bb1
 
@@ -216,7 +216,7 @@ bb2:
   return %r : $()
 }
 
-// CHECK-LABEL: sil @promote_with_non_crictial_exit_edge
+// CHECK-LABEL: sil @promote_with_non_critical_exit_edge
 // CHECK: bb1:
 // CHECK:   alloc_ref [stack] $XX
 // CHECK: bb2:
@@ -224,8 +224,8 @@ bb2:
 // CHECK: bb3:
 // CHECK:   strong_release
 // CHECK:   dealloc_stack_ref
-// CHECK: } // end sil function 'promote_with_non_crictial_exit_edge'
-sil @promote_with_non_crictial_exit_edge : $@convention(thin) () -> () {
+// CHECK: } // end sil function 'promote_with_non_critical_exit_edge'
+sil @promote_with_non_critical_exit_edge : $@convention(thin) () -> () {
 bb0:
   br bb1
 
