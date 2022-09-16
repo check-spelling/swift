@@ -193,7 +193,7 @@ struct PointerAuthOptions : clang::PointerAuthOptions {
   /// Extended existential type shapes in flight.
   PointerAuthSchema ExtendedExistentialTypeShape;
 
-  // The c type descriminator for TaskContinuationFunction*.
+  // The c type discriminator for TaskContinuationFunction*.
   PointerAuthSchema ClangTypeTaskContinuationFunction;
 
   /// Non-unique extended existential type shapes in flight.
