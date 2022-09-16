@@ -120,7 +120,7 @@ enum AccessBase : CustomStringConvertible, Hashable {
     }
   }
 
-  /// The reference value if this is an access to a referenced objecct (class, box, tail).
+  /// The reference value if this is an access to a referenced object (class, box, tail).
   var reference: Value? {
     switch self {
       case .box(let pbi):      return pbi.operand
