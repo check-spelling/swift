@@ -160,7 +160,7 @@ GetTypeWrapperStorage::evaluate(Evaluator &evaluator,
   auto *storage =
       new (ctx) StructDecl(/*StructLoc=*/SourceLoc(), ctx.Id_TypeWrapperStorage,
                            /*NameLoc=*/SourceLoc(),
-                           /*Inheritted=*/{},
+                           /*Inherited=*/{},
                            /*GenericParams=*/nullptr, parent);
 
   storage->setImplicit();
