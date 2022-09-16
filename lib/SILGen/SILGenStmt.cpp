@@ -120,7 +120,7 @@ void SILGenFunction::eraseBasicBlock(SILBasicBlock *block) {
 // merged block will be visited again to determine if it can be merged with it's
 // successor, and so on, so no edges are skipped.
 //
-// In rare cases, the predessor is merged with its earlier successor, which has
+// In rare cases, the predecessor is merged with its earlier successor, which has
 // already been visited. If the successor can also be merged, then it has
 // already happened, and there is no need to revisit the merged block.
 void SILGenFunction::mergeCleanupBlocks() {
