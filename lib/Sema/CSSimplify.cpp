@@ -9282,7 +9282,7 @@ ConstraintSystem::SolutionKind ConstraintSystem::simplifyMemberConstraint(
       auto *baseExpr = memberRef->getBase();
       // Handle `makeIterator` reference.
       if (getContextualTypePurpose(baseExpr) == CTP_ForEachSequence &&
-          isRefTo(memberRef, ctx.Id_makeIterator, /*lables=*/{})) {
+          isRefTo(memberRef, ctx.Id_makeIterator, /*labels=*/{})) {
         auto *sequenceProto = cast<ProtocolDecl>(
             getContextualType(baseExpr, /*forConstraint=*/false)
                 ->getAnyNominal());
