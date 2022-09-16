@@ -482,7 +482,7 @@ void ClangValueTypePrinter::printTypeGenericTraits(
   os << "namespace swift {\n";
 
   if (typeDecl->hasClangNode()) {
-    /// Print a reference to the type metadata fucntion for a C++ type.
+    /// Print a reference to the type metadata function for a C++ type.
     ClangSyntaxPrinter(os).printNamespace(
         cxx_synthesis::getCxxImplNamespaceName(), [&](raw_ostream &os) {
           ClangSyntaxPrinter(os).printCTypeMetadataTypeFunction(
