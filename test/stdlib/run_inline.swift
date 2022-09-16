@@ -221,7 +221,7 @@ func MutableClosureContext_NontrivialReturn_NontrivialThrow_AsyncCallee() {
 // =============================================================================
 // Some of the combinations of the following:
 // - synchroneity: sync, async
-// - throwness: can't, no, trivial, nontrivial
+// - throws: can't, no, trivial, nontrivial
 // - return: void, trivial, nontrivial, gigantic
 
 // 000
