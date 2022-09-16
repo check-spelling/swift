@@ -719,7 +719,7 @@ public:
                            bool asNote = false) const override {
     // If the from type or to type is a placeholer type that corresponds to an
     // ErrorExpr, the issue has already been diagnosed. There's no need to
-    // produce another diagnostic for the contextual mismatch complainting that
+    // produce another diagnostic for the contextual mismatch complaining that
     // a type is not convertible to a placeholder type.
     if (auto fromPlaceholder = getFromType()->getAs<PlaceholderType>()) {
       if (fromPlaceholder->getOriginator().is<ErrorExpr *>()) {
