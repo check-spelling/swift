@@ -26,7 +26,7 @@ func callClosure<R>(_ body: () throws -> R) rethrows -> R {
     try body()
 }
 
-// Check that the optimizer can eliminat all calls to thunks and directly
+// Check that the optimizer can eliminate all calls to thunks and directly
 // try_apply's the witness method.
 
 // CHECK-LABEL: sil hidden [noinline] @$s4test6testitySiSgAA1P_pF
