@@ -25,7 +25,7 @@
 // - Return the appropriate piece of information from the property map.
 //
 // A few are slightly different; for example, getReducedType() takes an
-// arbitrary type, not just a type parameter, and recursively transfozms the
+// arbitrary type, not just a type parameter, and recursively transforms the
 // type parameters it contains, if any.
 //
 // Also, getConformancePath() is another one-off operation.
