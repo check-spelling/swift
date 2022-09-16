@@ -2110,7 +2110,7 @@ TypeVariableBinding::fixForHole(ConstraintSystem &cs) const {
         dstLocator->isLastElement<LocatorPathElt::PatternDecl>()) {
       // Not being able to infer the type of a variable in a pattern binding
       // decl is more dramatic than anything that could happen inside the
-      // expression because we want to preferrably point the diagnostic to a
+      // expression because we want to preferably point the diagnostic to a
       // part of the expression that caused us to be unable to infer the
       // variable's type.
       ConstraintFix *fix =
