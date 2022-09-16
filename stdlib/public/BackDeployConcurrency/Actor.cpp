@@ -485,7 +485,7 @@ public:
     return Value & NeedsPreprocessing;
   }
 
-  /// Is this an unpreprocessed override job?
+  /// Is this an unprepossessed override job?
   bool isOverride() const {
     return Value & IsOverride;
   }
