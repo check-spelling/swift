@@ -10,7 +10,7 @@ design for the Swift to C++ interoperability layer.
 **NOTE:** This document does not go over the following Swift language features yet:
 
 * Closures
-* overriden methods/properties in classes
+* overridden methods/properties in classes
 * Existential types (any P)
 * Nested types
 * Operators
