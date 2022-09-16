@@ -426,7 +426,7 @@ static bool buildModuleFromInterface(CompilerInstance &Instance) {
 
   // If an explicit interface build was requested, bypass the creation of a new
   // sub-instance from the interface which will build it in a separate thread,
-  // and isntead directly use the current \c Instance for compilation.
+  // and instead directly use the current \c Instance for compilation.
   if (FEOpts.ExplicitInterfaceBuild)
     return ModuleInterfaceLoader::buildExplicitSwiftModuleFromSwiftInterface(
         Instance, Invocation.getClangModuleCachePath(),
