@@ -25,8 +25,8 @@ struct MyValue {
 // MEMBER_MyValue: End completions
 
 class TestUnknownDanglingAttr1 {
-  @UknownAttr(arg: MyValue.#^ATTRARG_MEMBER^#)
+  @UnknownAttr(arg: MyValue.#^ATTRARG_MEMBER^#)
 }
 class TestUnknownDanglingAttr2 {
-  @UknownAttr(arg: { MyValue.#^ATTRARG_MEMBER_IN_CLOSURE^# })
+  @UnknownAttr(arg: { MyValue.#^ATTRARG_MEMBER_IN_CLOSURE^# })
 }
