@@ -5603,7 +5603,7 @@ public:
 
   /// Apply the given result builder to the closure expression.
   ///
-  /// \note builderType must be a contexutal type - callers should
+  /// \note builderType must be a contextual type - callers should
   /// open the builder type or map it into context as appropriate.
   ///
   /// \returns \c None when the result builder cannot be applied at all,
