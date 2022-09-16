@@ -351,13 +351,13 @@ StringRef getFullDependencyPath(const FileDependency &dep,
   return StringRef(scratch.data(), scratch.size());
 }
 
-class UpToDateModuleCheker {
+class UpToDateModuleChecker {
   ASTContext &ctx;
   llvm::vfs::FileSystem &fs;
   RequireOSSAModules_t requiresOSSAModules;
 
 public:
-  UpToDateModuleCheker(ASTContext &ctx, RequireOSSAModules_t requiresOSSAModules)
+  UpToDateModuleChecker(ASTContext &ctx, RequireOSSAModules_t requiresOSSAModules)
      : ctx(ctx),
        fs(*ctx.SourceMgr.getFileSystem()),
        requiresOSSAModules(requiresOSSAModules) {}
@@ -485,7 +485,7 @@ class ModuleInterfaceLoaderImpl {
   llvm::vfs::FileSystem &fs;
   DiagnosticEngine &diags;
   ModuleRebuildInfo rebuildInfo;
-  UpToDateModuleCheker upToDateChecker;
+  UpToDateModuleChecker upToDateChecker;
   const StringRef modulePath;
   const std::string interfacePath;
   const StringRef moduleName;
@@ -1355,7 +1355,7 @@ bool ModuleInterfaceLoader::buildExplicitSwiftModuleFromSwiftInterface(
   
   // First, check if the expected output already exists and possibly up-to-date w.r.t.
   // all of the dependencies it was built with. If so, early exit.
-  UpToDateModuleCheker checker(Instance.getASTContext(),
+  UpToDateModuleChecker checker(Instance.getASTContext(),
                                RequireOSSAModules_t(Instance.getSILOptions()));
   ModuleRebuildInfo rebuildInfo;
   SmallVector<FileDependency, 3> allDeps;
