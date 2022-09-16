@@ -276,7 +276,7 @@ bool diagnoseExplicitUnavailability(
     const ExportContext &where,
     bool useConformanceAvailabilityErrorsOption = false);
 
-/// Diagnose uses of the runtime features of parameterized protools. Returns
+/// Diagnose uses of the runtime features of parameterized protocols. Returns
 /// \c true if a diagnostic was emitted.
 bool diagnoseParameterizedProtocolAvailability(SourceRange loc,
                                                const DeclContext *DC);
