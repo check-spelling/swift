@@ -22,7 +22,7 @@ _**Note:** This is in reverse chronological order, so newer entries are added to
 
   First, the deinitializer and most kinds of initializers for `actor` types, and types constrained by a global actor like the `@MainActor`, have revised rules about what expressions are permitted in their body. The goal of these revisions has been to improve language expressivity and safety. In particular, many more programming patterns are now permitted in these initializers.
 
-  For example, a non-async initializer of an `actor` prior to Swift 5.7 would raise a diagnostic any time `self` escapes the initializer before returning. That diagnostic's purpose was to protect against a possible data race when accessing isolated stored proeprties. But, that diagnostic was emitted even if there was no dangerous racy access.
+  For example, a non-async initializer of an `actor` prior to Swift 5.7 would raise a diagnostic any time `self` escapes the initializer before returning. That diagnostic's purpose was to protect against a possible data race when accessing isolated stored properties. But, that diagnostic was emitted even if there was no dangerous racy access.
 
   In Swift 5.7, the compiler now checks these initializers for dangerous accesses to isolated stored properties that occur after an escape of `self`:
 
