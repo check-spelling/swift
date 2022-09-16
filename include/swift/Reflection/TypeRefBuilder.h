@@ -1474,9 +1474,9 @@ private:
       auto parentOffsetAddress = detail::applyRelativeOffset(
           (const char *)contextDescriptorAddress,
           (int32_t)contextDescriptor->getParentOffset());
-      auto parentOfsetBytes = OpaqueByteReader(
+      auto parentOffsetBytes = OpaqueByteReader(
           remote::RemoteAddress(parentOffsetAddress), sizeof(uint32_t));
-      auto parentFieldOffset = (const int32_t *)parentOfsetBytes.get();
+      auto parentFieldOffset = (const int32_t *)parentOffsetBytes.get();
       auto parentTargetAddress = detail::applyRelativeOffset(
           (const char *)parentOffsetAddress, *parentFieldOffset);
       return parentTargetAddress;
