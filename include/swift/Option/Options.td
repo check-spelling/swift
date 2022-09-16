@@ -824,7 +824,7 @@ def Oplayground : Flag<["-"], "Oplayground">, Group<O_Group>,
   Flags<[HelpHidden, FrontendOption, ModuleInterfaceOption]>,
   HelpText<"Compile with optimizations appropriate for a playground">;
 
-def EnbaleDefaultCMO : Flag<["-"], "enable-default-cmo">,
+def EnableDefaultCMO : Flag<["-"], "enable-default-cmo">,
   Flags<[HelpHidden, FrontendOption]>,
   HelpText<"Perform conservative cross-module optimization">;
 

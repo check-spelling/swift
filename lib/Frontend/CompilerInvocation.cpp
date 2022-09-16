@@ -1776,7 +1776,7 @@ static bool ParseSILArgs(SILOptions &Opts, ArgList &Args,
   Opts.DisableSILPerfOptimizations |= Args.hasArg(OPT_disable_sil_perf_optzns);
   if (Args.hasArg(OPT_CrossModuleOptimization)) {
     Opts.CMOMode = CrossModuleOptimizationMode::Aggressive;
-  } else if (Args.hasArg(OPT_EnbaleDefaultCMO)) {
+  } else if (Args.hasArg(OPT_EnableDefaultCMO)) {
     Opts.CMOMode = CrossModuleOptimizationMode::Default;  
   }
   Opts.EnablePerformanceAnnotations |=
