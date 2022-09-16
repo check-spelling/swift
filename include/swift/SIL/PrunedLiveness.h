@@ -783,7 +783,7 @@ struct TypeTreeLeafTypeRange {
     if (range.startEltOffset == rangeLastElt)
       return false;
 
-    // Othrwise, see if endEltOffset - 1 is within the range.
+    // Otherwise, see if endEltOffset - 1 is within the range.
     return startEltOffset <= rangeLastElt && rangeLastElt < endEltOffset;
   }
 };

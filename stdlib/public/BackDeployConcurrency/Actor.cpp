@@ -1250,7 +1250,7 @@ void DefaultActorImpl::giveUpThread(RunningJobInfo runner) {
       if (hasOverrideAtNewPriority) {
         swift_release(this);
 
-      // Otherwies, enqueue a job that will try to take over running
+      // Otherwise, enqueue a job that will try to take over running
       // with the new priority.  This also ensures that there's a job
       // at that priority which will actually take over the actor.
       } else {
