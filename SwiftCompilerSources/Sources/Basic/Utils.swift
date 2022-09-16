@@ -31,7 +31,7 @@ public func assert(_ condition: Bool, _ message: @autoclosure () -> String,
 
 /// The assert function (without a message) to be used in the compiler.
 ///
-/// Unforuntately it's not possible to just add a default argument to `message` in the
+/// Unfortunately it's not possible to just add a default argument to `message` in the
 /// other `assert` function. We need to defined this overload.
 @_transparent
 public func assert(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
