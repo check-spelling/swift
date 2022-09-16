@@ -70,7 +70,7 @@ Swift functions that are callable from C++ are available in their corresponding 
 
 Fundamental primitive types have a C++ fundamental type that represents them in C++:
 
-|Swift Type    |C++ Type    |C Type (if different)    |    |target specifc    |
+|Swift Type    |C++ Type    |C Type (if different)    |    |target specific    |
 |---    |---    |---    |---    |---    |
 |Void (or no return)    |void    |    |    |    |
 |Int    |swift::Int    |ptrdiff_t    |long or long long (windows)    |YES    |
