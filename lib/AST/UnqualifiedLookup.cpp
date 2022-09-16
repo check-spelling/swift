@@ -151,7 +151,7 @@ namespace {
 
     bool isInsideBodyOfFunction(const AbstractFunctionDecl *const AFD) const;
 
-    /// For diagnostic purposes, move aside the unavailables, and put
+    /// For diagnostic purposes, move aside the unavailable, and put
     /// them back as a last-ditch effort.
     /// Could be cleaner someday with a richer interface to UnqualifiedLookup.
     void setAsideUnavailableResults(size_t firstPossiblyUnavailableResult);
