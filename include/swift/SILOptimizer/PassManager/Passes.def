@@ -329,7 +329,7 @@ PASS(MoveCondFailToPreds, "move-cond-fail-to-preds",
 PASS(NoReturnFolding, "noreturn-folding",
      "Prune Control Flow at No-Return Calls Using SIL unreachable")
 SWIFT_FUNCTION_PASS(ObjCBridgingOptimization, "objc-bridging-opt",
-     "Optimize ObjectiveC briging operations")
+     "Optimize ObjectiveC bridging operations")
 PASS(ObjectOutliner, "object-outliner",
      "Outlining of Global Objects")
 PASS(Outliner, "outliner",
